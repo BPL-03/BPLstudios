@@ -1,63 +1,154 @@
-import React from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+const HOVER_IMAGES = [
+  '/assets/project_majourneys.jpg',
+  '/assets/project_spim.jpg',
+  '/assets/project_farisi.jpg',
+  '/assets/project_grain_oil.jpg',
+  '/assets/project_codesign.jpg',
+  '/assets/project_brandplus.jpg'
+];
+
+const TEXT_ROWS = [
+  "Have a",
+  "project in",
+  "mind?",
+  "Let's build",
+  "something",
+  "great",
+  "together."
+];
 
 export default function CTA() {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const rowRefs = useRef([]);
+  const isMouseActive = useRef(false);
+  const hoverTimeoutRef = useRef(null);
+
+  // Debounced hover handler to avoid flickering during rapid scrubbing
+  const handleMouseEnter = (idx) => {
+    isMouseActive.current = true;
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveIdx(idx);
+    }, 80);
+  };
+
+  const handleMouseLeaveSection = () => {
+    isMouseActive.current = false;
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // If mouse is active inside the section, do not let scroll override it
+      if (isMouseActive.current || rowRefs.current.length === 0) return;
+
+      const viewportCenter = window.innerHeight / 2;
+      let closestIdx = 0;
+      let minDistance = Infinity;
+
+      rowRefs.current.forEach((ref, idx) => {
+        if (!ref) return;
+        const rect = ref.getBoundingClientRect();
+        const elementCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(elementCenter - viewportCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIdx = idx;
+        }
+      });
+
+      // Only update scroll-based index if CTA is visible in the viewport
+      const sectionElement = rowRefs.current[0]?.closest('section');
+      if (sectionElement) {
+        const sectionRect = sectionElement.getBoundingClientRect();
+        const isInViewport = sectionRect.top < window.innerHeight && sectionRect.bottom > 0;
+        if (isInViewport) {
+          setActiveIdx(closestIdx);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run initial check
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="contact" className="bg-bg portfolio-section border-b border-text-primary/10 overflow-hidden">
-      <div className="portfolio-container portfolio-grid items-center relative">
+    <section id="contact" className="bg-[#000000] py-[100px] sm:py-[160px] border-b border-[#383838] overflow-hidden select-none">
+      <div className="w-full px-[4.5%] md:px-[94px] max-w-[1713px] mx-auto flex flex-col">
         
-        {/* Left Side: Massive Typography Statement */}
-        <div className="col-span-12 lg:col-span-8 flex flex-col items-start justify-center">
-          <span className="text-label-text text-accent mb-medium">Let's Connect</span>
-          
-          <h2 className="text-[clamp(48px,8vw,120px)] leading-[0.9] font-sans font-light tracking-tight text-text-primary uppercase max-w-2xl">
-            Have a project <br />
-            in mind? <br />
-            Let's build <br />
-            something <em className="text-accent font-display not-italic">great</em> <br />
-            together.
-          </h2>
-          
-          <a href="mailto:hello@bplstudios.com" className="btn-solid mt-large text-xs py-4 px-10">
-            Start a project &rarr;
-          </a>
-        </div>
+        {/* Rows Container */}
+        <div 
+          className="flex flex-col w-full"
+          onMouseLeave={handleMouseLeaveSection}
+        >
+          {TEXT_ROWS.map((text, idx) => {
+            const isActive = idx === activeIdx;
+            const isLastRow = idx === TEXT_ROWS.length - 1;
 
-        {/* Right Side: Staggered Editorial Keywords Floating */}
-        <div className="col-span-12 lg:col-span-4 flex flex-col justify-center gap-6 mt-12 lg:mt-0 relative h-[450px]">
-          
-          {/* Staggered keywords with mixed editorial fonts & styling */}
-          <div className="flex flex-col items-end pr-4 select-none">
-            
-            <span className="text-5xl font-sans text-text-ghost uppercase font-semibold leading-none tracking-tighter">
-              Brand
-            </span>
-            
-            <span className="text-6xl font-display italic text-text-ghost/60 leading-none mt-2 pr-6">
-              Logo Design
-            </span>
-            
-            <span className="text-4xl font-mono text-text-ghost/40 uppercase tracking-widest leading-none mt-4">
-              Social Media
-            </span>
-            
-            <span className="text-7xl font-sans text-accent/10 uppercase font-light leading-none mt-2">
-              Website
-            </span>
-            
-            <span className="text-5xl font-display italic text-text-ghost/80 leading-none mt-3">
-              UI/UX Interfaces
-            </span>
-            
-            <span className="text-4xl font-mono text-text-ghost uppercase leading-none mt-4 pr-12">
-              Visual ID
-            </span>
-            
-            <span className="text-5xl font-sans text-text-ghost/50 uppercase font-bold tracking-tight leading-none mt-2">
-              Campaigns
-            </span>
+            return (
+              <div
+                key={idx}
+                ref={(el) => (rowRefs.current[idx] = el)}
+                onMouseEnter={() => handleMouseEnter(idx)}
+                className="grid grid-cols-1 lg:grid-cols-12 items-center w-full relative py-1 sm:py-2"
+              >
+                {/* Left Side: Text Line */}
+                <div className="lg:col-span-8 flex items-center">
+                  <h2 className={`font-sans font-light text-[62px] sm:text-[98px] lg:text-[138px] xl:text-[158px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-300 ${
+                    isActive ? 'text-[#DEF81D]' : 'text-[#1A1A1A]'
+                  }`}>
+                    {text}
+                  </h2>
+                </div>
 
-          </div>
-
+                {/* Right Side: Image for rows 1-6, or Button for row 7 */}
+                <div className="lg:col-span-4 w-full">
+                  {!isLastRow ? (
+                    /* Hover Image (Desktop Only) */
+                    <div className="hidden lg:block relative h-0 w-full">
+                      <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-full aspect-[2.2/1] rounded-[4px] overflow-hidden border border-white/5 bg-[#111111] transition-all duration-500 ease-in-out pointer-events-none ${
+                        isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                      }`}>
+                        <div
+                          className="absolute inset-0 bg-cover bg-center"
+                          style={{ backgroundImage: `url("${HOVER_IMAGES[idx]}")` }}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    /* Let's Talk Button aligned with "together." */
+                    <div className="flex justify-start lg:justify-end w-full mt-4 lg:mt-0">
+                      <a
+                        href="mailto:hello@bplstudios.com"
+                        className={`w-full lg:w-[460px] h-[58px] border border-[#DEF81D] transition-all duration-300 flex items-center justify-center font-syne font-medium text-[13px] sm:text-[14px] uppercase tracking-wider rounded-[4px] ${
+                          isActive
+                            ? 'bg-[#DEF81D] text-black'
+                            : 'text-[#DEF81D] bg-transparent hover:bg-[#DEF81D] hover:text-black'
+                        }`}
+                      >
+                        Let's Talk &rarr;
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
 
       </div>

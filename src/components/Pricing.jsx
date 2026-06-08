@@ -21,27 +21,10 @@ export default function Pricing() {
     <section 
       id="pricing" 
       className="bg-[#030303] text-[#D8D8D8] py-[100px] relative overflow-hidden select-none border-b border-[#383838]"
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      {/* Background Grid System - Absolute lines matching Figma (scaled down 10%) */}
-      <div className="absolute inset-0 pointer-events-none hidden lg:block">
-        {/* Horizontal Line 1 */}
-        <div className="absolute top-[456.04px] left-0 right-0 h-[1px] bg-[#0F0F0F]" />
-        
-        {/* Horizontal Line 2 */}
-        <div className="absolute top-[938.04px] left-0 right-0 h-[1px] bg-[#0F0F0F]" />
-
-        {/* Vertical Line 1 */}
-        <div className="absolute left-[208.25px] top-0 bottom-0 w-[1px] bg-[#0F0F0F]" />
-
-        {/* Vertical Line 2 */}
-        <div className="absolute left-[645.59px] top-0 bottom-0 w-[1px] bg-[#0F0F0F]" />
-
-        {/* Vertical Line 3 */}
-        <div className="absolute left-[1083.83px] top-0 bottom-0 w-[1px] bg-[#0F0F0F]" />
-
-        {/* Vertical Line 4 */}
-        <div className="absolute left-[1523.86px] top-0 bottom-0 w-[1px] bg-[#0F0F0F]" />
-      </div>
 
       {/* Main Container - scaled down 10% */}
       <div className="w-full relative px-[4.5%] md:px-[94px] max-w-[1713px] mx-auto min-h-[1080px] flex flex-col justify-start">
@@ -67,14 +50,14 @@ export default function Pricing() {
           {/* Top descriptions Row (aligned perfectly to match the columns layout spacing) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-[27px] items-end w-full max-w-[1318px] px-[14px] mx-auto mb-[23px] relative z-10">
             {/* Starter outer description (left) */}
-            <div className="max-w-[337px] lg:pl-[23px]">
+            <div className="max-w-[337px] pl-[20px] lg:pl-[23px]">
               <p className="font-syne font-medium text-[14px] leading-[1.3] text-[#ffffff]/40">
-                We don’t sell design. We build direction.
+                We don’t sell design. We<br className="lg:hidden" /> build direction.
               </p>
             </div>
             <div className="hidden lg:block" />
             {/* Signature outer description (right) */}
-            <div className="max-w-[337px] lg:pl-[23px]">
+            <div className="max-w-[337px] lg:pl-[23px] hidden lg:block">
               <p className="font-syne font-medium text-[14px] leading-[1.3] text-[#ffffff]/40">
                 If you're scaling across markets, building for different cultures, or launching in a region where cookie-cutter design fails—let's talk.
               </p>
@@ -84,9 +67,6 @@ export default function Pricing() {
           {/* Relative Cards Wrap to center background grid lines with card boundaries */}
           <div 
             ref={cardsWrapRef}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
             className="relative w-full max-w-[1318px] mx-auto px-[14px]"
             style={{
               '--mouse-x': `${mousePos.x}px`,
@@ -95,7 +75,7 @@ export default function Pricing() {
           >
             {/* Soft background spotlight glow */}
             <div 
-              className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-0"
+              className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-0 hidden lg:block"
               style={{
                 background: `radial-gradient(circle 315px at var(--mouse-x) var(--mouse-y), rgba(222, 248, 29, 0.05), transparent 80%)`,
                 opacity: isHovered ? 1 : 0,
@@ -103,45 +83,32 @@ export default function Pricing() {
             />
 
             {/* Static Base Grid Lines (Always faintly visible) */}
-            {/* Horizontal Line 1 (Top Edge) */}
-            <div className="absolute top-0 left-[-100vw] right-[-100vw] h-[1px] bg-gradient-to-r from-transparent via-[#DEF81D] to-transparent opacity-15 shadow-[0_0_4px_#DEF81D] z-0" />
+            {/* Horizontal Line 1 (Top Edge) - Mobile (Green) */}
+            <div className="absolute top-0 left-[-100vw] right-[-100vw] h-[1px] bg-[linear-gradient(to_right,rgba(15,15,15,0)_0%,#DEF81D_20%,rgba(22,22,22,0)_80%)] opacity-35 shadow-[0_0_4px_#DEF81D] lg:hidden z-0" />
 
-            {/* Horizontal Line 2 (Bottom Edge) */}
-            <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-[1px] bg-gradient-to-r from-transparent via-[#DEF81D] to-transparent opacity-15 shadow-[0_0_4px_#DEF81D] z-0" />
+            {/* Horizontal Line 2 (Bottom Edge) - Mobile (Green) */}
+            <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-[1px] bg-[linear-gradient(to_left,rgba(15,15,15,0)_0%,#DEF81D_20%,rgba(22,22,22,0)_80%)] opacity-35 shadow-[0_0_4px_#DEF81D] lg:hidden z-0" />
 
-            {/* Vertical Lines */}
-            <div className="absolute inset-0 pointer-events-none hidden lg:grid grid-cols-3 gap-[27px] px-[14px] z-0">
-              {/* Column 1 Center Gap Line */}
-              <div className="relative w-full h-full">
-                <div className="absolute right-[-13.5px] top-[-540px] bottom-[-540px] w-[1px] bg-gradient-to-b from-transparent via-[#DEF81D] to-transparent opacity-10 shadow-[0_0_4px_#DEF81D]" />
-              </div>
-              {/* Column 2 Center Gap Line */}
-              <div className="relative w-full h-full">
-                <div className="absolute right-[-13.5px] top-[-540px] bottom-[-540px] w-[1px] bg-gradient-to-b from-transparent via-[#DEF81D] to-transparent opacity-10 shadow-[0_0_4px_#DEF81D]" />
-              </div>
-              <div className="relative w-full h-full" />
-            </div>
+            {/* Vertical Line 1 (Left Edge) - goes to_bottom, green peak near top (30%) */}
+            <div className="absolute left-[14px] top-[-540px] bottom-[-540px] w-[1px] bg-[linear-gradient(to_bottom,rgba(15,15,15,0)_0%,#DEF81D_30%,rgba(22,22,22,0)_70%)] opacity-35 shadow-[0_0_4px_#DEF81D] z-0 lg:hidden" />
 
-            {/* Vertical Line 1 (Left Edge) */}
-            <div className="absolute left-0 top-[-540px] bottom-[-540px] w-[1px] bg-gradient-to-b from-transparent via-[#DEF81D] to-transparent opacity-10 shadow-[0_0_4px_#DEF81D] z-0 hidden lg:block" />
-
-            {/* Vertical Line 4 (Right Edge) */}
-            <div className="absolute right-0 top-[-540px] bottom-[-540px] w-[1px] bg-gradient-to-b from-transparent via-[#DEF81D] to-transparent opacity-10 shadow-[0_0_4px_#DEF81D] z-0 hidden lg:block" />
+            {/* Vertical Line 4 (Right Edge) - goes to_top, green peak near bottom (30% from bottom) */}
+            <div className="absolute right-[14px] top-[-540px] bottom-[-540px] w-[1px] bg-[linear-gradient(to_top,rgba(15,15,15,0)_0%,#DEF81D_30%,rgba(22,22,22,0)_70%)] opacity-35 shadow-[0_0_4px_#DEF81D] z-0 lg:hidden" />
 
             {/* Interactive Spotlight Glow Grid Lines */}
             <div 
-              className="absolute top-[-270px] bottom-[-270px] left-[-270px] right-[-270px] pointer-events-none z-20 transition-opacity duration-300"
+              className="absolute top-[-270px] bottom-[-270px] left-[-270px] right-[-270px] pointer-events-none z-20 transition-opacity duration-300 hidden lg:block"
               style={{
                 opacity: isHovered ? 1 : 0,
                 WebkitMaskImage: `radial-gradient(circle 225px at calc(var(--mouse-x) + 270px) calc(var(--mouse-y) + 270px), black, transparent)`,
                 maskImage: `radial-gradient(circle 225px at calc(var(--mouse-x) + 270px) calc(var(--mouse-y) + 270px), black, transparent)`
               }}
             >
-              {/* Horizontal Line 1 (Top Edge) */}
-              <div className="absolute top-[270px] left-0 right-0 h-[1px] bg-[#DEF81D] shadow-[0_0_8px_#DEF81D]" />
+              {/* Horizontal Line 1 (Top Edge) - goes to_right, green peak on the left (20%) */}
+              <div className="absolute top-[270px] left-[-100vw] right-[-100vw] h-[1px] bg-[linear-gradient(to_right,rgba(15,15,15,0)_0%,#DEF81D_20%,rgba(22,22,22,0)_80%)] shadow-[0_0_8px_#DEF81D]" />
 
-              {/* Horizontal Line 2 (Bottom Edge) */}
-              <div className="absolute bottom-[270px] left-0 right-0 h-[1px] bg-[#DEF81D] shadow-[0_0_8px_#DEF81D]" />
+              {/* Horizontal Line 2 (Bottom Edge) - goes to_left, green peak on the right (20% from right) */}
+              <div className="absolute bottom-[270px] left-[-100vw] right-[-100vw] h-[1px] bg-[linear-gradient(to_left,rgba(15,15,15,0)_0%,#DEF81D_20%,rgba(22,22,22,0)_80%)] shadow-[0_0_8px_#DEF81D]" />
 
               {/* Vertical Lines */}
               <div className="absolute top-0 bottom-0 left-[270px] right-[270px] grid grid-cols-3 gap-[27px] px-[14px] pointer-events-none hidden lg:grid">
@@ -156,18 +123,18 @@ export default function Pricing() {
                 <div className="relative w-full h-full" />
               </div>
 
-              {/* Vertical Line 1 (Left Edge) */}
-              <div className="absolute left-[270px] top-0 bottom-0 w-[1px] bg-[#DEF81D] shadow-[0_0_8px_#DEF81D] hidden lg:block" />
+              {/* Vertical Line 1 (Left Edge) - goes to_bottom, green peak near top (30%) */}
+              <div className="absolute left-[284px] top-0 bottom-0 w-[1px] bg-[linear-gradient(to_bottom,rgba(15,15,15,0)_0%,#DEF81D_30%,rgba(22,22,22,0)_70%)] shadow-[0_0_8px_#DEF81D]" />
 
-              {/* Vertical Line 4 (Right Edge) */}
-              <div className="absolute right-[270px] top-0 bottom-0 w-[1px] bg-[#DEF81D] shadow-[0_0_8px_#DEF81D] hidden lg:block" />
+              {/* Vertical Line 4 (Right Edge) - goes to_top, green peak near bottom (30% from bottom) */}
+              <div className="absolute right-[284px] top-0 bottom-0 w-[1px] bg-[linear-gradient(to_top,rgba(15,15,15,0)_0%,#DEF81D_30%,rgba(22,22,22,0)_70%)] shadow-[0_0_8px_#DEF81D]" />
             </div>
 
           {/* Cards Row - Starter, Core, Signature */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-[27px] relative z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 lg:gap-[27px] relative z-10 w-full">
           
           {/* 1. Starter Card */}
-          <div className="w-full lg:max-w-[412px] mx-auto min-h-[455px] p-5 sm:pt-[28px] sm:pb-[36px] sm:px-[23px] flex flex-col justify-between">
+          <div className="w-full lg:max-w-[412px] mx-auto min-h-[455px] p-5 sm:pt-[28px] sm:pb-[36px] sm:px-[23px] flex flex-col justify-between lg:border-none relative">
             <div>
               {/* Top Row: Name */}
               <div className="flex justify-between items-start">
@@ -177,7 +144,7 @@ export default function Pricing() {
               </div>
 
               {/* Middle Row: Price */}
-              <div className="flex justify-end items-baseline gap-2 mt-10 mb-6">
+              <div className="flex justify-end items-baseline gap-2 mt-10 mb-2">
                 <span className="font-syne font-medium text-[14px] text-[#D8D8D8]/80 text-right leading-[14px]">
                   Starting From
                 </span>
@@ -187,7 +154,7 @@ export default function Pricing() {
               </div>
 
               {/* Tagline */}
-              <div className="text-right mb-[22px] mt-[43px]">
+              <div className="text-right mb-[22px] mt-1">
                 <p className="font-dm-sans font-medium text-[13px] tracking-[1.86px] uppercase text-[#D8D8D8] leading-[15px]">
                   For early-stage brands<br />that need clarity.
                 </p>
@@ -204,10 +171,12 @@ export default function Pricing() {
                 Outcome: A clear and usable starting point
               </p>
             </div>
+            {/* Mobile Divider Line extending beyond screen edges */}
+            <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-[1px] bg-[linear-gradient(to_right,rgba(15,15,15,0)_0%,#DEF81D_20%,rgba(22,22,22,0)_80%)] opacity-35 shadow-[0_0_4px_#DEF81D] lg:hidden" />
           </div>
 
           {/* 2. Core Card */}
-          <div className="w-full lg:max-w-[412px] mx-auto min-h-[455px] p-5 sm:pt-[28px] sm:pb-[36px] sm:px-[23px] flex flex-col justify-between">
+          <div className="w-full lg:max-w-[412px] mx-auto min-h-[455px] p-5 sm:pt-[28px] sm:pb-[36px] sm:px-[23px] flex flex-col justify-between lg:border-none relative">
             <div>
               {/* Top Row: Name */}
               <div className="flex justify-between items-start">
@@ -217,7 +186,7 @@ export default function Pricing() {
               </div>
 
               {/* Middle Row: Price */}
-              <div className="flex justify-end items-baseline gap-2 mt-10 mb-6">
+              <div className="flex justify-end items-baseline gap-2 mt-10 mb-2">
                 <span className="font-syne font-medium text-[14px] text-[#D8D8D8]/80 text-right leading-[14px]">
                   Starting From
                 </span>
@@ -227,7 +196,7 @@ export default function Pricing() {
               </div>
 
               {/* Tagline */}
-              <div className="text-right mb-[22px] mt-[43px]">
+              <div className="text-right mb-[22px] mt-1">
                 <p className="font-dm-sans font-medium text-[13px] tracking-[1.86px] uppercase text-[#D8D8D8] leading-[15px]">
                   For brands ready to<br />build something serious.
                 </p>
@@ -245,10 +214,12 @@ export default function Pricing() {
                 Outcome: A cohesive and scalable brand
               </p>
             </div>
+            {/* Mobile Divider Line extending beyond screen edges */}
+            <div className="absolute bottom-0 left-[-100vw] right-[-100vw] h-[1px] bg-[linear-gradient(to_right,rgba(15,15,15,0)_0%,#DEF81D_20%,rgba(22,22,22,0)_80%)] opacity-35 shadow-[0_0_4px_#DEF81D] lg:hidden" />
           </div>
 
           {/* 3. Signature Card */}
-          <div className="w-full lg:max-w-[412px] mx-auto min-h-[455px] p-5 sm:pt-[28px] sm:pb-[36px] sm:px-[23px] flex flex-col justify-between">
+          <div className="w-full lg:max-w-[412px] mx-auto min-h-[455px] p-5 sm:pt-[28px] sm:pb-[36px] sm:px-[23px] flex flex-col justify-between lg:border-none relative">
             <div>
               {/* Top Row: Name */}
               <div className="flex justify-end items-start">
@@ -258,7 +229,7 @@ export default function Pricing() {
               </div>
 
               {/* Middle Row: Price */}
-              <div className="flex justify-between items-baseline gap-2 mt-10 mb-6">
+              <div className="flex justify-between items-baseline gap-2 mt-10 mb-2">
                 <div className="flex items-baseline gap-2">
                   <span className="font-sans font-light text-[56px] leading-[56px] text-[#D8D8D8] font-anek">
                     1,200$
@@ -270,7 +241,7 @@ export default function Pricing() {
               </div>
 
               {/* Tagline */}
-              <div className="text-left mb-[22px] mt-[43px]">
+              <div className="text-left mb-[22px] mt-1">
                 <p className="font-dm-sans font-medium text-[13px] tracking-[1.86px] uppercase text-[#D8D8D8] leading-[15px]">
                   For brands that want<br />impact and depth.
                 </p>
@@ -302,7 +273,7 @@ export default function Pricing() {
           <div className="hidden lg:block" />
 
           {/* Description 3 (Core bottom) */}
-          <div className="max-w-[337px] mx-auto lg:mr-0 text-center lg:text-right lg:pr-[23px] -mt-[2px]">
+          <div className="max-w-[337px] ml-auto mr-0 pr-[20px] lg:pr-[23px] text-right -mt-[2px]">
             <p className="font-syne font-medium text-[14px] leading-[1.3] text-[#ffffff]/40">
               Every project is different<br />
               These are starting points, final pricing depends on scope, timeline, and ambition
@@ -310,7 +281,7 @@ export default function Pricing() {
           </div>
 
           {/* Lime CTA Button (Signature bottom) */}
-          <div className="flex justify-center lg:justify-start lg:pl-[23px]">
+          <div className="flex justify-end pr-[20px] lg:justify-start lg:pl-[23px]">
             <a 
               href="#contact"
               className="bg-[#DEF81D] hover:bg-[#cbf00f] active:scale-95 transition-all text-[#030303] font-dm-sans font-medium text-[13px] tracking-[0.5px] leading-[21px] px-[16px] py-[13px] rounded-[4px] inline-flex items-center gap-2 shadow-lg select-none"

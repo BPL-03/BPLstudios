@@ -2,12 +2,12 @@ import React from 'react';
 
 export default function Process() {
   return (
-    <section 
-      id="process" 
+    <section
+      id="process"
       className="bg-[#030303] border-b border-[#383838] pt-0 pb-0 select-none overflow-hidden"
     >
       <div className="w-full px-[5%] md:px-[104px] max-w-[1860px] mx-auto grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-0">
-        
+
         {/* Row 1, Column 1 & 2: Heading Block */}
         <div className="lg:col-span-2 flex flex-col justify-end pt-28 pb-16 lg:pb-12 lg:order-1">
           {/* Label with small line */}
@@ -33,7 +33,7 @@ export default function Process() {
                 <circle cx="12" cy="12" r="9" />
                 <circle cx="12" cy="12" r="4" />
               </svg>
-              <span className="font-syne font-medium text-[22px] text-[#DEF81D] tracking-tight">Discover</span>
+              <span className="font-   font-medium text-[22px] text-[#DEF81D] tracking-tight">Discover</span>
             </div>
           </div>
           {/* Bottom: Description */}

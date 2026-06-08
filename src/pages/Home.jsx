@@ -8,6 +8,8 @@ import About from '../components/About';
 import Studio from '../components/Studio';
 import Process from '../components/Process';
 import Pricing from '../components/Pricing';
+import Values from '../components/Values';
+import CTA from '../components/CTA';
 
 export default function Home() {
   return (
@@ -29,6 +31,8 @@ export default function Home() {
         <Studio />
         <Process />
         <Pricing />
+        <Values />
+        <CTA />
       </main>
     </div>
   );
