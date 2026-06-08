@@ -22,31 +22,47 @@ const TEXT_ROWS = [
 export default function CTA() {
   const [activeIdx, setActiveIdx] = useState(0);
   const rowRefs = useRef([]);
-  const isMouseActive = useRef(false);
+  const isMouseMoving = useRef(false);
+  const mouseMoveTimeout = useRef(null);
   const hoverTimeoutRef = useRef(null);
 
-  // Debounced hover handler to avoid flickering during rapid scrubbing
+  // Track active mouse movement to coordinate between scroll and mouse hover
+  useEffect(() => {
+    const handleMouseMove = () => {
+      isMouseMoving.current = true;
+      if (mouseMoveTimeout.current) clearTimeout(mouseMoveTimeout.current);
+      mouseMoveTimeout.current = setTimeout(() => {
+        isMouseMoving.current = false;
+      }, 500);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (mouseMoveTimeout.current) clearTimeout(mouseMoveTimeout.current);
+      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    };
+  }, []);
+
   const handleMouseEnter = (idx) => {
-    isMouseActive.current = true;
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-    }
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    // Debounce hover transitions to prevent flickering
     hoverTimeoutRef.current = setTimeout(() => {
       setActiveIdx(idx);
-    }, 80);
-  };
-
-  const handleMouseLeaveSection = () => {
-    isMouseActive.current = false;
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-    }
+    }, 50);
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      // If mouse is active inside the section, do not let scroll override it
-      if (isMouseActive.current || rowRefs.current.length === 0) return;
+      // If user is actively moving their mouse, let the hover handler take priority
+      if (isMouseMoving.current || rowRefs.current.length === 0) return;
+
+      // Fallback for page bottom: force last row active when scrolled to absolute bottom
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
+      if (isAtBottom) {
+        setActiveIdx(TEXT_ROWS.length - 1);
+        return;
+      }
 
       const viewportCenter = window.innerHeight / 2;
       let closestIdx = 0;
@@ -64,7 +80,7 @@ export default function CTA() {
         }
       });
 
-      // Only update scroll-based index if CTA is visible in the viewport
+      // Only update if the section is in view
       const sectionElement = rowRefs.current[0]?.closest('section');
       if (sectionElement) {
         const sectionRect = sectionElement.getBoundingClientRect();
@@ -81,9 +97,6 @@ export default function CTA() {
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (hoverTimeoutRef.current) {
-        clearTimeout(hoverTimeoutRef.current);
-      }
     };
   }, []);
 
@@ -92,10 +105,7 @@ export default function CTA() {
       <div className="w-full px-[4.5%] md:px-[94px] max-w-[1713px] mx-auto flex flex-col">
         
         {/* Rows Container */}
-        <div 
-          className="flex flex-col w-full"
-          onMouseLeave={handleMouseLeaveSection}
-        >
+        <div className="flex flex-col w-full">
           {TEXT_ROWS.map((text, idx) => {
             const isActive = idx === activeIdx;
             const isLastRow = idx === TEXT_ROWS.length - 1;
