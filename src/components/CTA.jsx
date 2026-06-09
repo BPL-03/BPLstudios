@@ -46,10 +46,10 @@ export default function CTA() {
 
   const handleMouseEnter = (idx) => {
     if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
-    // Debounce hover transitions to prevent flickering
+    // Snappy hover activation
     hoverTimeoutRef.current = setTimeout(() => {
       setActiveIdx(idx);
-    }, 50);
+    }, 20);
   };
 
   useEffect(() => {
@@ -119,7 +119,7 @@ export default function CTA() {
               >
                 {/* Left Side: Text Line */}
                 <div className="lg:col-span-8 flex items-center">
-                  <h2 className={`font-sans font-light text-[62px] sm:text-[98px] lg:text-[138px] xl:text-[158px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-300 ${
+                  <h2 className={`font-sans font-light text-[62px] sm:text-[98px] lg:text-[138px] xl:text-[158px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-150 ease-out ${
                     isActive ? 'text-[#DEF81D]' : 'text-[#1A1A1A]'
                   }`}>
                     {text}
@@ -131,7 +131,7 @@ export default function CTA() {
                   {!isLastRow ? (
                     /* Hover Image (Desktop Only) */
                     <div className="hidden lg:block relative h-0 w-full">
-                      <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-full aspect-[2.2/1] rounded-[4px] overflow-hidden border border-white/5 bg-[#111111] transition-all duration-500 ease-in-out pointer-events-none ${
+                      <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-full aspect-[2.2/1] rounded-[4px] overflow-hidden border border-white/5 bg-[#111111] transition-all duration-200 ease-out pointer-events-none ${
                         isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                       }`}>
                         <div
@@ -145,7 +145,7 @@ export default function CTA() {
                     <div className="flex justify-start lg:justify-end w-full mt-4 lg:mt-0">
                       <a
                         href="mailto:hello@bplstudios.com"
-                        className={`w-full lg:w-[460px] h-[58px] border border-[#DEF81D] transition-all duration-300 flex items-center justify-center font-syne font-medium text-[13px] sm:text-[14px] uppercase tracking-wider rounded-[4px] ${
+                        className={`w-full lg:w-[460px] h-[58px] border border-[#DEF81D] transition-all duration-150 ease-out flex items-center justify-center font-syne font-medium text-[13px] sm:text-[14px] uppercase tracking-wider rounded-[4px] ${
                           isActive
                             ? 'bg-[#DEF81D] text-black'
                             : 'text-[#DEF81D] bg-transparent hover:bg-[#DEF81D] hover:text-black'
