@@ -119,7 +119,7 @@ export default function CTA() {
               >
                 {/* Left Side: Text Line */}
                 <div className="lg:col-span-8 flex items-center">
-                  <h2 className={`font-sans font-light text-[62px] sm:text-[98px] lg:text-[138px] xl:text-[158px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-150 ease-out ${
+                  <h2 className={`font-sans font-light text-[66px] sm:text-[104px] lg:text-[148px] xl:text-[168px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-150 ease-out ${
                     isActive ? 'text-[#DEF81D]' : 'text-[#1A1A1A]'
                   }`}>
                     {text}
@@ -131,7 +131,7 @@ export default function CTA() {
                   {!isLastRow ? (
                     /* Hover Image (Desktop Only) */
                     <div className="hidden lg:block relative h-0 w-full">
-                      <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-full aspect-[2.2/1] rounded-[4px] overflow-hidden border border-white/5 bg-[#111111] transition-all duration-200 ease-out pointer-events-none ${
+                      <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-full aspect-[3.1/1] rounded-[4px] overflow-hidden border border-white/5 bg-[#111111] transition-all duration-200 ease-out pointer-events-none ${
                         isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                       }`}>
                         <div
