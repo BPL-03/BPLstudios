@@ -118,7 +118,7 @@ export default function CTA() {
                 className="grid grid-cols-1 lg:grid-cols-12 items-center w-full relative py-1 sm:py-2"
               >
                 {/* Left Side: Text Line */}
-                <div className="lg:col-span-8 flex items-center">
+                <div className="lg:col-span-7 flex items-center">
                   <h2 className={`font-sans font-light text-[66px] sm:text-[104px] lg:text-[148px] xl:text-[168px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-150 ease-out ${
                     isActive ? 'text-[#DEF81D]' : 'text-[#1A1A1A]'
                   }`}>
@@ -127,7 +127,7 @@ export default function CTA() {
                 </div>
 
                 {/* Right Side: Image for rows 1-6, or Button for row 7 */}
-                <div className="lg:col-span-4 w-full">
+                <div className="lg:col-span-5 w-full">
                   {!isLastRow ? (
                     /* Hover Image (Desktop Only) */
                     <div className="hidden lg:block relative h-0 w-full">
