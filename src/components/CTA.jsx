@@ -103,7 +103,7 @@ export default function CTA() {
   return (
     <section id="contact" className="bg-[#000000] py-[120px] sm:py-[180px] border-b border-[#383838] overflow-hidden select-none">
       <div className="w-full px-[4.5%] md:px-[94px] max-w-[1713px] mx-auto flex flex-col">
-        
+
         {/* Rows Container */}
         <div className="flex flex-col w-full">
           {TEXT_ROWS.map((text, idx) => {
@@ -120,19 +120,17 @@ export default function CTA() {
                 {!isLastRow ? (
                   /* Left Side: Text Line + Image (Desktop Only) */
                   <div className="flex items-center gap-8 lg:gap-12 flex-grow w-full">
-                    <h2 className={`font-sans font-light text-[66px] sm:text-[104px] lg:text-[148px] xl:text-[168px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out shrink-0 ${
-                      isActive ? 'text-[#DEF81D]' : 'text-[#333333] lg:text-[#1A1A1A]'
-                    }`}>
+                    <h2 className={`font-sans font-light text-[86px] sm:text-[135px] lg:text-[192px] xl:text-[218px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out shrink-0 ${isActive ? 'text-[#DEF81D]' : 'text-[#333333] lg:text-[#1A1A1A]'
+                      }`}>
                       {text}
                     </h2>
-                    
+
                     {/* Hover Image (Desktop Only) */}
-                    <div className="hidden lg:block relative h-[100px] xl:h-[125px] aspect-[2.7/1]">
-                      <div className={`absolute left-0 top-0 bottom-0 right-0 rounded-[4px] overflow-hidden border border-white/5 bg-[#111111] transition-all duration-500 ease-out pointer-events-none ${
-                        isActive 
-                          ? 'opacity-100 translate-x-0 scale-100' 
+                    <div className="hidden lg:block relative h-[60px] xl:h-[75px] flex-grow">
+                      <div className={`absolute left-0 top-0 bottom-0 right-0 rounded-[4px] overflow-hidden border border-white/5 bg-[#111111] transition-all duration-500 ease-out pointer-events-none ${isActive
+                          ? 'opacity-100 translate-x-0 scale-100'
                           : 'opacity-0 translate-x-24 scale-95'
-                      }`}>
+                        }`}>
                         <div
                           className="absolute inset-0 bg-cover bg-center"
                           style={{ backgroundImage: `url("${HOVER_IMAGES[idx]}")` }}
@@ -144,9 +142,8 @@ export default function CTA() {
                   <>
                     {/* Last Row Text */}
                     <div className="flex items-center w-full lg:w-auto">
-                      <h2 className={`font-sans font-light text-[66px] sm:text-[104px] lg:text-[148px] xl:text-[168px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out ${
-                        isActive ? 'text-[#DEF81D]' : 'text-[#333333] lg:text-[#1A1A1A]'
-                      }`}>
+                      <h2 className={`font-sans font-light text-[86px] sm:text-[135px] lg:text-[192px] xl:text-[218px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out ${isActive ? 'text-[#DEF81D]' : 'text-[#333333] lg:text-[#1A1A1A]'
+                        }`}>
                         {text}
                       </h2>
                     </div>
@@ -155,11 +152,10 @@ export default function CTA() {
                     <div className="flex justify-start lg:justify-end w-full lg:w-auto mt-4 lg:mt-0 lg:mb-[18px]">
                       <a
                         href="mailto:hello@bplstudios.com"
-                        className={`w-full lg:w-[460px] h-[58px] border border-[#DEF81D] transition-all duration-150 ease-out flex items-center justify-center font-syne font-medium text-[13px] sm:text-[14px] uppercase tracking-wider rounded-[4px] ${
-                          isActive
+                        className={`w-full lg:w-[460px] h-[58px] border border-[#DEF81D] transition-all duration-150 ease-out flex items-center justify-center font-syne font-medium text-[13px] sm:text-[14px] uppercase tracking-wider rounded-[4px] ${isActive
                             ? 'bg-[#DEF81D] text-black'
                             : 'text-[#DEF81D] bg-transparent hover:bg-[#DEF81D] hover:text-black'
-                        }`}
+                          }`}
                       >
                         Let's Talk &rarr;
                       </a>
