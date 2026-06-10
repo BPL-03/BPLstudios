@@ -43,7 +43,7 @@ export default function Footer() {
                 src="/assets/panther_logo_exact.png" 
                 alt="BPL Studios Panther Logo"
                 loading="lazy"
-                className="w-full h-full object-contain pointer-events-none invert"
+                className="w-full h-full object-contain pointer-events-none"
               />
             </div>
             <div className="absolute -bottom-6 left-0 w-full">
