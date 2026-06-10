@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section 
       id="about" 
-      className="bg-[#030303] border-b border-[#383838] pt-28 pb-20 select-none overflow-hidden"
+      className="bg-[#030303] border-b border-[#383838] py-20 sm:py-[120px] select-none overflow-hidden"
     >
       <div className="w-full relative px-[5%] md:px-[104px] max-w-[1860px] mx-auto flex flex-col items-center">
         <div className="w-full lg:w-[1504px] flex flex-col">

@@ -4,9 +4,9 @@ export default function Studio() {
   return (
     <section 
       id="studio" 
-      className="bg-[#030303] border-b border-[#383838] py-16 lg:py-0 lg:h-[880px] flex items-center justify-center select-none overflow-hidden"
+      className="bg-[#030303] border-b border-[#383838] py-20 sm:py-[120px] flex items-center justify-center select-none overflow-hidden"
     >
-      <div className="w-full px-[5%] lg:px-0 lg:w-[1480px] lg:h-[480px] mx-auto flex flex-col lg:justify-between justify-center gap-10 lg:gap-0">
+      <div className="w-full px-[5%] lg:px-0 lg:w-[1480px] mx-auto flex flex-col lg:justify-between justify-center gap-10 lg:gap-0">
         
         {/* Row 1 */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between w-full">

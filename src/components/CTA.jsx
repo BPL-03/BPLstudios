@@ -101,7 +101,7 @@ export default function CTA() {
   }, []);
 
   return (
-    <section id="contact" className="bg-[#000000] py-[100px] sm:py-[160px] border-b border-[#383838] overflow-hidden select-none">
+    <section id="contact" className="bg-[#000000] py-20 sm:py-[120px] border-b border-[#383838] overflow-hidden select-none">
       <div className="w-full px-[4.5%] md:px-[94px] max-w-[1713px] mx-auto flex flex-col">
         
         {/* Rows Container */}

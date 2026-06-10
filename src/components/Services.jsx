@@ -506,7 +506,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="bg-bg border-b border-[#383838] pt-28 pb-20 select-none overflow-hidden"
+      className="bg-bg border-b border-[#383838] py-20 sm:py-[120px] select-none overflow-hidden"
     >
       <div className="portfolio-container w-full">
 
