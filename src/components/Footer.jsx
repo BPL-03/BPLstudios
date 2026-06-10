@@ -12,14 +12,19 @@ export default function Footer() {
         {/* ─── Top Bar ─── */}
         <div className="flex items-start justify-between pb-4">
           {/* Top Left metadata */}
-          <div className="flex gap-16 font-inter text-[10px] lg:text-[11px] tracking-[0.15em] font-bold text-[#7a7870] uppercase leading-[1.4]">
-            <div className="flex flex-col">
-              <span>© BPLAN</span>
-              <span>STUDIOS</span>
+          <div className="flex flex-col gap-2 font-inter text-[10px] lg:text-[11px] tracking-[0.15em] font-bold text-[#7a7870] uppercase leading-[1.4]">
+            <div className="flex gap-16">
+              <div className="flex flex-col">
+                <span>© BPLAN</span>
+                <span>STUDIOS</span>
+              </div>
+              <div className="flex flex-col">
+                <span>PERSONAL</span>
+                <span>BRAND</span>
+              </div>
             </div>
-            <div className="flex flex-col">
-              <span>PERSONAL</span>
-              <span>BRAND</span>
+            <div className="text-[9px] text-[#555550] tracking-[0.2em] mt-1">
+              ALL RIGHT RESERVED
             </div>
           </div>
           
@@ -36,23 +41,15 @@ export default function Footer() {
         {/* ─── Main Content Grid ─── */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-end mt-4">
           
-          {/* Left Column: Panther Logo + Brand Text */}
+          {/* Left Column: Panther Logo */}
           <div className="lg:col-span-3 flex flex-col gap-6">
-            <div className="w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] bg-white flex items-center justify-center p-5 select-none">
+            <div className="w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] select-none">
               <img 
-                src="/assets/panther_logo.png" 
+                src="/assets/panther_footer.png" 
                 alt="BPL Studios Panther"
                 loading="lazy"
                 className="w-full h-full object-contain"
               />
-            </div>
-            <div className="flex flex-col gap-1">
-              <span className="font-sans font-light text-[22px] lg:text-[24px] tracking-tight text-[#e8e6de] leading-none">
-                Made By BPL
-              </span>
-              <span className="font-inter text-[9px] tracking-[0.2em] text-[#555550] uppercase font-bold leading-none mt-1">
-                ALL RIGHT RESERVED
-              </span>
             </div>
           </div>
 
@@ -66,8 +63,9 @@ export default function Footer() {
               </h3>
             </div>
             <div className="mt-8 lg:mt-0 lg:pl-[42%]">
-              <p className="font-sans font-light text-[28px] sm:text-[34px] lg:text-[40px] xl:text-[46px] leading-[1.1] text-[#b5b4ad] tracking-tight">
-                If you are
+              <p className="font-sans font-light text-[28px] sm:text-[34px] lg:text-[40px] xl:text-[46px] leading-[1.15] text-[#b5b4ad] tracking-tight">
+                to discuss you<br />
+                project
               </p>
             </div>
           </div>
