@@ -356,7 +356,21 @@ export default function Services() {
       const itemWidth = cardWidth + gap;
       scrollRef.current.scrollLeft = 2 * itemWidth;
     }, 50);
-    return () => clearTimeout(timer);
+
+    const el = scrollRef.current;
+    const handleScrollEndNative = () => {
+      handleScrollEnd();
+    };
+    if (el) {
+      el.addEventListener('scrollend', handleScrollEndNative);
+    }
+
+    return () => {
+      clearTimeout(timer);
+      if (el) {
+        el.removeEventListener('scrollend', handleScrollEndNative);
+      }
+    };
   }, []);
 
   const handleScroll = () => {
@@ -444,7 +458,7 @@ export default function Services() {
   const handleMouseMove = (e) => {
     if (!isDragging) return;
     e.preventDefault();
-    const walk = (e.pageX - startX.current) * 1.5;
+    const walk = (e.pageX - startX.current);
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = startScrollLeft.current - walk;
     }
@@ -464,6 +478,9 @@ export default function Services() {
 
       const scrollLeft = scrollRef.current.scrollLeft;
       const nearestIdx = Math.round(scrollLeft / itemWidth);
+
+      isProgrammaticScroll.current = true;
+      setIsProgrammatic(true);
 
       scrollRef.current.scrollTo({
         left: nearestIdx * itemWidth,
@@ -626,16 +643,16 @@ export default function Services() {
                   )}
 
                   {/* Static Icon (Top Left) */}
-                  <span className="absolute top-[14.5px] left-[25px] font-sans font-normal text-[32px] text-[#F5F2EC]/85 leading-none select-none z-20">
+                  <span className="absolute top-[14.5px] left-[25px] font-sans font-normal text-[32px] text-[#F5F2EC]/85 leading-none select-none z-20 transition-all duration-500 ease-in-out group-hover:text-[#DEF81D] group-hover:scale-110">
                     {service.num}
                   </span>
 
                   {/* Service Heading 3 (Centered horizontally, with down chevron below) */}
                   <div className="absolute top-[86px] left-0 right-0 text-center px-4 z-20 pointer-events-none flex flex-col items-center">
-                    <h3 className="font-inter font-medium text-[28px] sm:text-[36px] leading-none text-white tracking-[-2.16px] select-none">
+                    <h3 className="font-inter font-medium text-[28px] sm:text-[36px] leading-none text-white tracking-[-2.16px] select-none transition-colors duration-500 ease-in-out group-hover:text-[#DEF81D]">
                       {service.name}
                     </h3>
-                    <svg className="w-3 h-3 text-white/45 mt-2" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <svg className="w-3 h-3 text-white/45 mt-2 transition-all duration-500 ease-in-out group-hover:text-[#DEF81D] group-hover:scale-125" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
