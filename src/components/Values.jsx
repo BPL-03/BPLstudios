@@ -97,14 +97,15 @@ export default function Values() {
           <div className="lg:col-start-9 lg:col-span-4 self-start mt-4 lg:-mt-[64px] flex justify-end w-full lg:w-auto">
             {/* Desktop Tagline */}
             <div className="hidden lg:flex font-syne font-medium text-[17px] sm:text-[18px] leading-[1.4] text-[#C1CBCC]/40 w-fit flex flex-col items-end">
+              <div className="text-left w-full">Merging Imagination</div>
               <div className="text-right w-full">
-                Design isn't decoration. It's how your<br />
-                business earns trust before anyone reads a word.
+                with Innovation to Craft Unforgettable, we transform<br />
+                visionary ideas into compelling experiences.
               </div>
             </div>
             {/* Mobile Tagline */}
             <p className="block lg:hidden font-syne font-medium text-[13px] sm:text-[14px] leading-[1.4] text-[#C1CBCC]/40 text-right max-w-[320px] ml-auto">
-              Design isn't decoration. It's how your business earns trust before anyone reads a word.
+              Merging Imagination with Innovation to Craft Unforgettable, we transform visionary ideas into compelling experiences.
             </p>
           </div>
         </div>
@@ -119,21 +120,21 @@ export default function Values() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
-              <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-start lg:items-end text-left lg:text-right origin-right transition-all duration-500 ease-out ${
+              <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-end lg:items-end text-right lg:text-right origin-right transition-all duration-500 ease-out ${
                 activeIdx === 0 ? 'scale-[1.05]' : 'scale-100'
               }`}>
                 <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
                   activeIdx === 0 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
                 }`}>
-                  Cross-market<br className="hidden lg:inline" /> thinking
+                  Innovative<br className="hidden lg:inline" /> Creativity
                 </span>
               </div>
               {/* Description */}
               <div className={`lg:col-start-5 lg:col-span-8 origin-left transition-all duration-500 ease-out ${
                 activeIdx === 0 ? 'scale-[1.01]' : 'scale-100'
               }`}>
-                <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-left">
-                  Design tuned to what matters in each market — culturally,<br className="hidden lg:inline" /> commercially, and visually.
+                <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-right lg:text-left">
+                  We merge art and technology to create solutions that break the mold<br className="hidden lg:inline" /> and capture attention.
                 </p>
               </div>
             </div>
@@ -159,7 +160,7 @@ export default function Values() {
                 <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
                   activeIdx === 1 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
                 }`}>
-                  Founder<br className="hidden lg:inline" /> perspective
+                  design that<br className="hidden lg:inline" /> crosses borders
                 </span>
               </div>
               {/* Description */}
@@ -167,7 +168,7 @@ export default function Values() {
                 activeIdx === 1 ? 'scale-[1.01]' : 'scale-100'
               }`}>
                 <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-right lg:text-left">
-                  Built by a founder who's been on both sides of the brief.
+                  Your vision unite to form a powerful team, ensuring that every project<br className="hidden lg:inline" /> reflects your unique identity.
                 </p>
               </div>
             </div>
@@ -187,21 +188,21 @@ export default function Values() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
-              <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-start lg:items-end text-left lg:text-right origin-right transition-all duration-500 ease-out ${
+              <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-end lg:items-end text-right lg:text-right origin-right transition-all duration-500 ease-out ${
                 activeIdx === 2 ? 'scale-[1.05]' : 'scale-100'
               }`}>
                 <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
                   activeIdx === 2 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
                 }`}>
-                  Systems, not<br className="hidden lg:inline" /> just visuals
+                  Transparent<br className="hidden lg:inline" /> Communication
                 </span>
               </div>
               {/* Description */}
               <div className={`lg:col-start-5 lg:col-span-8 origin-left transition-all duration-500 ease-out ${
                 activeIdx === 2 ? 'scale-[1.01]' : 'scale-100'
               }`}>
-                <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-left">
-                  Every deliverable is part of a larger system — built to grow<br className="hidden lg:inline" /> with your brand.
+                <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-right lg:text-left">
+                  We maintain open, honest dialogue throughout every step of the<br className="hidden lg:inline" /> creative process, ensuring you're always.
                 </p>
               </div>
             </div>
@@ -227,7 +228,7 @@ export default function Values() {
                 <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
                   activeIdx === 3 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
                 }`}>
-                  Transparent<br className="hidden lg:inline" /> process
+                  Passion<br className="hidden lg:inline" /> for Impact
                 </span>
               </div>
               {/* Description */}
@@ -235,7 +236,7 @@ export default function Values() {
                 activeIdx === 3 ? 'scale-[1.01]' : 'scale-100'
               }`}>
                 <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-right lg:text-left">
-                  Clear timelines, honest feedback, and no surprises at delivery.
+                  Driven by creativity and a commitment to excellence, we create<br className="hidden lg:inline" /> experiences that not only look impressive.
                 </p>
               </div>
             </div>
