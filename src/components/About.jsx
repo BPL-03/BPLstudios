@@ -7,7 +7,7 @@ export default function About() {
       className="bg-[#030303] border-b border-[#383838] py-[120px] sm:py-[180px] select-none overflow-hidden"
     >
       <div className="w-full relative px-[5%] md:px-[104px] max-w-[1860px] mx-auto flex flex-col items-center">
-        <div className="w-full lg:w-[1504px] flex flex-col">
+        <div className="w-full lg:w-[1504px] flex flex-col lg:translate-x-[60px]">
           
           {/* Label and Section Heading */}
           <div className="flex flex-col gap-2 mb-8">
