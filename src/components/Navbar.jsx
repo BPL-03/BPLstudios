@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <header className={`fixed top-0 left-0 w-full z-50 h-[70px] flex items-center border-b transition-all duration-300 ${
       scrolled 
-        ? 'bg-bg/90 backdrop-blur-md border-white/5 shadow-md' 
+        ? 'bg-bg/15 backdrop-blur-md border-white/5 shadow-md' 
         : 'bg-transparent border-white/5'
     }`}>
       <div className="portfolio-container w-full flex items-center justify-between relative">
