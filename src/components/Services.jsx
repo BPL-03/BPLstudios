@@ -369,10 +369,21 @@ export default function Services() {
     const itemWidth = cardWidth + gap;
 
     const numRealCards = 6;
-    const minScroll = 1.5 * itemWidth;
-    const maxScroll = (1.5 + numRealCards) * itemWidth;
+    const minScroll = 2 * itemWidth;
+    const maxScroll = 7 * itemWidth;
 
-
+    // Instant wrap-around check for native scrolling (wheel, trackpad, swipe)
+    if (!isDragging && !isProgrammaticScroll.current) {
+      if (scrollLeft < minScroll - 10) {
+        scrollRef.current.style.scrollBehavior = 'auto';
+        scrollRef.current.scrollLeft = scrollLeft + numRealCards * itemWidth;
+        return;
+      } else if (scrollLeft > maxScroll + 10) {
+        scrollRef.current.style.scrollBehavior = 'auto';
+        scrollRef.current.scrollLeft = scrollLeft - numRealCards * itemWidth;
+        return;
+      }
+    }
 
     // Update active index
     const currentScrollLeft = scrollRef.current.scrollLeft;
@@ -384,11 +395,11 @@ export default function Services() {
       setActiveIdx(normalizedIdx);
     }
 
-    // Debounce scroll end detection
+    // Debounce scroll end detection to clean up drag-release snaps and programmatic motions
     if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
     scrollTimeout.current = setTimeout(() => {
       handleScrollEnd();
-    }, 100);
+    }, 80);
   };
 
   const handleScrollEnd = () => {
@@ -404,15 +415,15 @@ export default function Services() {
     const itemWidth = cardWidth + gap;
 
     const numRealCards = 6;
-    const minScroll = 1.5 * itemWidth;
-    const maxScroll = (1.5 + numRealCards) * itemWidth;
+    const minScroll = 2 * itemWidth;
+    const maxScroll = 7 * itemWidth;
 
     let targetLeft = scrollLeft;
-    if (scrollLeft < minScroll) {
+    if (scrollLeft < minScroll - 10) {
       targetLeft = scrollLeft + numRealCards * itemWidth;
       scrollRef.current.style.scrollBehavior = 'auto';
       scrollRef.current.scrollLeft = targetLeft;
-    } else if (scrollLeft > maxScroll) {
+    } else if (scrollLeft > maxScroll + 10) {
       targetLeft = scrollLeft - numRealCards * itemWidth;
       scrollRef.current.style.scrollBehavior = 'auto';
       scrollRef.current.scrollLeft = targetLeft;
