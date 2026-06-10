@@ -110,7 +110,7 @@ export default function Process() {
 
         {/* Quote below Step 4 */}
         <div className="pt-1 pb-5 lg:pt-5 lg:pb-[120px] sm:lg:pb-[180px] lg:order-9">
-          <p className="font-sans text-[14px] leading-[1.4] text-white/40 w-full text-left">
+          <p className="font-syne text-[14px] leading-[1.4] text-white/40 w-full text-left">
             I believe great design is quiet confidence. It doesn't shout, it resonates. Every choice is intentional, every detail considered.
           </p>
         </div>
