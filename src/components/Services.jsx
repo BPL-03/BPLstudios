@@ -480,17 +480,38 @@ export default function Services() {
     const gap = 18;
     const itemWidth = cardWidth + gap;
 
-    const currentIdx = Math.round(scrollRef.current.scrollLeft / itemWidth);
+    if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+
+    const scrollLeft = scrollRef.current.scrollLeft;
+    const numRealCards = 6;
+    const minScroll = 2 * itemWidth;
+    const maxScroll = 7 * itemWidth;
+
+    let currentScrollLeft = scrollLeft;
+    if (scrollLeft < minScroll - 5) {
+      currentScrollLeft = scrollLeft + numRealCards * itemWidth;
+      scrollRef.current.style.scrollBehavior = 'auto';
+      scrollRef.current.scrollLeft = currentScrollLeft;
+    } else if (scrollLeft > maxScroll + 5) {
+      currentScrollLeft = scrollLeft - numRealCards * itemWidth;
+      scrollRef.current.style.scrollBehavior = 'auto';
+      scrollRef.current.scrollLeft = currentScrollLeft;
+    }
+
+    const currentIdx = Math.round(currentScrollLeft / itemWidth);
     targetScrollLeft.current = (currentIdx - 1) * itemWidth;
 
     isProgrammaticScroll.current = true;
     setIsProgrammatic(true);
 
-    scrollRef.current.style.scrollBehavior = 'smooth';
-    scrollRef.current.scrollTo({
-      left: targetScrollLeft.current,
-      behavior: 'smooth'
-    });
+    setTimeout(() => {
+      if (!scrollRef.current) return;
+      scrollRef.current.style.scrollBehavior = 'smooth';
+      scrollRef.current.scrollTo({
+        left: targetScrollLeft.current,
+        behavior: 'smooth'
+      });
+    }, 10);
   };
 
   const handleNext = () => {
@@ -501,17 +522,38 @@ export default function Services() {
     const gap = 18;
     const itemWidth = cardWidth + gap;
 
-    const currentIdx = Math.round(scrollRef.current.scrollLeft / itemWidth);
+    if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+
+    const scrollLeft = scrollRef.current.scrollLeft;
+    const numRealCards = 6;
+    const minScroll = 2 * itemWidth;
+    const maxScroll = 7 * itemWidth;
+
+    let currentScrollLeft = scrollLeft;
+    if (scrollLeft < minScroll - 5) {
+      currentScrollLeft = scrollLeft + numRealCards * itemWidth;
+      scrollRef.current.style.scrollBehavior = 'auto';
+      scrollRef.current.scrollLeft = currentScrollLeft;
+    } else if (scrollLeft > maxScroll + 5) {
+      currentScrollLeft = scrollLeft - numRealCards * itemWidth;
+      scrollRef.current.style.scrollBehavior = 'auto';
+      scrollRef.current.scrollLeft = currentScrollLeft;
+    }
+
+    const currentIdx = Math.round(currentScrollLeft / itemWidth);
     targetScrollLeft.current = (currentIdx + 1) * itemWidth;
 
     isProgrammaticScroll.current = true;
     setIsProgrammatic(true);
 
-    scrollRef.current.style.scrollBehavior = 'smooth';
-    scrollRef.current.scrollTo({
-      left: targetScrollLeft.current,
-      behavior: 'smooth'
-    });
+    setTimeout(() => {
+      if (!scrollRef.current) return;
+      scrollRef.current.style.scrollBehavior = 'smooth';
+      scrollRef.current.scrollTo({
+        left: targetScrollLeft.current,
+        behavior: 'smooth'
+      });
+    }, 10);
   };
 
   return (
