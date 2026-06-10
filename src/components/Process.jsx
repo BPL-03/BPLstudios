@@ -33,11 +33,11 @@ export default function Process() {
                 <circle cx="12" cy="12" r="9" />
                 <circle cx="12" cy="12" r="4" />
               </svg>
-              <span className="font-   font-medium text-[22px] text-[#DEF81D] tracking-tight">Discover</span>
+              <span className="font-syne font-medium text-[22px] text-[#DEF81D] tracking-tight">Discover</span>
             </div>
           </div>
           {/* Bottom: Description */}
-          <p className="font-sans text-[17.5px] lg:text-[18.5px] leading-relaxed text-[#888888] lg:group-hover:text-[#DEF81D] transition-colors duration-300 max-w-[280px] lg:max-w-none text-right ml-auto">
+          <p className="font-syne text-[17.5px] lg:text-[18.5px] leading-relaxed text-[#888888] lg:group-hover:text-[#DEF81D] transition-colors duration-300 max-w-[280px] lg:max-w-none text-right ml-auto">
             Deep-dive into your brand,<br className="hidden lg:inline" /> audience, goals, and competitive<br className="hidden lg:inline" /> landscape. No shortcuts —<br className="hidden lg:inline" /> understanding everything first.
           </p>
         </div>
@@ -54,7 +54,7 @@ export default function Process() {
               <span className="font-sans font-bold text-[105px] leading-none text-[#1C1C1C] lg:group-hover:text-[#DEF81D] transition-colors duration-300 translate-y-0 lg:translate-y-[12px]">2</span>
             </div>
             {/* Bottom: Description */}
-            <p className="font-sans text-[17.5px] lg:text-[18.5px] leading-relaxed text-[#888888]">
+            <p className="font-syne text-[17.5px] lg:text-[18.5px] leading-relaxed text-[#888888]">
               Concept development and<br className="hidden lg:inline" /> creative exploration. Building<br className="hidden lg:inline" /> from core ideas toward a distinct,<br className="hidden lg:inline" /> intentional visual direction.
             </p>
           </div>
@@ -80,7 +80,7 @@ export default function Process() {
               <span className="font-sans font-bold text-[105px] leading-none text-[#1C1C1C] lg:group-hover:text-[#DEF81D] transition-colors duration-300 translate-y-0 lg:translate-y-[12px]">3</span>
             </div>
             {/* Bottom: Description */}
-            <p className="font-sans text-[17.5px] lg:text-[18.5px] leading-relaxed text-[#888888]">
+            <p className="font-syne text-[17.5px] lg:text-[18.5px] leading-relaxed text-[#888888]">
               Precision and polish.<br className="hidden lg:inline" /> Iteration based on your<br className="hidden lg:inline" /> feedback until every element<br className="hidden lg:inline" /> earns its place in the final system.
             </p>
           </div>
@@ -103,7 +103,7 @@ export default function Process() {
             <span className="font-sans font-bold text-[105px] leading-none text-black lg:text-[#DEF81D] lg:group-hover:text-black transition-colors duration-300 translate-y-0 lg:translate-y-[12px]">4</span>
           </div>
           {/* Bottom: Description */}
-          <p className="font-sans text-[17.5px] lg:text-[18.5px] leading-relaxed text-black lg:text-[#DEF81D] lg:group-hover:text-black transition-colors duration-300">
+          <p className="font-syne text-[17.5px] lg:text-[18.5px] leading-relaxed text-black lg:text-[#DEF81D] lg:group-hover:text-black transition-colors duration-300">
             Final files, guidelines,<br className="hidden lg:inline" /> and handoff. Everything you<br className="hidden lg:inline" /> need to launch and grow —<br className="hidden lg:inline" /> organized, documented, ready.
           </p>
         </div>
