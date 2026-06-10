@@ -89,7 +89,7 @@ export default function Values() {
             </div>
             {/* Title */}
             <h2 className="font-sans font-light text-[50px] sm:text-[94.42px] leading-[0.95] text-[#D8D8D8] tracking-tight">
-              What’s really matter
+              What really matters
             </h2>
           </div>
 
@@ -99,13 +99,13 @@ export default function Values() {
             <div className="hidden lg:flex font-syne font-medium text-[17px] sm:text-[18px] leading-[1.4] text-[#C1CBCC]/40 w-fit flex flex-col items-end">
               <div className="text-left w-full">Merging Imagination</div>
               <div className="text-right w-full">
-                with Innovation to CraftUnforgettable, we transform<br />
+                with Innovation to Craft Unforgettable, we transform<br />
                 visionary ideas into compelling experiences.
               </div>
             </div>
             {/* Mobile Tagline */}
             <p className="block lg:hidden font-syne font-medium text-[13px] sm:text-[14px] leading-[1.4] text-[#C1CBCC]/40 text-right max-w-[320px] ml-auto">
-              Merging Imagination with Innovation to CraftUnforgettable, we transform visionary ideas into compelling experiences.
+              Merging Imagination with Innovation to Craft Unforgettable, we transform visionary ideas into compelling experiences.
             </p>
           </div>
         </div>

@@ -86,12 +86,8 @@ export default function Process() {
           </div>
         </div>
 
-        {/* Quote below Step 3 */}
-        <div className="pt-1 pb-5 lg:pt-5 lg:pb-[120px] sm:lg:pb-[180px] lg:order-8">
-          <p className="font-sans text-[14px] leading-[1.4] text-white/40 w-full text-right">
-            I believe great design is quiet confidence It doesn't shout it resonates. Every choice is intentional, every detail considered
-          </p>
-        </div>
+        {/* Spacer below Step 3 */}
+        <div className="pt-1 pb-5 lg:pt-5 lg:pb-[120px] sm:lg:pb-[180px] lg:order-8" />
 
         {/* Step 4: Deliver */}
         <div className="flex flex-col justify-start gap-10 h-auto lg:h-[350px] p-8 lg:p-10 border-[0.5px] border-[#DEF81D] bg-[#DEF81D] lg:bg-[#080808]/40 w-full group transition-all duration-300 lg:hover:bg-[#DEF81D] mb-5 lg:mb-0 lg:order-6">
@@ -115,7 +111,7 @@ export default function Process() {
         {/* Quote below Step 4 */}
         <div className="pt-1 pb-5 lg:pt-5 lg:pb-[120px] sm:lg:pb-[180px] lg:order-9">
           <p className="font-sans text-[14px] leading-[1.4] text-white/40 w-full text-left">
-            I believe great design is quiet confidence It doesn't shout it resonates. Every choice is intentional, every detail considered
+            I believe great design is quiet confidence. It doesn't shout, it resonates. Every choice is intentional, every detail considered.
           </p>
         </div>
 

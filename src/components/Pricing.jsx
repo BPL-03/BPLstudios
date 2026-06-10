@@ -149,7 +149,7 @@ export default function Pricing() {
                   Starting From
                 </span>
                 <span className="font-sans font-light text-[59px] leading-[59px] text-[#D8D8D8] font-anek">
-                  500$
+                  $500
                 </span>
               </div>
 
@@ -191,7 +191,7 @@ export default function Pricing() {
                   Starting From
                 </span>
                 <span className="font-sans font-light text-[59px] leading-[59px] text-[#D8D8D8] font-anek">
-                  800$
+                  $800
                 </span>
               </div>
 
@@ -232,7 +232,7 @@ export default function Pricing() {
               <div className="flex justify-between items-baseline gap-2 mt-10 mb-2">
                 <div className="flex items-baseline gap-2">
                   <span className="font-sans font-light text-[59px] leading-[59px] text-[#D8D8D8] font-anek">
-                    1,200$
+                    $1,200
                   </span>
                   <span className="font-syne font-medium text-[14px] text-[#D8D8D8]/80 text-right leading-[14px]">
                     Starting From

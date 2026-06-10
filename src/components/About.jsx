@@ -34,7 +34,7 @@ export default function About() {
               <div className="hidden sm:flex flex-col justify-between w-[361px] h-[539px] text-right items-end shrink-0 select-none">
                 {/* Quote */}
                 <p className="font-syne font-medium text-[16px] leading-[1.3] text-white/40 max-w-[361px] text-right">
-                  I believe great design is quiet confidence. It doesn't shout it resonates. Every choice is intentional every detail considered
+                  I believe great design is quiet confidence. It doesn't shout, it resonates. Every choice is intentional, every detail considered.
                 </p>
 
                 {/* Social media icons stack */}
@@ -114,9 +114,9 @@ export default function About() {
                 {/* Bottom Quote (desktop only) */}
                 <div className="hidden lg:block select-none text-right max-w-[459px] ml-auto">
                   <p className="font-syne font-medium text-[13px] lg:text-[14px] leading-[1.4] text-white/40 text-right">
-                    I believe great design is quiet confidence. It doesn't<br className="hidden lg:inline" />
-                    shout it resonates. Every choice is intentional<br className="hidden lg:inline" />
-                    every detail considered
+                    I believe great design is quiet confidence. It doesn't {' '}<br className="hidden lg:inline" />
+                    shout, it resonates. Every choice is intentional, {' '}<br className="hidden lg:inline" />
+                    every detail considered.
                   </p>
                 </div>
               </div>
@@ -133,45 +133,21 @@ export default function About() {
 
               {/* Bio Paragraph */}
               <p className="font-syne font-medium text-[14px] sm:text-[15px] lg:text-[15.5px] leading-[1.4] text-[#D8D8D8] opacity-80 pl-3 lg:pl-0 max-w-[620px]">
-                With over 8 years of experience in the design industry, I've built a<br className="hidden lg:inline" />
-                reputation for creating brand identities and digital experiences that are<br className="hidden lg:inline" />
-                both visually striking and strategically sound.<br className="hidden lg:inline" />
-                Based in Agadir, Morocco, I work with clients across Africa, Europe,<br className="hidden lg:inline" />
-                and the Middle East — helping startups launch with confidence and<br className="hidden lg:inline" />
+                With over 8 years of experience in the design industry, I've built a {' '}<br className="hidden lg:inline" />
+                reputation for creating brand identities and digital experiences that are {' '}<br className="hidden lg:inline" />
+                both visually striking and strategically sound. {' '}<br className="hidden lg:inline" />
+                Based in Agadir, Morocco, I work with clients across Africa, Europe, {' '}<br className="hidden lg:inline" />
+                and the Middle East — helping startups launch with confidence and {' '}<br className="hidden lg:inline" />
                 established brands find their next visual chapter.
               </p>
 
               {/* Tags & Lime Button Rows */}
               <div className="flex flex-col gap-y-[10px] -mt-3 w-full lg:max-w-[620px]">
-                {/* Row 1 */}
+                {/* Tags Row */}
                 <div className="flex flex-row flex-wrap items-center justify-end lg:justify-start gap-[12px] ml-auto lg:ml-0">
-                  {['Brand Strategy', 'Photography Direction'].map((tag, idx) => (
+                  {['Brand Strategy', 'Photography Direction', 'Copywriting'].map((tag) => (
                     <span 
-                      key={tag + '-' + idx}
-                      className="border border-white/20 rounded-[4px] h-[48px] px-[18px] flex items-center justify-center text-[#F5F2EC] font-syne font-medium text-[12px] lg:text-[13px] tracking-[0.5px] leading-none select-none"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Row 2 */}
-                <div className="flex flex-row flex-wrap items-center justify-end lg:justify-start gap-[12px] ml-auto lg:ml-0">
-                  {['Brand Strategy', 'Copywriting'].map((tag, idx) => (
-                    <span 
-                      key={tag + '-' + idx}
-                      className="border border-white/20 rounded-[4px] h-[48px] px-[18px] flex items-center justify-center text-[#F5F2EC] font-syne font-medium text-[12px] lg:text-[13px] tracking-[0.5px] leading-none select-none"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Row 3 */}
-                <div className="flex flex-row flex-wrap items-center justify-end lg:justify-start gap-[12px] ml-auto lg:ml-0">
-                  {['Photography Direction'].map((tag, idx) => (
-                    <span 
-                      key={tag + '-' + idx}
+                      key={tag}
                       className="border border-white/20 rounded-[4px] h-[48px] px-[18px] flex items-center justify-center text-[#F5F2EC] font-syne font-medium text-[12px] lg:text-[13px] tracking-[0.5px] leading-none select-none"
                     >
                       {tag}

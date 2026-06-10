@@ -58,13 +58,13 @@ export default function Footer() {
             <div className="flex flex-col">
               <h3 className="font-sans font-light text-[32px] sm:text-[38px] lg:text-[44px] xl:text-[50px] leading-[1.15] text-[#b5b4ad] tracking-tight">
                 We are ready<br />
-                to discuss you<br />
+                to discuss your<br />
                 project
               </h3>
             </div>
             <div className="mt-8 lg:mt-0 lg:pl-[40%] text-left">
               <p className="font-sans font-light text-[28px] sm:text-[34px] lg:text-[40px] xl:text-[46px] leading-[1.15] text-[#b5b4ad] tracking-tight">
-                to discuss you<br />
+                to discuss your<br />
                 project
               </p>
             </div>
@@ -81,10 +81,10 @@ export default function Footer() {
 
             {/* Email Link */}
             <a 
-              href="mailto:salanoux.00@gmail.com"
+              href="mailto:hello@bplstudios.com"
               className="font-sans text-[18px] sm:text-[22px] lg:text-[24px] text-[#e8e6de] hover:text-accent transition-colors duration-300 underline decoration-[1px] underline-offset-8 pb-1 inline-block"
             >
-              salanoux.00@gmail.com
+              hello@bplstudios.com
             </a>
 
             {/* Social Pill Buttons */}
