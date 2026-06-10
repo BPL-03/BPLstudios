@@ -11,6 +11,7 @@ export default function Footer() {
             <img 
               src="/assets/panther_footer.png" 
               alt="BPL Studios Panther Logo"
+              loading="lazy"
               className="w-full h-full object-contain mix-blend-multiply"
             />
           </div>

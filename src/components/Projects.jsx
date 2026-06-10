@@ -756,6 +756,7 @@ export default function Projects() {
                     <img 
                       src={proj.bgImage} 
                       alt={proj.name}
+                      loading="lazy"
                       className="w-full h-full object-cover pointer-events-none"
                     />
                   </div>

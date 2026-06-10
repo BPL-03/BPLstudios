@@ -565,6 +565,7 @@ export default function Services() {
                     <img 
                       src={service.fullImage} 
                       alt={service.name} 
+                      loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover select-none z-10 transition-transform duration-1000 group-hover:scale-[1.03]"
                     />
                   ) : (

@@ -100,6 +100,7 @@ export default function About() {
                   <img 
                     src="/assets/portrait_ahmed.jpg" 
                     alt="Ahmed Arjdal Portrait" 
+                    loading="lazy"
                     className="w-full h-full object-cover pointer-events-none transition-transform duration-700 hover:scale-[1.03]"
                   />
                   {/* Mobile-only overlay title */}
