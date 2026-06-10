@@ -1,10 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50 h-[70px] flex items-center border-b border-white/5 bg-transparent">
+    <header className={`fixed top-0 left-0 w-full z-50 h-[70px] flex items-center border-b transition-all duration-300 ${
+      scrolled 
+        ? 'bg-bg/90 backdrop-blur-md border-white/5 shadow-md' 
+        : 'bg-transparent border-white/5'
+    }`}>
       <div className="portfolio-container w-full flex items-center justify-between relative">
         
         {/* Left Side: Logo Box [Icon | BPL] */}
