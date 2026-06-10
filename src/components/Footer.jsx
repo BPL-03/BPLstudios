@@ -6,13 +6,13 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contacts" className="bg-[#000000] text-[#e8e6de] pt-12 pb-16 lg:pt-16 lg:pb-20">
-      <div className="portfolio-container flex flex-col gap-16 lg:gap-24">
+    <footer id="contacts" className="bg-[#000000] text-[#e8e6de] pt-16 pb-20">
+      <div className="portfolio-container flex flex-col gap-20">
         
         {/* ─── Top Bar ─── */}
-        <div className="flex items-start justify-between border-b border-white/5 pb-8">
+        <div className="flex items-start justify-between pb-4">
           {/* Top Left metadata */}
-          <div className="flex gap-16 font-inter text-[10px] lg:text-[11px] tracking-[0.15em] font-bold text-[#7a7870] uppercase leading-[1.3]">
+          <div className="flex gap-16 font-inter text-[10px] lg:text-[11px] tracking-[0.15em] font-bold text-[#7a7870] uppercase leading-[1.4]">
             <div className="flex flex-col">
               <span>© BPLAN</span>
               <span>STUDIOS</span>
@@ -24,8 +24,8 @@ export default function Footer() {
           </div>
           
           {/* Top Right metadata */}
-          <div className="flex items-start gap-2.5 font-inter text-[10px] lg:text-[11px] tracking-[0.12em] text-[#7a7870] font-bold uppercase">
-            <span className="text-[18px] lg:text-[20px] leading-[0.8] text-[#7a7870]">©</span>
+          <div className="flex items-start gap-2 font-inter text-[10px] lg:text-[11px] tracking-[0.12em] text-[#7a7870] font-bold uppercase">
+            <span className="text-[16px] leading-[0.8] text-[#7a7870]">©</span>
             <div className="flex flex-col leading-[1.3]">
               <span>2026 ©</span>
               <span>COPYRIGHT</span>
@@ -34,20 +34,20 @@ export default function Footer() {
         </div>
 
         {/* ─── Main Content Grid ─── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-end mt-4">
           
           {/* Left Column: Panther Logo + Brand Text */}
           <div className="lg:col-span-3 flex flex-col gap-6">
-            <div className="w-[180px] h-[180px] lg:w-[220px] lg:h-[220px] rounded-[4px] overflow-hidden bg-[#d8d8d8] flex items-center justify-center p-0.5">
+            <div className="w-[180px] h-[180px] lg:w-[210px] lg:h-[210px] bg-white flex items-center justify-center p-5 select-none">
               <img 
-                src="/assets/panther_footer.png" 
+                src="/assets/panther_logo.png" 
                 alt="BPL Studios Panther"
                 loading="lazy"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
             <div className="flex flex-col gap-1">
-              <span className="font-sans font-light text-[22px] lg:text-[26px] tracking-tight text-[#e8e6de] leading-none">
+              <span className="font-sans font-light text-[22px] lg:text-[24px] tracking-tight text-[#e8e6de] leading-none">
                 Made By BPL
               </span>
               <span className="font-inter text-[9px] tracking-[0.2em] text-[#555550] uppercase font-bold leading-none mt-1">
@@ -65,7 +65,7 @@ export default function Footer() {
                 project
               </h3>
             </div>
-            <div className="mt-8 lg:mt-0 lg:pl-[40%]">
+            <div className="mt-8 lg:mt-0 lg:pl-[42%]">
               <p className="font-sans font-light text-[28px] sm:text-[34px] lg:text-[40px] xl:text-[46px] leading-[1.1] text-[#b5b4ad] tracking-tight">
                 If you are
               </p>
@@ -96,10 +96,10 @@ export default function Footer() {
                 href="https://t.me/bplstudios"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-[72px] h-[38px] rounded-full bg-[#141414] border border-[#2a2a29] hover:border-accent/40 hover:bg-[#1a1a19] transition-all duration-300 group"
+                className="flex items-center justify-center w-[72px] h-[38px] rounded-full bg-[#141414] border border-[#222222] hover:border-accent/40 hover:bg-[#1a1a19] transition-all duration-300 group"
                 aria-label="Telegram"
               >
-                <svg className="w-[15px] h-[15px] text-[#e8e6de] group-hover:text-accent transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-[14px] h-[14px] text-[#e8e6de] group-hover:text-accent transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                 </svg>
               </a>
@@ -109,7 +109,7 @@ export default function Footer() {
                 href="https://www.behance.net/bplstudios"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-[72px] h-[38px] rounded-full bg-[#141414] border border-[#2a2a29] hover:border-accent/40 hover:bg-[#1a1a19] transition-all duration-300 group"
+                className="flex items-center justify-center w-[72px] h-[38px] rounded-full bg-[#141414] border border-[#222222] hover:border-accent/40 hover:bg-[#1a1a19] transition-all duration-300 group"
                 aria-label="Behance"
               >
                 <span className="font-sans text-[13px] font-bold text-[#e8e6de] group-hover:text-accent transition-colors duration-300">Bē</span>
@@ -118,7 +118,7 @@ export default function Footer() {
               {/* Scroll to Top */}
               <button
                 onClick={scrollToTop}
-                className="flex items-center justify-center w-[72px] h-[38px] rounded-full bg-[#141414] border border-[#2a2a29] hover:border-accent/40 hover:bg-[#1a1a19] transition-all duration-300 group cursor-pointer"
+                className="flex items-center justify-center w-[72px] h-[38px] rounded-full bg-[#141414] border border-[#222222] hover:border-accent/40 hover:bg-[#1a1a19] transition-all duration-300 group cursor-pointer"
                 aria-label="Scroll to top"
               >
                 <span className="font-sans text-[12px] font-bold tracking-wide text-[#e8e6de] group-hover:text-accent transition-colors duration-300">Up</span>
