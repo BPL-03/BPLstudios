@@ -125,10 +125,10 @@ export default function Hero() {
           {/* Right Description (5 Columns - Right-aligned) */}
           <div className="col-span-5 flex flex-col items-end text-right pl-10">
             <p className="text-[17px] leading-[1.65] text-[#888888] max-w-md font-syne">
-              Every project is approached <br />
-              with precision, intention, and <br />
-              a commitment to creating work that <br />
-              doesn't just look good, but performs
+              helping businesses across Africa, <br />
+              Europe, and the MENA region build <br />
+              identities, digital experiences, and visual <br />
+              systems that perform across markets.
             </p>
           </div>
 
@@ -227,7 +227,7 @@ export default function Hero() {
           </div>
           <div className="col-span-12 md:col-span-6 flex flex-col items-start text-left">
             <p className="text-[14px] sm:text-[15px] leading-[1.6] text-[#888888] font-syne max-w-md mt-1 md:mt-6">
-              Every project is approached with precision, intention, and a commitment to creating work that doesn't just look good, but performs.
+              helping businesses across Africa, Europe, and the MENA region build identities, digital experiences, and visual systems that perform across markets.
             </p>
           </div>
         </div>
