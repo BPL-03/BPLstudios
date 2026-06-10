@@ -30,7 +30,7 @@ export default function Pricing() {
       <div className="w-full relative px-[4.5%] md:px-[94px] max-w-[1799px] mx-auto flex flex-col justify-start">
         
         {/* Header Section (Ways to Work Together & Investment Title) */}
-        <div className="w-full flex flex-col items-end gap-[7px] mb-[71px] relative z-10">
+        <div className="w-full flex flex-col items-end gap-[7px] mb-[92px] relative z-10">
           {/* Label Group */}
           <div className="flex items-center gap-[17px]">
             <div className="w-[26px] h-[1px] bg-[#D8D8D8]" />
