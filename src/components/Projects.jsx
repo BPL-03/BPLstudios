@@ -383,7 +383,7 @@ export default function Projects() {
   return (
     <section 
       id="work" 
-      className="bg-bg border-y border-[#383838] py-20 sm:py-[120px] select-none"
+      className="bg-bg border-y border-[#383838] py-[120px] sm:py-[180px] select-none"
     >
       <div className="portfolio-container w-full">
         

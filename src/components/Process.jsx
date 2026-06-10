@@ -9,7 +9,7 @@ export default function Process() {
       <div className="w-full px-[5%] md:px-[104px] max-w-[1860px] mx-auto grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-0">
 
         {/* Row 1, Column 1 & 2: Heading Block */}
-        <div className="lg:col-span-2 flex flex-col justify-end pt-20 sm:pt-[120px] pb-16 lg:pb-12 lg:order-1">
+        <div className="lg:col-span-2 flex flex-col justify-end pt-[120px] sm:pt-[180px] pb-16 lg:pb-12 lg:order-1">
           {/* Label with small line */}
           <div className="flex items-center gap-3 mb-3">
             <div className="w-[27px] h-[1px] bg-[#D8D8D8]" />
@@ -87,7 +87,7 @@ export default function Process() {
         </div>
 
         {/* Quote below Step 3 */}
-        <div className="pt-1 pb-5 lg:pt-5 lg:pb-20 sm:lg:pb-[120px] lg:order-8">
+        <div className="pt-1 pb-5 lg:pt-5 lg:pb-[120px] sm:lg:pb-[180px] lg:order-8">
           <p className="font-sans text-[14px] leading-[1.4] text-white/40 w-full text-right">
             I believe great design is quiet confidence It doesn't shout it resonates. Every choice is intentional, every detail considered
           </p>
@@ -113,7 +113,7 @@ export default function Process() {
         </div>
 
         {/* Quote below Step 4 */}
-        <div className="pt-1 pb-5 lg:pt-5 lg:pb-20 sm:lg:pb-[120px] lg:order-9">
+        <div className="pt-1 pb-5 lg:pt-5 lg:pb-[120px] sm:lg:pb-[180px] lg:order-9">
           <p className="font-sans text-[14px] leading-[1.4] text-white/40 w-full text-left">
             I believe great design is quiet confidence It doesn't shout it resonates. Every choice is intentional, every detail considered
           </p>

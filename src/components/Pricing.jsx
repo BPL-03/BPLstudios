@@ -20,7 +20,7 @@ export default function Pricing() {
   return (
     <section 
       id="pricing" 
-      className="bg-[#030303] text-[#D8D8D8] py-20 sm:py-[120px] relative overflow-hidden select-none border-b border-[#383838]"
+      className="bg-[#030303] text-[#D8D8D8] py-[120px] sm:py-[180px] relative overflow-hidden select-none border-b border-[#383838]"
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

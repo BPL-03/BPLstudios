@@ -4,7 +4,7 @@ export default function Values() {
   return (
     <section
       id="values"
-      className="bg-[#030303] text-[#D8D8D8] py-20 sm:py-[120px] relative overflow-hidden select-none border-b border-[#383838]"
+      className="bg-[#030303] text-[#D8D8D8] py-[120px] sm:py-[180px] relative overflow-hidden select-none border-b border-[#383838]"
     >
       <div className="w-full relative px-[4.5%] md:px-[94px] max-w-[1713px] mx-auto flex flex-col justify-start">
         
