@@ -24,7 +24,7 @@ export default function Process() {
         </div>
 
         {/* Step 1: Discover */}
-        <div className="flex flex-col justify-start gap-10 h-auto lg:h-[350px] pt-8 pb-5 px-8 lg:pt-10 lg:pb-10 lg:pl-0 lg:pr-8 items-end text-right w-full group transition-all duration-300 lg:hover:bg-white/[0.01] lg:order-4">
+        <div className="flex flex-col justify-start gap-10 h-auto lg:h-[350px] p-6 lg:pt-10 lg:pb-10 lg:pl-0 lg:pr-8 items-end text-right w-full bg-[#111111] lg:bg-transparent group transition-all duration-300 lg:hover:bg-white/[0.01] mb-[2px] lg:mb-0 lg:order-4">
           {/* Top: Number and Title/Icon */}
           <div className="flex justify-end lg:justify-between items-center lg:items-end lg:h-[140px] w-full lg:w-[60%] lg:ml-auto gap-8 lg:gap-0">
             <span className="font-sans font-bold text-[105px] leading-none text-[#DEF81D] lg:text-[#1C1C1C] lg:group-hover:text-[#DEF81D] transition-colors duration-300 translate-y-0 lg:translate-y-[12px]">1</span>
@@ -43,8 +43,8 @@ export default function Process() {
         </div>
 
         {/* Step 2: Design (Merged with its Row 3 Column 2 vertical border extension) */}
-        <div className="lg:row-span-2 border border-[#505050] lg:border-b-0 -mr-[6vw] md:-mr-[110px] lg:mr-0 bg-[#080808]/40 w-[calc(100%+6vw)] md:w-[calc(100%+110px)] lg:w-full group transition-all duration-300 lg:hover:border-[#DEF81D] flex flex-col justify-between mb-[29px] lg:mb-0 lg:order-5">
-          <div className="flex flex-col justify-start gap-10 h-auto lg:h-[350px] py-8 pl-8 pr-[calc(2rem+6vw)] md:pr-[calc(2rem+110px)] lg:p-10 w-full">
+        <div className="lg:row-span-2 border border-[#505050] lg:border-b-0 -mr-[6vw] md:-mr-[110px] lg:mr-0 bg-[#111111] lg:bg-[#080808]/40 w-[calc(100%+6vw)] md:w-[calc(100%+110px)] lg:w-full group transition-all duration-300 lg:hover:border-[#DEF81D] flex flex-col justify-between mb-[2px] lg:mb-0 lg:order-5">
+          <div className="flex flex-col justify-start gap-10 h-auto lg:h-[350px] p-6 pr-[calc(1.5rem+6vw)] md:pr-[calc(1.5rem+110px)] lg:p-10 w-full">
             {/* Top: Title/Icon and Number */}
             <div className="flex justify-between items-center lg:items-end lg:h-[140px] w-full">
               <div className="flex items-center gap-2">
@@ -63,11 +63,11 @@ export default function Process() {
         </div>
 
         {/* Step 3: Refine (Merged with its Row 1 Column 3 vertical border extension) */}
-        <div className="lg:row-span-2 border border-[#505050] lg:border-l lg:border-r lg:border-b lg:border-t-0 -ml-[6vw] md:-ml-[110px] lg:ml-0 w-[calc(100%+6vw)] md:w-[calc(100%+110px)] lg:w-full group transition-all duration-300 lg:hover:border-[#DEF81D] flex flex-col justify-end mb-5 lg:mb-0 lg:order-2">
+        <div className="lg:row-span-2 border border-[#505050] lg:border-l lg:border-r lg:border-b lg:border-t-0 -ml-[6vw] md:-ml-[110px] lg:ml-0 w-[calc(100%+6vw)] md:w-[calc(100%+110px)] lg:w-full group transition-all duration-300 lg:hover:border-[#DEF81D] flex flex-col justify-end mb-[2px] lg:mb-0 lg:order-2">
           {/* Top border extension spacer on desktop */}
           <div className="hidden lg:block flex-grow"></div>
           {/* Card 3 Content Container */}
-          <div className="flex flex-col justify-start gap-10 h-auto lg:h-[350px] py-8 pr-8 pl-[calc(2rem+6vw)] md:pl-[calc(2rem+110px)] lg:p-10 bg-transparent lg:bg-[#080808]/40 w-full">
+          <div className="flex flex-col justify-start gap-10 h-auto lg:h-[350px] p-6 pl-[calc(1.5rem+6vw)] md:pl-[calc(1.5rem+110px)] lg:p-10 bg-[#111111] lg:bg-[#080808]/40 w-full">
             {/* Top: Title/Icon and Number */}
             <div className="flex justify-between items-center lg:items-end lg:h-[140px] w-full">
               <div className="flex items-center gap-2">
@@ -90,7 +90,7 @@ export default function Process() {
         <div className="pt-1 pb-5 lg:pt-5 lg:pb-[120px] sm:lg:pb-[180px] lg:order-8" />
 
         {/* Step 4: Deliver */}
-        <div className="flex flex-col justify-start gap-10 h-auto lg:h-[350px] p-8 lg:p-10 border-[0.5px] border-[#DEF81D] bg-[#DEF81D] lg:bg-[#080808]/40 w-full group transition-all duration-300 lg:hover:bg-[#DEF81D] mb-5 lg:mb-0 lg:order-6">
+        <div className="flex flex-col justify-start gap-10 h-auto lg:h-[350px] p-6 lg:p-10 border-[0.5px] border-[#DEF81D] bg-[#DEF81D] lg:bg-[#080808]/40 w-full group transition-all duration-300 lg:hover:bg-[#DEF81D] mb-[2px] lg:mb-0 lg:order-6">
           {/* Top: Title/Icon and Number */}
           <div className="flex justify-between items-center lg:items-end lg:h-[140px] w-full">
             <div className="flex items-center gap-2">

@@ -136,20 +136,18 @@ export default function Pricing() {
           {/* 1. Starter Card */}
           <div className="w-full lg:max-w-[433px] mx-auto min-h-[478px] p-5 sm:pt-[29px] sm:pb-[38px] sm:px-[24px] flex flex-col justify-between lg:border-none relative">
             <div>
-              {/* Top Row: Name */}
-              <div className="flex justify-between items-start">
-                <span className="font-sans font-light text-[59px] leading-[59px] text-[#D8D8D8] font-anek">
-                  Starter
-                </span>
-              </div>
+              {/* Tier Label */}
+              <span className="font-dm-sans font-medium text-[13px] tracking-[2.5px] uppercase text-[#D8D8D8]/60 leading-none">
+                Starter
+              </span>
 
-              {/* Middle Row: Price */}
-              <div className="flex justify-end items-baseline gap-2 mt-10 mb-2">
-                <span className="font-syne font-medium text-[14px] text-[#D8D8D8]/80 text-right leading-[14px]">
-                  Starting From
-                </span>
-                <span className="font-sans font-light text-[59px] leading-[59px] text-[#D8D8D8] font-anek">
+              {/* Price — dominant element */}
+              <div className="flex items-baseline gap-2 mt-4 mb-2">
+                <span className="font-sans font-light text-[68px] leading-[68px] text-[#D8D8D8] font-anek">
                   $500
+                </span>
+                <span className="font-syne font-medium text-[13px] text-[#D8D8D8]/50 leading-[14px]">
+                  Starting From
                 </span>
               </div>
 
@@ -178,20 +176,18 @@ export default function Pricing() {
           {/* 2. Core Card */}
           <div className="w-full lg:max-w-[433px] mx-auto min-h-[478px] p-5 sm:pt-[29px] sm:pb-[38px] sm:px-[24px] flex flex-col justify-between lg:border-none relative">
             <div>
-              {/* Top Row: Name */}
-              <div className="flex justify-between items-start">
-                <span className="font-sans font-light text-[59px] leading-[59px] text-[#D8D8D8] font-anek">
-                  Core
-                </span>
-              </div>
+              {/* Tier Label */}
+              <span className="font-dm-sans font-medium text-[13px] tracking-[2.5px] uppercase text-[#D8D8D8]/60 leading-none">
+                Core
+              </span>
 
-              {/* Middle Row: Price */}
-              <div className="flex justify-end items-baseline gap-2 mt-10 mb-2">
-                <span className="font-syne font-medium text-[14px] text-[#D8D8D8]/80 text-right leading-[14px]">
-                  Starting From
-                </span>
-                <span className="font-sans font-light text-[59px] leading-[59px] text-[#D8D8D8] font-anek">
+              {/* Price — dominant element */}
+              <div className="flex items-baseline gap-2 mt-4 mb-2">
+                <span className="font-sans font-light text-[68px] leading-[68px] text-[#D8D8D8] font-anek">
                   $800
+                </span>
+                <span className="font-syne font-medium text-[13px] text-[#D8D8D8]/50 leading-[14px]">
+                  Starting From
                 </span>
               </div>
 
@@ -221,23 +217,21 @@ export default function Pricing() {
           {/* 3. Signature Card */}
           <div className="w-full lg:max-w-[433px] mx-auto min-h-[478px] p-5 sm:pt-[29px] sm:pb-[38px] sm:px-[24px] flex flex-col justify-between lg:border-none relative">
             <div>
-              {/* Top Row: Name */}
-              <div className="flex justify-end items-start">
-                <span className="font-sans font-light text-[59px] leading-[59px] text-[#D8D8D8] font-anek">
+              {/* Tier Label */}
+              <div className="flex justify-end">
+                <span className="font-dm-sans font-medium text-[13px] tracking-[2.5px] uppercase text-[#D8D8D8]/60 leading-none">
                   Signature
                 </span>
               </div>
 
-              {/* Middle Row: Price */}
-              <div className="flex justify-between items-baseline gap-2 mt-10 mb-2">
-                <div className="flex items-baseline gap-2">
-                  <span className="font-sans font-light text-[59px] leading-[59px] text-[#D8D8D8] font-anek">
-                    $1,200
-                  </span>
-                  <span className="font-syne font-medium text-[14px] text-[#D8D8D8]/80 text-right leading-[14px]">
-                    Starting From
-                  </span>
-                </div>
+              {/* Price — dominant element */}
+              <div className="flex items-baseline gap-2 mt-4 mb-2">
+                <span className="font-sans font-light text-[68px] leading-[68px] text-[#D8D8D8] font-anek">
+                  $1,200
+                </span>
+                <span className="font-syne font-medium text-[13px] text-[#D8D8D8]/50 leading-[14px]">
+                  Starting From
+                </span>
               </div>
 
               {/* Tagline */}

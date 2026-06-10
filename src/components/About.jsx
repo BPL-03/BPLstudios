@@ -30,12 +30,8 @@ export default function About() {
             {/* Left Half (852px max width in desktop) - holding social/text col + portrait image */}
             <div className="flex flex-row gap-8 items-start w-full lg:w-[852px] shrink-0">
               
-              {/* Left Column (Column 1 - Quote text at top + social links at bottom) */}
-              <div className="hidden sm:flex flex-col justify-between w-[361px] h-[539px] text-right items-end shrink-0 select-none">
-                {/* Quote */}
-                <p className="font-syne font-medium text-[16px] leading-[1.3] text-white/40 max-w-[361px] text-right">
-                  I believe great design is quiet confidence. It doesn't shout, it resonates. Every choice is intentional, every detail considered.
-                </p>
+              {/* Left Column (Column 1 - Social links at bottom) */}
+              <div className="hidden sm:flex flex-col justify-end w-[361px] h-[539px] text-right items-end shrink-0 select-none">
 
                 {/* Social media icons stack */}
                 <div className="flex flex-col gap-4 items-end">

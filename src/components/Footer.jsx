@@ -43,7 +43,7 @@ export default function Footer() {
                 src="/assets/panther_logo_exact.png" 
                 alt="BPL Studios Panther Logo"
                 loading="lazy"
-                className="w-full h-full object-contain pointer-events-none"
+                className="w-full h-full object-contain pointer-events-none invert"
               />
             </div>
             <div className="absolute -bottom-6 left-0 w-full">
@@ -62,21 +62,15 @@ export default function Footer() {
                 project
               </h3>
             </div>
-            <div className="mt-8 lg:mt-0 lg:pl-[40%] text-left">
-              <p className="font-sans font-light text-[28px] sm:text-[34px] lg:text-[40px] xl:text-[46px] leading-[1.15] text-[#b5b4ad] tracking-tight">
-                to discuss your<br />
-                project
-              </p>
-            </div>
           </div>
 
           {/* Right Column: Work Info + Email + Social Buttons */}
           <div className="lg:col-span-4 flex flex-col items-start lg:items-end gap-8 text-left lg:text-right">
             {/* Work Info */}
             <p className="font-inter text-[9px] lg:text-[10px] tracking-[0.14em] text-[#7a7870] uppercase leading-[1.6] font-bold max-w-[280px]">
-              FROM BRAND IDENTITY TO DIGITAL<br />
-              PRODUCT — BUILT FOR MARKETS<br />
-              THAT DEMAND MORE.
+              WE WORK IN A WIDE RANGE OF FIELDS:<br />
+              FROM COMPLEX SAAS PRODUCTS TO<br />
+              AESTHETIC PROMOTIONAL SITES
             </p>
 
             {/* Email Link */}
