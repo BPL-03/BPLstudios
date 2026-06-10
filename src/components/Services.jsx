@@ -5,7 +5,7 @@ const SERVICES_DATA = [
     id: 'uxui',
     num: '◈',
     name: 'UX/UI Design',
-    accentColor: '#0D3BFF',
+    gradient: 'from-[#0D3BFF] to-[#040C54]',
     fullImage: '/assets/service_uxui.png',
     desc: (
       <div className="flex flex-col gap-1 w-full">
@@ -77,7 +77,7 @@ const SERVICES_DATA = [
     id: 'graphic',
     num: '▣',
     name: 'Graphic Design',
-    accentColor: '#FF5E00',
+    gradient: 'from-[#FF5E00] to-[#401300]',
     fullImage: '/assets/service_graphic.png',
     desc: (
       <div className="flex items-center w-full">
@@ -137,7 +137,7 @@ const SERVICES_DATA = [
     id: 'art',
     num: '⬡',
     name: 'Art Direction',
-    accentColor: '#606D5C',
+    gradient: 'from-[#606D5C] to-[#252C23]',
     fullImage: '/assets/service_art.png',
     desc: null,
     graphic: (
@@ -188,7 +188,7 @@ const SERVICES_DATA = [
     id: 'development',
     num: '⬢',
     name: 'Development',
-    accentColor: '#A800FF',
+    gradient: 'from-[#A800FF] to-[#006080]',
     desc: null,
     graphic: (
       <div className="absolute inset-0 flex flex-col justify-end p-5 select-none overflow-hidden">
@@ -226,7 +226,7 @@ const SERVICES_DATA = [
     id: 'marketing',
     num: '✦',
     name: 'Marketing',
-    accentColor: '#7B2CBF',
+    gradient: 'from-[#7B2CBF] to-[#0D3BFF]',
     desc: null,
     graphic: (
       <div className="absolute inset-0 flex flex-col justify-end p-5 select-none overflow-hidden">
@@ -279,7 +279,7 @@ const SERVICES_DATA = [
     id: 'support',
     num: '●',
     name: 'Support',
-    accentColor: '#05A374',
+    gradient: 'from-[#05A374] to-[#09573F]',
     fullImage: '/assets/service_support.png',
     desc: null,
     graphic: (
@@ -608,12 +608,11 @@ export default function Services() {
                 key={`${service.id}-clone-${idx}`}
                 className="shrink-0 snap-start flex flex-col w-[260px] xs:w-[288px] md:w-[406px]"
               >
-                {/* Card Visual — dark bg with accent top border */}
+                {/* Colored Card Visual */}
                 <div
-                  className="service-card relative w-full h-[324px] xs:h-[378px] md:h-[486px] rounded-[4px] border border-[#383838] overflow-hidden bg-[#0a0a0a] group"
-                  style={{ borderTopWidth: '2px', borderTopColor: service.accentColor }}
+                  className="service-card relative w-full h-[324px] xs:h-[378px] md:h-[486px] rounded-[4px] border border-[#383838] overflow-hidden bg-zinc-900 group"
                 >
-                  {/* Background Image (if available) */}
+                  {/* Background Gradient or Image */}
                   {service.fullImage ? (
                     <img 
                       src={service.fullImage} 
@@ -621,7 +620,9 @@ export default function Services() {
                       loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover select-none z-10 transition-transform duration-1000 group-hover:scale-[1.03]"
                     />
-                  ) : null}
+                  ) : (
+                    <div className={`absolute inset-0 bg-gradient-to-b ${service.gradient} opacity-95 transition-transform duration-1000 group-hover:scale-[1.03]`} />
+                  )}
 
                   {/* Static Icon (Top Left) */}
                   <span className="absolute top-[14.5px] left-[25px] font-sans font-normal text-[32px] text-[#F5F2EC]/85 leading-none select-none z-20 transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:scale-105">
