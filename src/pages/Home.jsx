@@ -10,6 +10,7 @@ import Process from '../components/Process';
 import Pricing from '../components/Pricing';
 import Values from '../components/Values';
 import CTA from '../components/CTA';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
@@ -34,6 +35,7 @@ export default function Home() {
         <Values />
         <CTA />
       </main>
+      <Footer />
     </div>
   );
 }
