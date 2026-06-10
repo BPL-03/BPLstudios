@@ -142,7 +142,7 @@ export default function CTA() {
                     </div>
                   ) : (
                     /* Let's Talk Button aligned with "together." */
-                    <div className="flex justify-start lg:justify-end w-full mt-4 lg:mt-0">
+                    <div className="flex justify-start lg:justify-end w-full mt-4 lg:mt-0 lg:mb-[18px]">
                       <a
                         href="mailto:hello@bplstudios.com"
                         className={`w-full lg:w-[460px] h-[58px] border border-[#DEF81D] transition-all duration-150 ease-out flex items-center justify-center font-syne font-medium text-[13px] sm:text-[14px] uppercase tracking-wider rounded-[4px] ${
