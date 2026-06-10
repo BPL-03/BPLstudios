@@ -37,11 +37,9 @@ export default function Hero() {
           {/* Left: 7 Columns - Headline */}
           <div className="col-span-7 flex flex-col items-start text-left">
             <h1 className="text-[54px] xl:text-[60px] leading-[1.08] font-sans font-light text-text-primary tracking-tight max-w-xl">
-              Design that works in <br />
-              Agadir, Paris, and Dubai <br />
-              — not by looking the same, <br />
-              but by understanding <br />
-              each market.
+              The Way Your <br />
+              Business Looks <br />
+              Changes Everything.
             </h1>
           </div>
 
@@ -75,9 +73,8 @@ export default function Hero() {
 
             {/* Bio Metadata */}
             <p className="text-[15.5px] text-text-muted max-w-xs leading-[1.35] font-syne mt-1">
-              Designer & Creative Director. <br />
-              Building brand systems that perform <br />
-              across Africa, Europe, and MENA.
+              I'm Ahmed Arjdal, a designer <br />
+              and co-founder based in Agadir
             </p>
 
           </div>
@@ -118,10 +115,10 @@ export default function Hero() {
               &mdash; THE STUDIO
             </span>
             <p className="text-[17px] leading-[1.65] text-[#888888] max-w-lg font-syne">
-              helping businesses across Africa, <br />
-              Europe, and the MENA region build <br />
-              identities, digital experiences, and visual <br />
-              systems that perform across markets.
+              Design that works in <br />
+              Agadir, Paris, and Dubai <br />
+              — not by looking the same, <br />
+              but by understanding each market.
             </p>
           </div>
 
@@ -145,11 +142,9 @@ export default function Hero() {
         {/* Top Section: Left-aligned Headline */}
         <div className="flex flex-col items-start text-left">
           <h1 className="text-[34px] md:text-[46px] leading-[1.08] font-sans font-light text-text-primary tracking-tight max-w-xl">
-            Design that works in <br />
-            Agadir, Paris, and Dubai <br />
-            — not by looking the <br />
-            same, but by understanding <br />
-            each market.
+            The Way Your <br />
+            Business Looks <br />
+            Changes Everything.
           </h1>
         </div>
 
@@ -173,7 +168,7 @@ export default function Hero() {
           <div className="col-span-8 flex flex-col gap-4 text-left">
             {/* Bio paragraph */}
             <p className="text-[15.5px] md:text-[16.5px] leading-[1.35] text-[#888888] font-syne max-w-sm">
-              Designer & Creative Director. Building brand systems that perform across Africa, Europe, and MENA.
+              I'm Ahmed Arjdal, a designer and co-founder based in Agadir
             </p>
 
             {/* Buttons Row (Outlined first, solid second) */}
@@ -227,7 +222,7 @@ export default function Hero() {
               &mdash; THE STUDIO
             </span>
             <p className="text-[14px] sm:text-[15px] leading-[1.6] text-[#888888] font-syne max-w-md">
-              helping businesses across Africa, Europe, and the MENA region build identities, digital experiences, and visual systems that perform across markets.
+              Design that works in Agadir, Paris, and Dubai — not by looking the same, but by understanding each market.
             </p>
           </div>
           <div className="col-span-12 md:col-span-6 flex flex-col items-start text-left">
