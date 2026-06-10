@@ -120,7 +120,7 @@ export default function Values() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
-              <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-end lg:items-end text-right lg:text-right origin-right transition-all duration-500 ease-out ${
+              <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-start lg:items-end text-left lg:text-right origin-left lg:origin-right transition-all duration-500 ease-out ${
                 activeIdx === 0 ? 'scale-[1.05]' : 'scale-100'
               }`}>
                 <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
@@ -133,7 +133,7 @@ export default function Values() {
               <div className={`lg:col-start-5 lg:col-span-8 origin-left transition-all duration-500 ease-out ${
                 activeIdx === 0 ? 'scale-[1.01]' : 'scale-100'
               }`}>
-                <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-right lg:text-left">
+                <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-left">
                   We merge art and technology to create solutions that break the mold<br className="hidden lg:inline" /> and capture attention.
                 </p>
               </div>
@@ -188,7 +188,7 @@ export default function Values() {
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
-              <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-end lg:items-end text-right lg:text-right origin-right transition-all duration-500 ease-out ${
+              <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-start lg:items-end text-left lg:text-right origin-left lg:origin-right transition-all duration-500 ease-out ${
                 activeIdx === 2 ? 'scale-[1.05]' : 'scale-100'
               }`}>
                 <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
@@ -201,7 +201,7 @@ export default function Values() {
               <div className={`lg:col-start-5 lg:col-span-8 origin-left transition-all duration-500 ease-out ${
                 activeIdx === 2 ? 'scale-[1.01]' : 'scale-100'
               }`}>
-                <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-right lg:text-left">
+                <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-left">
                   We maintain open, honest dialogue throughout every step of the<br className="hidden lg:inline" /> creative process, ensuring you're always.
                 </p>
               </div>
