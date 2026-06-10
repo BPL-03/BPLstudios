@@ -27,7 +27,7 @@ export default function Pricing() {
     >
 
       {/* Main Container - scaled up 5% from baseline */}
-      <div className="w-full relative px-[4.5%] md:px-[94px] max-w-[1799px] mx-auto min-h-[1134px] flex flex-col justify-start">
+      <div className="w-full relative px-[4.5%] md:px-[94px] max-w-[1799px] mx-auto flex flex-col justify-start">
         
         {/* Header Section (Ways to Work Together & Investment Title) */}
         <div className="w-full flex flex-col items-end gap-[7px] mb-[71px] relative z-10">
