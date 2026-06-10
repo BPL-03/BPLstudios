@@ -115,7 +115,7 @@ export default function CTA() {
                 key={idx}
                 ref={(el) => (rowRefs.current[idx] = el)}
                 onMouseEnter={() => handleMouseEnter(idx)}
-                className="grid grid-cols-1 lg:grid-cols-12 items-center w-full relative py-1 sm:py-2"
+                className={`grid grid-cols-1 lg:grid-cols-12 ${isLastRow ? 'items-center lg:items-end' : 'items-center'} w-full relative py-1 sm:py-2`}
               >
                 {/* Left Side: Text Line */}
                 <div className="lg:col-span-7 flex items-center">
