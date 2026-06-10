@@ -25,7 +25,6 @@ export default function Footer() {
           
           {/* Top Right metadata */}
           <div className="flex items-start gap-2.5 font-inter text-[10px] lg:text-[11px] tracking-[0.12em] text-[#7a7870] font-bold uppercase">
-            <span className="text-[18px] lg:text-[20px] leading-[0.8] text-[#7a7870]">©</span>
             <div className="flex flex-col leading-[1.3]">
               <span>2026 ©</span>
               <span>COPYRIGHT</span>
