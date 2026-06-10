@@ -39,15 +39,14 @@ export default function Navbar() {
           <a href="#contacts" className="text-text-muted hover:text-white border-b border-white/20 hover:border-white pb-0.5 transition-colors">CONTACTS</a>
         </nav>
 
-        {/* Right Side: Metadata (© BPLAN STUDIOS / PERSONAL BRAND Double-column Split, exact size/weight) */}
+        {/* Right Side: Metadata (© BPLAN STUDIOS / STUDIO Double-column Split, exact size/weight) */}
         <div className="hidden lg:flex items-center gap-12 font-inter text-[11px] tracking-[0.15em] leading-[1.15] text-text-muted font-bold select-none">
           <div className="flex flex-col items-end text-right">
             <span>© BPLAN</span>
             <span>STUDIOS</span>
           </div>
           <div className="flex flex-col items-end text-right">
-            <span>PERSONAL</span>
-            <span>BRAND</span>
+            <span>STUDIO</span>
           </div>
         </div>
 

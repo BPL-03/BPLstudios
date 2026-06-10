@@ -37,9 +37,11 @@ export default function Hero() {
           {/* Left: 7 Columns - Headline */}
           <div className="col-span-7 flex flex-col items-start text-left">
             <h1 className="text-[54px] xl:text-[60px] leading-[1.08] font-sans font-light text-text-primary tracking-tight max-w-xl">
-              The Way Your <br />
-              Business Looks <br />
-              Changes Everything.
+              Design that works in <br />
+              Agadir, Paris, and Dubai <br />
+              — not by looking the same, <br />
+              but by understanding <br />
+              each market.
             </h1>
           </div>
 
@@ -73,8 +75,9 @@ export default function Hero() {
 
             {/* Bio Metadata */}
             <p className="text-[15.5px] text-text-muted max-w-xs leading-[1.35] font-syne mt-1">
-              I'm Ahmed Arjdal, a designer <br />
-              and co-founder based in Agadir
+              Designer & Creative Director. <br />
+              Building brand systems that perform <br />
+              across Africa, Europe, and MENA.
             </p>
 
           </div>
@@ -142,9 +145,11 @@ export default function Hero() {
         {/* Top Section: Left-aligned Headline */}
         <div className="flex flex-col items-start text-left">
           <h1 className="text-[34px] md:text-[46px] leading-[1.08] font-sans font-light text-text-primary tracking-tight max-w-xl">
-            The Way Your <br />
-            Business Looks <br />
-            Changes Everything.
+            Design that works in <br />
+            Agadir, Paris, and Dubai <br />
+            — not by looking the <br />
+            same, but by understanding <br />
+            each market.
           </h1>
         </div>
 
@@ -168,7 +173,7 @@ export default function Hero() {
           <div className="col-span-8 flex flex-col gap-4 text-left">
             {/* Bio paragraph */}
             <p className="text-[15.5px] md:text-[16.5px] leading-[1.35] text-[#888888] font-syne max-w-sm">
-              I'm Ahmed Arjdal, a designer and co-founder based in Agadir
+              Designer & Creative Director. Building brand systems that perform across Africa, Europe, and MENA.
             </p>
 
             {/* Buttons Row (Outlined first, solid second) */}

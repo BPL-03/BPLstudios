@@ -74,9 +74,9 @@ export default function Footer() {
           <div className="lg:col-span-4 flex flex-col items-start lg:items-end gap-8 text-left lg:text-right">
             {/* Work Info */}
             <p className="font-inter text-[9px] lg:text-[10px] tracking-[0.14em] text-[#7a7870] uppercase leading-[1.6] font-bold max-w-[280px]">
-              WE WORK IN A WIDE RANGE OF FIELDS:<br />
-              FROM COMPLEX SAAS PRODUCTS TO<br />
-              AESTHETIC PROMOTIONAL SITES
+              FROM BRAND IDENTITY TO DIGITAL<br />
+              PRODUCT — BUILT FOR MARKETS<br />
+              THAT DEMAND MORE.
             </p>
 
             {/* Email Link */}
