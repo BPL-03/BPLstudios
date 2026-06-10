@@ -115,24 +115,23 @@ export default function CTA() {
                 key={idx}
                 ref={(el) => (rowRefs.current[idx] = el)}
                 onMouseEnter={() => handleMouseEnter(idx)}
-                className={`grid grid-cols-1 lg:grid-cols-12 ${isLastRow ? 'items-center lg:items-end' : 'items-center'} w-full relative py-1 sm:py-2`}
+                className="flex flex-col lg:flex-row lg:items-end justify-between w-full relative py-1 sm:py-2"
               >
-                {/* Left Side: Text Line */}
-                <div className="lg:col-span-7 flex items-center">
-                  <h2 className={`font-sans font-light text-[66px] sm:text-[104px] lg:text-[148px] xl:text-[168px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out ${
-                    isActive ? 'text-[#DEF81D]' : 'text-[#333333] lg:text-[#1A1A1A]'
-                  }`}>
-                    {text}
-                  </h2>
-                </div>
-
-                {/* Right Side: Image for rows 1-6, or Button for row 7 */}
-                <div className="lg:col-span-5 w-full">
-                  {!isLastRow ? (
-                    /* Hover Image (Desktop Only) */
-                    <div className="hidden lg:block relative h-0 w-full">
-                      <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-full aspect-[3.1/1] rounded-[4px] overflow-hidden border border-white/5 bg-[#111111] transition-all duration-200 ease-out pointer-events-none ${
-                        isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                {!isLastRow ? (
+                  /* Left Side: Text Line + Image (Desktop Only) */
+                  <div className="flex items-center gap-8 lg:gap-12 flex-grow w-full">
+                    <h2 className={`font-sans font-light text-[66px] sm:text-[104px] lg:text-[148px] xl:text-[168px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out shrink-0 ${
+                      isActive ? 'text-[#DEF81D]' : 'text-[#333333] lg:text-[#1A1A1A]'
+                    }`}>
+                      {text}
+                    </h2>
+                    
+                    {/* Hover Image (Desktop Only) */}
+                    <div className="hidden lg:block relative h-[60px] xl:h-[75px] flex-grow">
+                      <div className={`absolute left-0 top-0 bottom-0 right-0 rounded-[4px] overflow-hidden border border-white/5 bg-[#111111] transition-all duration-500 ease-out pointer-events-none ${
+                        isActive 
+                          ? 'opacity-100 translate-x-0 scale-100' 
+                          : 'opacity-0 translate-x-24 scale-95'
                       }`}>
                         <div
                           className="absolute inset-0 bg-cover bg-center"
@@ -140,9 +139,20 @@ export default function CTA() {
                         />
                       </div>
                     </div>
-                  ) : (
-                    /* Let's Talk Button aligned with "together." */
-                    <div className="flex justify-start lg:justify-end w-full mt-4 lg:mt-0 lg:mb-[18px]">
+                  </div>
+                ) : (
+                  <>
+                    {/* Last Row Text */}
+                    <div className="flex items-center w-full lg:w-auto">
+                      <h2 className={`font-sans font-light text-[66px] sm:text-[104px] lg:text-[148px] xl:text-[168px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out ${
+                        isActive ? 'text-[#DEF81D]' : 'text-[#333333] lg:text-[#1A1A1A]'
+                      }`}>
+                        {text}
+                      </h2>
+                    </div>
+
+                    {/* Let's Talk Button aligned with "together." */}
+                    <div className="flex justify-start lg:justify-end w-full lg:w-auto mt-4 lg:mt-0 lg:mb-[18px]">
                       <a
                         href="mailto:hello@bplstudios.com"
                         className={`w-full lg:w-[460px] h-[58px] border border-[#DEF81D] transition-all duration-150 ease-out flex items-center justify-center font-syne font-medium text-[13px] sm:text-[14px] uppercase tracking-wider rounded-[4px] ${
@@ -154,8 +164,8 @@ export default function CTA() {
                         Let's Talk &rarr;
                       </a>
                     </div>
-                  )}
-                </div>
+                  </>
+                )}
               </div>
             );
           })}
