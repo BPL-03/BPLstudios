@@ -127,7 +127,7 @@ export default function CTA() {
                     </h2>
                     
                     {/* Hover Image (Desktop Only) */}
-                    <div className="hidden lg:block relative h-[60px] xl:h-[75px] flex-grow">
+                    <div className="hidden lg:block relative h-[100px] xl:h-[125px] aspect-[2.7/1]">
                       <div className={`absolute left-0 top-0 bottom-0 right-0 rounded-[4px] overflow-hidden border border-white/5 bg-[#111111] transition-all duration-500 ease-out pointer-events-none ${
                         isActive 
                           ? 'opacity-100 translate-x-0 scale-100' 
