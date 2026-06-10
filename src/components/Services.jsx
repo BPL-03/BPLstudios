@@ -500,35 +500,26 @@ export default function Services() {
     if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
 
     const scrollLeft = scrollRef.current.scrollLeft;
-    const numRealCards = 6;
-    const minScroll = 2 * itemWidth;
-    const maxScroll = 7 * itemWidth;
+    let currentIdx = Math.round(scrollLeft / itemWidth);
 
-    let currentScrollLeft = scrollLeft;
-    if (scrollLeft < minScroll - 5) {
-      currentScrollLeft = scrollLeft + numRealCards * itemWidth;
+    // If we are at the left boundary (index 2) or left clone, wrap to the right clone first
+    if (currentIdx <= 2) {
+      currentIdx = currentIdx + 6; // e.g. index 2 becomes index 8
       scrollRef.current.style.scrollBehavior = 'auto';
-      scrollRef.current.scrollLeft = currentScrollLeft;
-    } else if (scrollLeft > maxScroll + 5) {
-      currentScrollLeft = scrollLeft - numRealCards * itemWidth;
-      scrollRef.current.style.scrollBehavior = 'auto';
-      scrollRef.current.scrollLeft = currentScrollLeft;
+      scrollRef.current.scrollLeft = currentIdx * itemWidth;
     }
 
-    const currentIdx = Math.round(currentScrollLeft / itemWidth);
-    targetScrollLeft.current = (currentIdx - 1) * itemWidth;
+    const targetIdx = currentIdx - 1;
+    targetScrollLeft.current = targetIdx * itemWidth;
 
     isProgrammaticScroll.current = true;
     setIsProgrammatic(true);
 
-    setTimeout(() => {
-      if (!scrollRef.current) return;
-      scrollRef.current.style.scrollBehavior = 'smooth';
-      scrollRef.current.scrollTo({
-        left: targetScrollLeft.current,
-        behavior: 'smooth'
-      });
-    }, 10);
+    scrollRef.current.style.scrollBehavior = 'smooth';
+    scrollRef.current.scrollTo({
+      left: targetScrollLeft.current,
+      behavior: 'smooth'
+    });
   };
 
   const handleNext = () => {
@@ -542,35 +533,26 @@ export default function Services() {
     if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
 
     const scrollLeft = scrollRef.current.scrollLeft;
-    const numRealCards = 6;
-    const minScroll = 2 * itemWidth;
-    const maxScroll = 7 * itemWidth;
+    let currentIdx = Math.round(scrollLeft / itemWidth);
 
-    let currentScrollLeft = scrollLeft;
-    if (scrollLeft < minScroll - 5) {
-      currentScrollLeft = scrollLeft + numRealCards * itemWidth;
+    // If we are at the right boundary (index 7) or right clone, wrap to the left clone first
+    if (currentIdx >= 7) {
+      currentIdx = currentIdx - 6; // e.g. index 7 becomes index 1
       scrollRef.current.style.scrollBehavior = 'auto';
-      scrollRef.current.scrollLeft = currentScrollLeft;
-    } else if (scrollLeft > maxScroll + 5) {
-      currentScrollLeft = scrollLeft - numRealCards * itemWidth;
-      scrollRef.current.style.scrollBehavior = 'auto';
-      scrollRef.current.scrollLeft = currentScrollLeft;
+      scrollRef.current.scrollLeft = currentIdx * itemWidth;
     }
 
-    const currentIdx = Math.round(currentScrollLeft / itemWidth);
-    targetScrollLeft.current = (currentIdx + 1) * itemWidth;
+    const targetIdx = currentIdx + 1;
+    targetScrollLeft.current = targetIdx * itemWidth;
 
     isProgrammaticScroll.current = true;
     setIsProgrammatic(true);
 
-    setTimeout(() => {
-      if (!scrollRef.current) return;
-      scrollRef.current.style.scrollBehavior = 'smooth';
-      scrollRef.current.scrollTo({
-        left: targetScrollLeft.current,
-        behavior: 'smooth'
-      });
-    }, 10);
+    scrollRef.current.style.scrollBehavior = 'smooth';
+    scrollRef.current.scrollTo({
+      left: targetScrollLeft.current,
+      behavior: 'smooth'
+    });
   };
 
   return (
@@ -643,16 +625,16 @@ export default function Services() {
                   )}
 
                   {/* Static Icon (Top Left) */}
-                  <span className="absolute top-[14.5px] left-[25px] font-sans font-normal text-[32px] text-[#F5F2EC]/85 leading-none select-none z-20 transition-all duration-500 ease-in-out group-hover:text-[#DEF81D] group-hover:scale-110">
+                  <span className="absolute top-[14.5px] left-[25px] font-sans font-normal text-[32px] text-[#F5F2EC]/85 leading-none select-none z-20 transition-all duration-500 ease-out group-hover:-translate-y-1 group-hover:scale-105">
                     {service.num}
                   </span>
 
                   {/* Service Heading 3 (Centered horizontally, with down chevron below) */}
                   <div className="absolute top-[86px] left-0 right-0 text-center px-4 z-20 pointer-events-none flex flex-col items-center">
-                    <h3 className="font-inter font-medium text-[28px] sm:text-[36px] leading-none text-white tracking-[-2.16px] select-none transition-colors duration-500 ease-in-out group-hover:text-[#DEF81D]">
+                    <h3 className="font-inter font-medium text-[28px] sm:text-[36px] leading-none text-white tracking-[-2.16px] select-none transition-all duration-500 ease-out group-hover:-translate-y-2.5 group-hover:scale-[1.03]">
                       {service.name}
                     </h3>
-                    <svg className="w-3 h-3 text-white/45 mt-2 transition-all duration-500 ease-in-out group-hover:text-[#DEF81D] group-hover:scale-125" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <svg className="w-3 h-3 text-white/45 mt-2 transition-all duration-500 ease-out group-hover:translate-y-2 group-hover:scale-125" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
