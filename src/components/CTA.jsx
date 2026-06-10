@@ -119,7 +119,7 @@ export default function CTA() {
               >
                 {/* Left Side: Text Line */}
                 <div className="lg:col-span-7 flex items-center">
-                  <h2 className={`font-sans font-light text-[66px] sm:text-[104px] lg:text-[148px] xl:text-[168px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-150 ease-out ${
+                  <h2 className={`font-sans font-light text-[66px] sm:text-[104px] lg:text-[148px] xl:text-[168px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out ${
                     isActive ? 'text-[#DEF81D]' : 'text-[#1A1A1A]'
                   }`}>
                     {text}

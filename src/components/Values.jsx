@@ -1,6 +1,74 @@
 import React from 'react';
 
 export default function Values() {
+  const [activeIdx, setActiveIdx] = React.useState(0);
+  const rowRefs = React.useRef([]);
+  const isMouseMoving = React.useRef(false);
+  const mouseMoveTimeout = React.useRef(null);
+  const hoverTimeoutRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const handleMouseMove = () => {
+      isMouseMoving.current = true;
+      if (mouseMoveTimeout.current) clearTimeout(mouseMoveTimeout.current);
+      mouseMoveTimeout.current = setTimeout(() => {
+        isMouseMoving.current = false;
+      }, 500);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (mouseMoveTimeout.current) clearTimeout(mouseMoveTimeout.current);
+      if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    };
+  }, []);
+
+  const handleMouseEnter = (idx) => {
+    if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveIdx(idx);
+    }, 20);
+  };
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (isMouseMoving.current || rowRefs.current.length === 0) return;
+
+      const viewportCenter = window.innerHeight / 2;
+      let closestIdx = 0;
+      let minDistance = Infinity;
+
+      rowRefs.current.forEach((ref, idx) => {
+        if (!ref) return;
+        const rect = ref.getBoundingClientRect();
+        const elementCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(elementCenter - viewportCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIdx = idx;
+        }
+      });
+
+      const sectionElement = rowRefs.current[0]?.closest('section');
+      if (sectionElement) {
+        const sectionRect = sectionElement.getBoundingClientRect();
+        const isInViewport = sectionRect.top < window.innerHeight && sectionRect.bottom > 0;
+        if (isInViewport) {
+          setActiveIdx(closestIdx);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <section
       id="values"
@@ -44,17 +112,27 @@ export default function Values() {
 
         {/* Staggered Row List */}
         <div className="flex flex-col w-full relative">
-                   {/* Row 1 */}
-          <div className="w-full group cursor-pointer">
+          {/* Row 1 */}
+          <div 
+            ref={(el) => (rowRefs.current[0] = el)}
+            onMouseEnter={() => handleMouseEnter(0)}
+            className="w-full group cursor-pointer"
+          >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
-              <div className="lg:col-start-3 lg:col-span-2 flex flex-col items-start lg:items-end text-left lg:text-right lg:group-hover:scale-[1.05] lg:origin-right transition-transform duration-300">
-                <span className="font-syne font-medium text-[16px] sm:text-[22.5px] text-[#C3C3C3]/[0.38] lg:group-hover:text-[#DEF81D] transition-colors duration-300 tracking-tight leading-[1.2]">
+              <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-start lg:items-end text-left lg:text-right origin-right transition-all duration-500 ease-out ${
+                activeIdx === 0 ? 'scale-[1.05]' : 'scale-100'
+              }`}>
+                <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
+                  activeIdx === 0 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
+                }`}>
                   Innovative<br className="hidden lg:inline" /> Creativity
                 </span>
               </div>
               {/* Description */}
-              <div className="lg:col-start-5 lg:col-span-8 lg:group-hover:scale-[1.01] lg:origin-left transition-transform duration-300">
+              <div className={`lg:col-start-5 lg:col-span-8 origin-left transition-all duration-500 ease-out ${
+                activeIdx === 0 ? 'scale-[1.01]' : 'scale-100'
+              }`}>
                 <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-left">
                   We merge art and technology to create solutions that break the mold<br className="hidden lg:inline" /> and capture attention.
                 </p>
@@ -62,21 +140,33 @@ export default function Values() {
             </div>
             {/* Divider Line */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-8">
-              <div className="col-span-12 lg:col-start-3 lg:col-span-10 border-b border-[#383838] mr-[-2000px] lg:group-hover:border-[#DEF81D] transition-colors duration-300" />
+              <div className={`col-span-12 lg:col-start-3 lg:col-span-10 border-b mr-[-2000px] transition-colors duration-500 ease-out ${
+                activeIdx === 0 ? 'border-[#DEF81D]' : 'border-[#383838]'
+              }`} />
             </div>
           </div>
 
           {/* Row 2 */}
-          <div className="w-full group cursor-pointer">
+          <div 
+            ref={(el) => (rowRefs.current[1] = el)}
+            onMouseEnter={() => handleMouseEnter(1)}
+            className="w-full group cursor-pointer"
+          >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
-              <div className="lg:col-start-2 lg:col-span-2 flex flex-col items-end text-right lg:group-hover:scale-[1.05] lg:origin-right transition-transform duration-300">
-                <span className="font-syne font-medium text-[16px] sm:text-[22.5px] text-[#DEF81D] lg:text-[#C3C3C3]/[0.38] lg:group-hover:text-[#DEF81D] transition-colors duration-300 tracking-tight leading-[1.2]">
+              <div className={`lg:col-start-2 lg:col-span-2 flex flex-col items-end text-right origin-right transition-all duration-500 ease-out ${
+                activeIdx === 1 ? 'scale-[1.05]' : 'scale-100'
+              }`}>
+                <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
+                  activeIdx === 1 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
+                }`}>
                   design that<br className="hidden lg:inline" /> crosses borders
                 </span>
               </div>
               {/* Description */}
-              <div className="lg:col-start-4 lg:col-span-9 lg:group-hover:scale-[1.01] lg:origin-left transition-transform duration-300">
+              <div className={`lg:col-start-4 lg:col-span-9 origin-left transition-all duration-500 ease-out ${
+                activeIdx === 1 ? 'scale-[1.01]' : 'scale-100'
+              }`}>
                 <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-right lg:text-left">
                   Your vision unite to form a powerful team, ensuring that every project<br className="hidden lg:inline" /> reflects your unique identity.
                 </p>
@@ -84,21 +174,33 @@ export default function Values() {
             </div>
             {/* Divider Line */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-8">
-              <div className="col-span-12 lg:col-start-1 lg:col-span-12 border-b border-[#DEF81D] lg:border-[#383838] mr-[-2000px] lg:group-hover:border-[#DEF81D] transition-colors duration-300" />
+              <div className={`col-span-12 lg:col-start-1 lg:col-span-12 border-b mr-[-2000px] transition-colors duration-500 ease-out ${
+                activeIdx === 1 ? 'border-[#DEF81D]' : 'border-[#383838]'
+              }`} />
             </div>
           </div>
 
           {/* Row 3 */}
-          <div className="w-full group cursor-pointer">
+          <div 
+            ref={(el) => (rowRefs.current[2] = el)}
+            onMouseEnter={() => handleMouseEnter(2)}
+            className="w-full group cursor-pointer"
+          >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
-              <div className="lg:col-start-3 lg:col-span-2 flex flex-col items-start lg:items-end text-left lg:text-right lg:group-hover:scale-[1.05] lg:origin-right transition-transform duration-300">
-                <span className="font-syne font-medium text-[16px] sm:text-[22.5px] text-[#C3C3C3]/[0.38] lg:group-hover:text-[#DEF81D] transition-colors duration-300 tracking-tight leading-[1.2]">
+              <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-start lg:items-end text-left lg:text-right origin-right transition-all duration-500 ease-out ${
+                activeIdx === 2 ? 'scale-[1.05]' : 'scale-100'
+              }`}>
+                <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
+                  activeIdx === 2 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
+                }`}>
                   Transparent<br className="hidden lg:inline" /> Communication
                 </span>
               </div>
               {/* Description */}
-              <div className="lg:col-start-5 lg:col-span-8 lg:group-hover:scale-[1.01] lg:origin-left transition-transform duration-300">
+              <div className={`lg:col-start-5 lg:col-span-8 origin-left transition-all duration-500 ease-out ${
+                activeIdx === 2 ? 'scale-[1.01]' : 'scale-100'
+              }`}>
                 <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-left">
                   We maintain open, honest dialogue throughout every step of the<br className="hidden lg:inline" /> creative process, ensuring you're always.
                 </p>
@@ -106,21 +208,33 @@ export default function Values() {
             </div>
             {/* Divider Line */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-8">
-              <div className="col-span-12 lg:col-start-3 lg:col-span-10 border-b border-[#383838] mr-[-2000px] lg:group-hover:border-[#DEF81D] transition-colors duration-300" />
+              <div className={`col-span-12 lg:col-start-3 lg:col-span-10 border-b mr-[-2000px] transition-colors duration-500 ease-out ${
+                activeIdx === 2 ? 'border-[#DEF81D]' : 'border-[#383838]'
+              }`} />
             </div>
           </div>
 
           {/* Row 4 */}
-          <div className="w-full group cursor-pointer">
+          <div 
+            ref={(el) => (rowRefs.current[3] = el)}
+            onMouseEnter={() => handleMouseEnter(3)}
+            className="w-full group cursor-pointer"
+          >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
-              <div className="lg:col-start-4 lg:col-span-2 flex flex-col items-end text-right lg:group-hover:scale-[1.05] lg:origin-right transition-transform duration-300">
-                <span className="font-syne font-medium text-[16px] sm:text-[22.5px] text-[#C3C3C3]/[0.38] lg:group-hover:text-[#DEF81D] transition-colors duration-300 tracking-tight leading-[1.2]">
+              <div className={`lg:col-start-4 lg:col-span-2 flex flex-col items-end text-right origin-right transition-all duration-500 ease-out ${
+                activeIdx === 3 ? 'scale-[1.05]' : 'scale-100'
+              }`}>
+                <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
+                  activeIdx === 3 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
+                }`}>
                   Passion<br className="hidden lg:inline" /> for Impact
                 </span>
               </div>
               {/* Description */}
-              <div className="lg:col-start-6 lg:col-span-7 lg:group-hover:scale-[1.01] lg:origin-left transition-transform duration-300">
+              <div className={`lg:col-start-6 lg:col-span-7 origin-left transition-all duration-500 ease-out ${
+                activeIdx === 3 ? 'scale-[1.01]' : 'scale-100'
+              }`}>
                 <p className="font-syne font-medium text-[16px] sm:text-[22.5px] leading-[21.2px] sm:leading-[1.2] text-[#C1CBCC] tracking-tight max-w-[850px] text-right lg:text-left">
                   Driven by creativity and a commitment to excellence, we create<br className="hidden lg:inline" /> experiences that not only look impressive.
                 </p>
@@ -128,7 +242,9 @@ export default function Values() {
             </div>
             {/* Divider Line */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-8">
-              <div className="col-span-12 lg:col-start-4 lg:col-span-9 border-b border-[#383838] mr-[-2000px] lg:group-hover:border-[#DEF81D] transition-colors duration-300" />
+              <div className={`col-span-12 lg:col-start-4 lg:col-span-9 border-b mr-[-2000px] transition-colors duration-500 ease-out ${
+                activeIdx === 3 ? 'border-[#DEF81D]' : 'border-[#383838]'
+              }`} />
             </div>
           </div>
 
