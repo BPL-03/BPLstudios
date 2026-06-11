@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import SplitText from './SplitText';
 
 const SERVICES_DATA = [
   {
@@ -7,6 +8,17 @@ const SERVICES_DATA = [
     name: 'UX/UI Design',
     gradient: 'from-[#0D3BFF] to-[#040C54]',
     fullImage: '/assets/service_uxui.png',
+    subtitle: 'Transforming digital experiences with intuitive UX/UI design that drives engagement and loyalty',
+    detailedDesc: 'We craft seamless interfaces blending aesthetics and usability, ensuring every click feels natural and every journey inspires lasting connection.',
+    features: [
+      'E-commerce',
+      'CRM, ERP, SaaS',
+      'Promo',
+      'Corporate',
+      'Desktop app',
+      'Mobile app',
+      'etc.'
+    ],
     desc: (
       <div className="flex flex-col gap-1 w-full">
         {/* Top layer (aligned right) */}
@@ -79,6 +91,16 @@ const SERVICES_DATA = [
     name: 'Graphic Design',
     gradient: 'from-[#FF5E00] to-[#401300]',
     fullImage: '/assets/service_graphic.png',
+    subtitle: 'Creating memorable visual narratives that establish a strong brand identity',
+    detailedDesc: 'With custom layouts, high-fidelity brand assets, 3D representations, and print collateral, we translate your ideas into coherent and impactful visual language.',
+    features: [
+      'Logo design',
+      'Branding & Identity',
+      'Brand Styleguides',
+      'Print & Packaging',
+      '3D assets',
+      'Marketing materials'
+    ],
     desc: (
       <div className="flex items-center w-full">
         <p className="font-syne font-medium text-[14.4px] leading-[14.4px] text-white/40 max-w-[358px] text-left flex items-center">
@@ -139,6 +161,16 @@ const SERVICES_DATA = [
     name: 'Art Direction',
     gradient: 'from-[#606D5C] to-[#252C23]',
     fullImage: '/assets/service_art.png',
+    subtitle: 'Coordinating visual styles and artistic themes to communicate ideas with elegance',
+    detailedDesc: 'We direct aesthetic standards and execute design concepts across all platforms, ensuring your project reflects consistency and visual harmony.',
+    features: [
+      'Creative Direction',
+      'Theme Concepting',
+      'Aesthetic Standards',
+      'Color & Typography systems',
+      'Project Consultation',
+      'Design Supervision'
+    ],
     desc: null,
     graphic: (
       <div className="absolute inset-0 flex items-center justify-center p-5 select-none overflow-hidden">
@@ -189,6 +221,16 @@ const SERVICES_DATA = [
     num: '⬢',
     name: 'Development',
     gradient: 'from-[#A800FF] to-[#006080]',
+    subtitle: 'Building modern, secure, and blazing-fast web applications',
+    detailedDesc: 'From custom interactive frontend components to robust web standards, our development processes match top-tier styling with highly performant, accessible code.',
+    features: [
+      'React / Next.js',
+      'Clean HTML5 & Tailwind CSS',
+      'Responsive design',
+      'Performance optimization',
+      'Custom API integrations',
+      'Animations & Transitions'
+    ],
     desc: null,
     graphic: (
       <div className="absolute inset-0 flex flex-col justify-end p-5 select-none overflow-hidden">
@@ -227,6 +269,16 @@ const SERVICES_DATA = [
     num: '✦',
     name: 'Marketing',
     gradient: 'from-[#7B2CBF] to-[#0D3BFF]',
+    subtitle: 'Crafting impactful growth strategies to amplify your digital reach',
+    detailedDesc: 'We analyze target user groups, set up structured digital campaigns, and monitor detailed performance indicators to optimize engagement and scale your online footprint.',
+    features: [
+      'Growth Strategy',
+      'Digital Campaigns',
+      'Analytics Tracking',
+      'Social Media assets',
+      'SEO & Conversion Optimization',
+      'Creative Copywriting'
+    ],
     desc: null,
     graphic: (
       <div className="absolute inset-0 flex flex-col justify-end p-5 select-none overflow-hidden">
@@ -281,6 +333,16 @@ const SERVICES_DATA = [
     name: 'Support',
     gradient: 'from-[#05A374] to-[#09573F]',
     fullImage: '/assets/service_support.png',
+    subtitle: 'Ensuring long-term stability and reliability for your digital solutions',
+    detailedDesc: 'We offer dedicated ongoing maintenance, fast security updates, performance reviews, and technical advice to keep your systems running smoothly.',
+    features: [
+      'Regular updates',
+      'Bug fixing & Maintenance',
+      'Performance reviews',
+      'Technical consulting',
+      'Feature additions',
+      'Security auditing'
+    ],
     desc: null,
     graphic: (
       <div className="absolute inset-0 flex flex-col justify-end p-5 select-none overflow-hidden">
@@ -330,7 +392,26 @@ export default function Services() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isProgrammatic, setIsProgrammatic] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const scrollRef = useRef(null);
+
+  useEffect(() => {
+    if (isDrawerOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [isDrawerOpen]);
+
+  const handleCardClick = (service) => {
+    if (isDragging) return;
+    setSelectedService(service);
+    setIsDrawerOpen(true);
+  };
 
   const startX = useRef(0);
   const startScrollLeft = useRef(0);
@@ -610,7 +691,8 @@ export default function Services() {
               >
                 {/* Colored Card Visual */}
                 <div
-                  className="service-card relative w-full h-[324px] xs:h-[378px] md:h-[486px] rounded-[4px] border border-[#383838] overflow-hidden bg-zinc-900 group"
+                  onClick={() => handleCardClick(service)}
+                  className="service-card relative w-full h-[324px] xs:h-[378px] md:h-[486px] rounded-[4px] border border-[#383838] overflow-hidden bg-zinc-900 group cursor-pointer"
                 >
                   {/* Background Gradient or Image */}
                   {service.fullImage ? (
@@ -718,6 +800,160 @@ export default function Services() {
         </div>
 
       </div>
+
+      {/* Pop-side Card Drawer Backdrop */}
+      <div 
+        className={`fixed inset-0 bg-black/60 z-[999] backdrop-blur-sm transition-opacity duration-300 ${isDrawerOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setIsDrawerOpen(false)}
+      />
+
+      {/* Pop-side Card Drawer */}
+      <div
+        className={`fixed top-0 right-0 h-full w-full sm:w-[712px] z-[1000] shadow-2xl flex flex-col overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+        style={{
+          backgroundColor: selectedService?.id === 'uxui' ? '#0A35C6' :
+                           selectedService?.id === 'graphic' ? '#C44800' :
+                           selectedService?.id === 'art' ? '#3D4A39' :
+                           selectedService?.id === 'development' ? '#7A00BF' :
+                           selectedService?.id === 'marketing' ? '#5A1D8C' :
+                           selectedService?.id === 'support' ? '#037A55' : '#0A35C6'
+        }}
+        onWheel={(e) => e.stopPropagation()}
+        onTouchMove={(e) => e.stopPropagation()}
+      >
+        {/* Blurred accent glow */}
+        <div 
+          className="absolute pointer-events-none"
+          style={{
+            width: '1423px',
+            height: '1970px',
+            left: '-623px',
+            top: '-598px',
+            background: selectedService?.id === 'uxui' ? '#919AD4' :
+                         selectedService?.id === 'graphic' ? '#D49191' :
+                         selectedService?.id === 'art' ? '#91D4A0' :
+                         selectedService?.id === 'development' ? '#C491D4' :
+                         selectedService?.id === 'marketing' ? '#B491D4' :
+                         selectedService?.id === 'support' ? '#91D4C4' : '#919AD4',
+            filter: 'blur(236px)',
+            opacity: 0.4
+          }}
+        />
+
+        {/* Content container */}
+        <div className="relative z-10 flex flex-col h-full overflow-y-auto no-scrollbar" style={{ padding: '50px 44px 56px 40px' }}>
+
+          {/* Title row + Close button */}
+          <div className="flex justify-between items-start w-full">
+            <h4 
+              className={`font-anek-devanagari text-white select-none reveal-up ${isDrawerOpen ? 'in-view' : ''}`}
+              style={{ 
+                fontWeight: 500, 
+                fontSize: '52px', 
+                lineHeight: '90%'
+              }}
+            >
+              {selectedService?.name}
+            </h4>
+            <button 
+              onClick={() => setIsDrawerOpen(false)}
+              className="flex items-center justify-center rounded-full hover:opacity-80 transition-all cursor-pointer focus:outline-none shrink-0"
+              style={{
+                width: '44.58px',
+                height: '44.58px',
+                background: 'rgba(217, 217, 217, 0.1)',
+                border: '0.88px solid rgba(255, 255, 255, 0.36)'
+              }}
+              aria-label="Close details"
+            >
+              <svg className="w-[11px] h-[11px]" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Subtitle */}
+          <p 
+            className={`font-anek-devanagari text-white mt-[74px] reveal-up stagger-1 ${isDrawerOpen ? 'in-view' : ''}`}
+            style={{ 
+              fontWeight: 500, 
+              fontSize: '26px', 
+              lineHeight: '100%', 
+              maxWidth: '582px'
+            }}
+          >
+            {selectedService?.subtitle}
+          </p>
+
+          {/* Description */}
+          <p 
+            className={`font-anek-devanagari mt-[20px] reveal-up stagger-2 ${isDrawerOpen ? 'in-view' : ''}`}
+            style={{ 
+              fontWeight: 500, 
+              fontSize: '16px', 
+              lineHeight: '100%', 
+              color: 'rgba(255, 255, 255, 0.6)', 
+              maxWidth: '582px'
+            }}
+          >
+            {selectedService?.detailedDesc}
+          </p>
+
+          {/* Features List */}
+          <div 
+            className="flex flex-col select-text mt-[59px]"
+            style={{ maxWidth: '582px' }}
+          >
+            {selectedService?.features?.map((feat, fIdx) => {
+              const staggerClass = fIdx === 0 ? 'stagger-3' :
+                                   fIdx === 1 ? 'stagger-4' : 'stagger-5';
+              return (
+                <span 
+                  key={fIdx} 
+                  className={`font-anek-devanagari text-white reveal-up ${staggerClass} ${isDrawerOpen ? 'in-view' : ''}`}
+                  style={{ 
+                    fontWeight: 500, 
+                    fontSize: '42px', 
+                    lineHeight: '90%'
+                  }}
+                >
+                  {feat}
+                </span>
+              );
+            })}
+          </div>
+
+          {/* Spacer */}
+          <div className="flex-grow min-h-[60px]" />
+
+          {/* Bottom CTA */}
+          <div 
+            className={`flex justify-start w-full reveal-up stagger-5 ${isDrawerOpen ? 'in-view' : ''}`}
+          >
+            <a
+              href="#contacts"
+              onClick={() => setIsDrawerOpen(false)}
+              className="bg-white hover:bg-white/90 font-dm-sans flex items-center justify-center cursor-pointer transition-all"
+              style={{
+                fontWeight: 500,
+                fontSize: '14.1px',
+                lineHeight: '23px',
+                letterSpacing: '0.563px',
+                color: '#030303',
+                padding: '14px 18px',
+                gap: '10px',
+                borderRadius: '4px'
+              }}
+            >
+              Get in touch <span>→</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
     </section>
   );
 }

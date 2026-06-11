@@ -278,6 +278,10 @@ export default function Pricing() {
           <div className="flex justify-end pr-[21px] lg:justify-start lg:pl-[24px]">
             <a 
               href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new Event('open-contact-drawer'));
+              }}
               className="bg-[#DEF81D] hover:bg-[#cbf00f] active:scale-95 transition-all text-[#030303] font-dm-sans font-medium text-[13px] tracking-[0.5px] leading-[22px] px-[17px] py-[13px] rounded-[4px] inline-flex items-center gap-2 shadow-lg select-none"
             >
               Let's talk →

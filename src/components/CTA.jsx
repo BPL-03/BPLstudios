@@ -154,8 +154,12 @@ export default function CTA() {
                     {/* Let's Talk Button aligned with "together." */}
                     <div className="flex justify-start lg:justify-end w-full lg:w-auto mt-4 lg:mt-0 lg:mb-[18px]">
                       <a
-                        href="mailto:hello@bplstudios.com"
-                        className={`w-full lg:w-[460px] h-[58px] border border-[#DEF81D] transition-all duration-150 ease-out flex items-center justify-center font-syne font-medium text-[13px] sm:text-[14px] uppercase tracking-wider rounded-[4px] ${isActive
+                        href="#contact"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.dispatchEvent(new Event('open-contact-drawer'));
+                        }}
+                        className={`w-full lg:w-[460px] h-[58px] border border-[#DEF81D] transition-all duration-150 ease-out flex items-center justify-center font-syne font-medium text-[13px] sm:text-[14px] uppercase tracking-wider rounded-[4px] cursor-pointer ${isActive
                             ? 'bg-[#DEF81D] text-black'
                             : 'text-[#DEF81D] bg-transparent hover:bg-[#DEF81D] hover:text-black'
                           }`}

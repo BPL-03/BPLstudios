@@ -1,6 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import SplitText from './SplitText';
 
 export default function About() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0);
+  const [scrollHeight, setScrollHeight] = useState(0);
+  const [clientHeight, setClientHeight] = useState(0);
+
+  const handleScroll = (e) => {
+    setScrollTop(e.target.scrollTop);
+    setScrollHeight(e.target.scrollHeight);
+    setClientHeight(e.target.clientHeight);
+  };
+
+  useEffect(() => {
+    if (isDrawerOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [isDrawerOpen]);
+
+  useEffect(() => {
+    if (!isDrawerOpen) {
+      setScrollTop(0);
+    }
+  }, [isDrawerOpen]);
+
+  const pct = scrollHeight - clientHeight > 0 ? scrollTop / (scrollHeight - clientHeight) : 0;
+  const startTop = 194.73;
+  const endTop = scrollHeight > 0 ? scrollHeight - 77.43 - 56 : startTop;
+  const trackerTop = startTop + (endTop - startTop) * pct;
+
   return (
     <section 
       id="about" 
@@ -156,12 +190,12 @@ export default function About() {
                   ))}
                   
                   {/* More About Me Button */}
-                  <a 
-                    href="#about"
-                    className="bg-[#DEF81D] hover:bg-[#cbf00f] active:scale-95 transition-all text-black font-syne font-medium text-[12px] lg:text-[13px] tracking-[0.5px] h-[48px] px-[22px] rounded-[4px] inline-flex items-center justify-center gap-2 shadow-lg leading-none select-none"
+                  <button 
+                    onClick={() => setIsDrawerOpen(true)}
+                    className="bg-[#DEF81D] hover:bg-[#cbf00f] active:scale-95 transition-all text-black font-syne font-medium text-[12px] lg:text-[13px] tracking-[0.5px] h-[48px] px-[22px] rounded-[4px] inline-flex items-center justify-center gap-2 shadow-lg leading-none select-none cursor-pointer border-none outline-none"
                   >
                     More About Me <span className="text-sm">&rarr;</span>
-                  </a>
+                  </button>
                 </div>
               </div>
 
@@ -169,6 +203,374 @@ export default function About() {
 
           </div>
           
+        </div>
+      </div>
+
+      {/* Pop-side About Drawer Backdrop */}
+      <div 
+        className={`fixed inset-0 bg-black/60 z-[999] backdrop-blur-sm transition-opacity duration-300 ${isDrawerOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setIsDrawerOpen(false)}
+      />
+
+      {/* Pop-side About Drawer */}
+      <div
+        className={`fixed top-0 right-0 h-full w-full sm:w-[719px] z-[1000] shadow-2xl flex flex-col overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+        style={{
+          background: 'rgba(0, 0, 0, 0.05)',
+          backdropFilter: 'blur(63px)'
+        }}
+        onWheel={(e) => e.stopPropagation()}
+        onTouchMove={(e) => e.stopPropagation()}
+      >
+        {/* Yellow/Lime accent glow */}
+        <div 
+          className="absolute pointer-events-none"
+          style={{
+            width: '1634.56px',
+            height: '3853.8px',
+            left: '-389.64px',
+            top: '-598.23px',
+            background: 'rgba(240, 255, 36, 0.05)',
+            filter: 'blur(228.746px)',
+            borderRadius: '50%'
+          }}
+        />
+
+        {/* Vertical line indicator (spans the entire drawer height seamlessly) */}
+        <div 
+          className="absolute left-[28px] top-0 bottom-0 w-[2px] bg-white/20 pointer-events-none z-10"
+          style={{ borderColor: 'rgba(255, 255, 255, 0.28)', borderLeftWidth: '1.93px' }}
+        />
+
+        {/* Content container */}
+        <div 
+          className="relative z-10 flex flex-col h-full overflow-y-auto no-scrollbar pt-[66.06px] pb-[56px] select-text"
+          onScroll={handleScroll}
+        >
+          {/* Inner relative container to measure scroll height and contain vertical lines */}
+          <div className="relative flex flex-col min-h-full pl-[75.78px] pr-[44px]">
+            
+            <div 
+              className="absolute left-[28px] w-[3px] bg-white pointer-events-none shadow-[0px_3.87px_3.87px_rgba(0,0,0,0.25)]"
+              style={{ 
+                borderLeftWidth: '2.9px', 
+                borderLeftColor: '#FFFFFF',
+                top: `${trackerTop}px`,
+                height: '77.43px',
+                transition: 'top 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
+              }}
+            />
+
+          {/* Title Row: Hi! + Close button */}
+          <div className="flex justify-between items-start w-full relative">
+            <h4 
+              className={`font-anek-devanagari text-white select-none reveal-up ${isDrawerOpen ? 'in-view' : ''}`}
+              style={{ fontWeight: 500, fontSize: '50.38px', lineHeight: '90%' }}
+            >
+              Hi!
+            </h4>
+            <button 
+              onClick={() => setIsDrawerOpen(false)}
+              className="flex items-center justify-center rounded-full hover:opacity-85 transition-all cursor-pointer focus:outline-none shrink-0"
+              style={{
+                width: '43.19px',
+                height: '43.19px',
+                background: 'rgba(255, 255, 255, 0.14)',
+                border: '0.85px solid rgba(0, 0, 0, 0.1)'
+              }}
+              aria-label="Close about panel"
+            >
+              <svg className="w-[10.4px] h-[10.4px]" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* 01 - About */}
+          <div className="flex flex-col mt-[78.29px]">
+            <h5 className={`font-anek-gujarati text-[17.5px] font-medium tracking-[0.54px] text-white reveal-up stagger-1 ${isDrawerOpen ? 'in-view' : ''}`}>
+              01 - About
+            </h5>
+            
+            <p className={`font-anek-devanagari mt-[26px] text-[15.5px] font-light text-white/95 leading-[1.35] max-w-[596px] reveal-up stagger-2 ${isDrawerOpen ? 'in-view' : ''}`}>
+              I'm Ahmed Arjdal, a Graphic & Web Designer based in Agadir, Morocco — and co-founder of Codesign, a design and multi-services agency. My work sits at the intersection of branding, UI/UX, and digital experience. I build complete brand identities from concept to execution, design websites that communicate clearly, and create visual systems that help businesses stand out in competitive markets.
+            </p>
+
+            <p className={`font-anek-devanagari mt-[17px] text-[15.5px] font-light text-white/95 leading-[1.35] max-w-[582px] reveal-up stagger-3 ${isDrawerOpen ? 'in-view' : ''}`}>
+              Over the years I've worked with coffee shops, restaurants, startups, and software companies — freelancing, collaborating in teams, and now leading as Creative Director. Every project sharpens how I think about design not just as visuals, but as strategy.
+            </p>
+          </div>
+
+          {/* 02 - Work experience */}
+          <div className="flex flex-col gap-6 mt-[97.14px]">
+            <h5 className={`font-anek-gujarati text-[17.5px] font-medium tracking-[0.54px] text-white reveal-up stagger-3 ${isDrawerOpen ? 'in-view' : ''}`}>
+              02 - Work experience
+            </h5>
+            
+            {/* Exp 1 */}
+            <div className={`p-[24px] bg-black/45 rounded-[3.87px] reveal-up stagger-4 ${isDrawerOpen ? 'in-view' : ''}`}>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-[10px] gap-2">
+                <h6 className="font-anek-gujarati text-[17.5px] font-medium text-white">Co-Founder & Creative Director</h6>
+                <span className="font-syne text-[15.5px] font-medium text-[#4D6336]">Sep 2025 – Present</span>
+              </div>
+              <p className="font-syne text-[15.5px] font-medium text-white/64 mb-[20px]">Codesign — Design & Multi-services Agency</p>
+              <p className="font-anek-devanagari text-[15.5px] font-light text-white/82 leading-[1.27] max-w-[489px]">
+                Leading branding and visual identity projects from concept through delivery. Creating UI designs and website experiences across multiple industries.
+              </p>
+            </div>
+
+            {/* Exp 2 */}
+            <div className={`p-[24px] bg-black/45 rounded-[3.87px] reveal-up stagger-5 ${isDrawerOpen ? 'in-view' : ''}`}>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-[10px] gap-2">
+                <h6 className="font-anek-gujarati text-[17.5px] font-medium text-white">Video Editor / Social Media Designer</h6>
+                <span className="font-syne text-[15.5px] font-medium text-[#4D6336]">Feb 2025 – Sep 2025</span>
+              </div>
+              <p className="font-syne text-[15.5px] font-medium text-white/64 mb-[20px]">Somosolutions — Marketing Services Company</p>
+              <p className="font-anek-devanagari text-[15.5px] font-light text-white/82 leading-[1.27] max-w-[489px]">
+                Editing short-form video content for digital platforms — Reels, TikToks, Ads. Leveraging AI tools to generate and enhance content at scale.
+              </p>
+            </div>
+
+            {/* Exp 3 */}
+            <div className={`p-[24px] bg-black/45 rounded-[3.87px] reveal-up stagger-5 ${isDrawerOpen ? 'in-view' : ''}`}>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-[10px] gap-2">
+                <h6 className="font-anek-gujarati text-[17.5px] font-medium text-white">Web Designer & UI/UX</h6>
+                <span className="font-syne text-[15.5px] font-medium text-[#4D6336]">Dec 2023 – Jan 2025</span>
+              </div>
+              <p className="font-syne text-[15.5px] font-medium text-white/64 mb-[20px]">Digimperial — Software Development Company</p>
+              <p className="font-anek-devanagari text-[15.5px] font-light text-white/82 leading-[1.27] max-w-[489px]">
+                Crafting visually striking and user-focused designs across diverse mediums. Collaborating with cross-functional teams and delivering solutions aligned with client objectives and market demands.
+              </p>
+            </div>
+
+            {/* Exp 4 */}
+            <div className={`p-[24px] bg-black/45 rounded-[3.87px] reveal-up stagger-5 ${isDrawerOpen ? 'in-view' : ''}`}>
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-[10px] gap-2">
+                <h6 className="font-anek-gujarati text-[17.5px] font-medium text-white">Freelance Graphic & Digital Designer</h6>
+                <span className="font-syne text-[15.5px] font-medium text-[#4D6336]">April 2018 – Sep 2023</span>
+              </div>
+              <p className="font-syne text-[15.5px] font-medium text-white/64 mb-[20px]">BPLstudios — Personal Brand</p>
+              <p className="font-anek-devanagari text-[15.5px] font-light text-white/82 leading-[1.27] max-w-[535px]">
+                Collaborated with diverse clients — coffee shops, restaurants, and small businesses — delivering high-quality graphic and digital designs.
+              </p>
+            </div>
+          </div>
+
+          {/* 03 - Skills & tools */}
+          <div className="flex flex-col mt-[96.89px]">
+            <h5 className={`font-anek-gujarati text-[17.5px] font-medium tracking-[0.54px] text-white reveal-up stagger-3 ${isDrawerOpen ? 'in-view' : ''}`}>
+              03 - Skills & tools
+            </h5>
+            
+            {/* Expertise Areas */}
+            <div className={`mt-[42.88px] flex flex-col gap-4 reveal-up stagger-4 ${isDrawerOpen ? 'in-view' : ''}`}>
+              <span className="font-syne text-[16.3px] font-medium text-white/73">-- Expertise areas</span>
+              
+              <div className="flex flex-row flex-wrap items-start gap-4">
+                {/* UI/UX */}
+                <div className="flex flex-row items-center gap-[9.69px] border border-[#4D6336] rounded-[3.87px] px-[13.5px] py-[13.5px]">
+                  <svg className="w-[15px] h-[15px] shrink-0" viewBox="0 0 15 15" fill="none">
+                    <rect x="1.5" y="1.5" width="5.5" height="12" rx="1.2" stroke="#F5F2EC" strokeWidth="1.45" />
+                    <rect x="8.5" y="1.5" width="5" height="5" rx="1.2" stroke="#F5F2EC" strokeWidth="1.45" />
+                    <rect x="8.5" y="8.5" width="5" height="5" rx="1.2" stroke="#F5F2EC" strokeWidth="1.45" />
+                  </svg>
+                  <span className="font-syne font-medium text-[13.6px] text-[#F5F2EC] tracking-[0.54px]">UI/UX Design</span>
+                </div>
+
+                {/* Graphic Design */}
+                <div className="flex flex-row items-center gap-[9.69px] border border-[#4D6336] rounded-[3.87px] px-[13.5px] py-[13.5px]">
+                  <div className="w-[15px] h-[14.5px] bg-[#F5F2EC] shrink-0" style={{ clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)' }} />
+                  <span className="font-syne font-medium text-[13.6px] text-[#F5F2EC] tracking-[0.54px]">Graphic Design</span>
+                </div>
+
+                {/* Web Design */}
+                <div className="flex flex-row items-center gap-[9.69px] border border-[#4D6336] rounded-[3.87px] px-[13.5px] py-[13.5px]">
+                  <div className="w-[15px] h-[15px] bg-[#F5F2EC] rounded-full shrink-0" />
+                  <span className="font-syne font-medium text-[13.6px] text-[#F5F2EC] tracking-[0.54px]">Web Design</span>
+                </div>
+
+                {/* Video Editing */}
+                <div className="flex flex-row items-center gap-[9.69px] border border-[#4D6336] rounded-[3.87px] px-[13.5px] py-[13.5px]">
+                  <svg className="w-[16px] h-[11px] shrink-0" viewBox="0 0 16 11" fill="none">
+                    <rect x="1" y="1" width="14" height="9" rx="1" stroke="#F5F2EC" strokeWidth="1.45" />
+                    <path d="M6 3.5l4 2-4 2v-4z" fill="#F5F2EC" />
+                  </svg>
+                  <span className="font-syne font-medium text-[13.6px] text-[#F5F2EC] tracking-[0.54px]">Video Editing</span>
+                </div>
+
+                {/* Social Media */}
+                <div className="flex flex-row items-center gap-[9.69px] border border-[#4D6336] rounded-[3.87px] px-[13.5px] py-[13.5px]">
+                  <svg className="w-[16px] h-[16px] shrink-0 fill-[#F5F2EC]" viewBox="0 0 16 16">
+                    <circle cx="4" cy="8" r="2" />
+                    <circle cx="12" cy="4" r="2" />
+                    <circle cx="12" cy="12" r="2" />
+                    <line x1="5.5" y1="6.8" x2="10.5" y2="5.2" stroke="#F5F2EC" strokeWidth="1.45" />
+                    <line x1="5.5" y1="9.2" x2="10.5" y2="10.8" stroke="#F5F2EC" strokeWidth="1.45" />
+                  </svg>
+                  <span className="font-syne font-medium text-[13.6px] text-[#F5F2EC] tracking-[0.54px]">Social Media</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Software Tools */}
+            <div className={`mt-[34.88px] flex flex-col gap-4 reveal-up stagger-4 ${isDrawerOpen ? 'in-view' : ''}`}>
+              <span className="font-syne text-[16.3px] font-medium text-white/73">-- Software</span>
+              
+              <div className="flex flex-row flex-wrap items-start gap-4">
+                {/* Figma */}
+                <div className="flex flex-row items-center gap-[16px] border border-[#4D6336] rounded-[3.87px] px-[13.5px] py-[13.5px]">
+                  <svg className="w-[10.6px] h-[16px] shrink-0" viewBox="0 0 11 16" fill="none">
+                    <circle cx="3" cy="3" r="2" stroke="#F5F2EC" strokeWidth="1.5" />
+                    <circle cx="8" cy="3" r="2" stroke="#F5F2EC" strokeWidth="1.5" />
+                    <circle cx="3" cy="8" r="2" stroke="#F5F2EC" strokeWidth="1.5" />
+                    <circle cx="8" cy="8" r="2" stroke="#F5F2EC" strokeWidth="1.5" />
+                    <path d="M1 13a2 2 0 002 2h2v-4H3a2 2 0 00-2 2z" stroke="#F5F2EC" strokeWidth="1.5" />
+                  </svg>
+                  <span className="font-syne font-medium text-[13.6px] text-[#F5F2EC] tracking-[0.54px]">Figma</span>
+                </div>
+
+                {/* Photoshop */}
+                <div className="flex flex-row items-center gap-[16px] border border-[#4D6336] rounded-[3.87px] px-[13.5px] py-[13.5px]">
+                  <div className="w-[15.5px] h-[15.5px] border border-[#FFFFFF] flex items-center justify-center text-[9px] font-bold font-sans text-white shrink-0">Ps</div>
+                  <span className="font-syne font-medium text-[13.6px] text-[#F5F2EC] tracking-[0.54px]">Photoshop</span>
+                </div>
+
+                {/* Illustrator */}
+                <div className="flex flex-row items-center gap-[16px] border border-[#4D6336] rounded-[3.87px] px-[13.5px] py-[13.5px]">
+                  <div className="w-[15.5px] h-[15.5px] border border-[#FFFFFF] flex items-center justify-center text-[9px] font-bold font-sans text-white shrink-0">Ai</div>
+                  <span className="font-syne font-medium text-[13.6px] text-[#F5F2EC] tracking-[0.54px]">Illustrator</span>
+                </div>
+
+                {/* AutoCAD */}
+                <div className="flex flex-row items-center gap-[16px] border border-[#4D6336] rounded-[3.87px] px-[13.5px] py-[13.5px]">
+                  <div className="w-[15.5px] h-[15px] border border-[#FFFFFF] flex items-center justify-center text-[8.5px] font-bold font-sans text-white shrink-0">Au</div>
+                  <span className="font-syne font-medium text-[13.6px] text-[#F5F2EC] tracking-[0.54px]">Archicad / AutoCAD</span>
+                </div>
+
+                {/* CapCut */}
+                <div className="flex flex-row items-center gap-[16px] border border-[#4D6336] rounded-[3.87px] px-[13.5px] py-[13.5px]">
+                  <div className="w-[17px] h-[12px] border border-[#F5F2EC] flex items-center justify-center text-[7.5px] font-bold font-sans text-white shrink-0">Cc</div>
+                  <span className="font-syne font-medium text-[13.6px] text-[#F5F2EC] tracking-[0.54px]">CapCut</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 03 - Qualities */}
+          <div className="flex flex-col mt-[96.89px]">
+            <h5 className={`font-anek-gujarati text-[17.5px] font-medium tracking-[0.54px] text-white reveal-up stagger-3 ${isDrawerOpen ? 'in-view' : ''}`}>
+              03 - Qualities
+            </h5>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-[32.39px]">
+              {/* Quality 1 */}
+              <div className={`flex flex-row items-start gap-4 p-5 bg-black/45 rounded-[3.87px] reveal-up stagger-4 ${isDrawerOpen ? 'in-view' : ''}`}>
+                <svg className="w-[16.34px] h-[20.27px] text-white mt-1 shrink-0" viewBox="0 0 16 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M8 2l6 4v8l-6 4-6-4V6l6-4z" />
+                  <path d="M8 6a2 2 0 100 4 2 2 0 000-4z" />
+                </svg>
+                <p className="font-anek-devanagari text-[15.5px] font-light text-white/82 leading-[1.27] max-w-[215px]">
+                  Passionate learner who stays ahead of design trends and tools
+                </p>
+              </div>
+
+              {/* Quality 2 */}
+              <div className={`flex flex-row items-start gap-4 p-5 bg-black/45 rounded-[3.87px] reveal-up stagger-4 ${isDrawerOpen ? 'in-view' : ''}`}>
+                <svg className="w-[17.26px] h-[18.84px] text-white mt-1 shrink-0" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M9 1a8 8 0 100 16A8 8 0 009 1z" />
+                  <path d="M9 5v8M5 9h8" />
+                </svg>
+                <p className="font-anek-devanagari text-[15.5px] font-light text-white/82 leading-[1.27] max-w-[217px]">
+                  Creative thinker with a strong eye for detail and aesthetics
+                </p>
+              </div>
+
+              {/* Quality 3 */}
+              <div className={`flex flex-row items-start gap-4 p-5 bg-black/45 rounded-[3.87px] reveal-up stagger-5 ${isDrawerOpen ? 'in-view' : ''}`}>
+                <svg className="w-[18px] h-[18px] text-white mt-1 shrink-0" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <circle cx="6" cy="9" r="3" />
+                  <circle cx="12" cy="9" r="3" />
+                </svg>
+                <p className="font-anek-devanagari text-[15.5px] font-light text-white/82 leading-[1.27] max-w-[223px]">
+                  Strong communicator in cross-functional teams
+                </p>
+              </div>
+
+              {/* Quality 4 */}
+              <div className={`flex flex-row items-start gap-4 p-5 bg-black/45 rounded-[3.87px] reveal-up stagger-5 ${isDrawerOpen ? 'in-view' : ''}`}>
+                <svg className="w-[18px] h-[18px] text-white mt-1 shrink-0" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M2 9h14M9 2l7 7-7 7" />
+                </svg>
+                <p className="font-anek-devanagari text-[15.5px] font-light text-white/82 leading-[1.27] max-w-[235px]">
+                  Adaptive problem-solver in fast moving environments
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* 04 - Languages */}
+          <div className="flex flex-col mt-[93.75px]">
+            <h5 className={`font-anek-gujarati text-[17.5px] font-medium tracking-[0.54px] text-white reveal-up stagger-3 ${isDrawerOpen ? 'in-view' : ''}`}>
+              04 - Languages
+            </h5>
+
+            <div className="flex flex-col gap-3 mt-[22.1px]">
+              {/* Tamazight */}
+              <div className={`flex flex-row justify-between items-center px-[32px] py-[16px] bg-black/45 rounded-[3.87px] reveal-up stagger-4 ${isDrawerOpen ? 'in-view' : ''}`}>
+                <span className="font-anek-gujarati text-[17.5px] font-medium text-white">Tamazight</span>
+                <span className="font-syne text-[15.5px] font-medium text-white/64">Native</span>
+              </div>
+
+              {/* Arabic */}
+              <div className={`flex flex-row justify-between items-center px-[32px] py-[16px] bg-black/45 rounded-[3.87px] reveal-up stagger-4 ${isDrawerOpen ? 'in-view' : ''}`}>
+                <span className="font-anek-gujarati text-[17.5px] font-medium text-white">Arabic</span>
+                <span className="font-syne text-[15.5px] font-medium text-white/64">Fluent</span>
+              </div>
+
+              {/* English */}
+              <div className={`flex flex-row justify-between items-center px-[32px] py-[16px] bg-black/45 rounded-[3.87px] reveal-up stagger-5 ${isDrawerOpen ? 'in-view' : ''}`}>
+                <span className="font-anek-gujarati text-[17.5px] font-medium text-white">English</span>
+                <span className="font-syne text-[15.5px] font-medium text-white/64">Conversational</span>
+              </div>
+
+              {/* French */}
+              <div className={`flex flex-row justify-between items-center px-[32px] py-[16px] bg-black/45 rounded-[3.87px] reveal-up stagger-5 ${isDrawerOpen ? 'in-view' : ''}`}>
+                <span className="font-anek-gujarati text-[17.5px] font-medium text-white">French</span>
+                <span className="font-syne text-[15.5px] font-medium text-white/64">Basic</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Spacer */}
+          <div className="h-[90px] shrink-0" />
+
+          {/* Bottom CTA */}
+          <div className={`flex justify-center w-full mt-auto reveal-up stagger-5 ${isDrawerOpen ? 'in-view' : ''}`}>
+            <a
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsDrawerOpen(false);
+                window.dispatchEvent(new Event('open-contact-drawer'));
+              }}
+              className="bg-[#DEF81D] hover:bg-[#cbf00f] font-dm-sans flex items-center justify-center cursor-pointer transition-all w-[180px] h-[52px]"
+              style={{
+                fontWeight: 500,
+                fontSize: '14.1px',
+                lineHeight: '23px',
+                letterSpacing: '0.563px',
+                color: '#000000',
+                borderRadius: '4px',
+                gap: '10px'
+              }}
+            >
+              Let’s Talk <span>→</span>
+            </a>
+          </div>
+
+          </div>
         </div>
       </div>
     </section>

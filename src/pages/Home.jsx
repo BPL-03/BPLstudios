@@ -11,6 +11,7 @@ import Pricing from '../components/Pricing';
 import Values from '../components/Values';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
+import ContactDrawer from '../components/ContactDrawer';
 
 export default function Home() {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
         <CTA />
       </main>
       <Footer />
+      <ContactDrawer />
     </div>
   );
 }
