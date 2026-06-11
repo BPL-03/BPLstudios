@@ -1,4 +1,5 @@
 import React from 'react';
+import SplitText from './SplitText';
 
 export default function Hero() {
   return (
@@ -36,15 +37,15 @@ export default function Hero() {
           
           {/* Left: 7 Columns - Headline */}
           <div className="col-span-7 flex flex-col items-start text-left">
-            <h1 className="text-[54px] xl:text-[60px] leading-[1.08] font-sans font-light text-text-primary tracking-tight max-w-xl">
-              The Way Your <br />
-              Business Looks <br />
-              Changes Everything.
+            <h1 className="text-[54px] xl:text-[60px] leading-[1.08] font-sans font-light text-text-primary tracking-tight max-w-xl reveal-text">
+              <SplitText text="The Way Your" /> <br />
+              <SplitText text="Business Looks" /> <br />
+              <SplitText text="Changes Everything." />
             </h1>
           </div>
 
           {/* Right: 5 Columns - Stats & Designer Bio */}
-          <div className="col-span-5 flex flex-col items-end gap-3 text-right pl-10">
+          <div className="col-span-5 flex flex-col items-end gap-3 text-right pl-10 reveal-up stagger-1">
             
             {/* Stats Row */}
             <div className="flex gap-12 w-full justify-end">
@@ -82,7 +83,7 @@ export default function Hero() {
         </div>
 
         {/* CTA Buttons Row */}
-        <div className="grid grid-cols-12 gap-6 items-center">
+        <div className="grid grid-cols-12 gap-6 items-center reveal-up stagger-2">
           
           {/* Left CTA: 7 Columns */}
           <div className="col-span-7 flex justify-start">
@@ -107,7 +108,7 @@ export default function Hero() {
         </div>
 
         {/* Bottom Row: Detailed Descriptions */}
-        <div className="grid grid-cols-12 gap-6 items-end border-t border-white/5 pt-8">
+        <div className="grid grid-cols-12 gap-6 items-end border-t border-white/5 pt-8 reveal-up stagger-3">
           
           {/* Left Description (7 Columns) */}
           <div className="col-span-7 flex flex-col items-start text-left gap-2">
@@ -141,15 +142,15 @@ export default function Hero() {
         
         {/* Top Section: Left-aligned Headline */}
         <div className="flex flex-col items-start text-left">
-          <h1 className="text-[34px] md:text-[46px] leading-[1.08] font-sans font-light text-text-primary tracking-tight max-w-xl">
-            The Way Your <br />
-            Business Looks <br />
-            Changes Everything.
+          <h1 className="text-[34px] md:text-[46px] leading-[1.08] font-sans font-light text-text-primary tracking-tight max-w-xl reveal-text">
+            <SplitText text="The Way Your" /> <br />
+            <SplitText text="Business Looks" /> <br />
+            <SplitText text="Changes Everything." />
           </h1>
         </div>
 
         {/* Middle Section: Centered In-flow Panther Logo (Reserves layout space, no overlap) */}
-        <div className="relative flex items-center justify-center py-4 mt-12 mb-2 z-10 select-none">
+        <div className="relative flex items-center justify-center py-4 mt-12 mb-2 z-10 select-none reveal-up stagger-1">
           {/* Subtle Ambient Backlight Glow */}
           <div className="absolute w-[280px] h-[280px] rounded-full bg-white/[0.01] blur-2xl pointer-events-none" />
 
@@ -162,7 +163,7 @@ export default function Hero() {
         </div>
 
         {/* Bottom Section: Split 2-Column Grid Layout */}
-        <div className="grid grid-cols-12 gap-x-4 gap-y-6 items-end mt-2">
+        <div className="grid grid-cols-12 gap-x-4 gap-y-6 items-end mt-2 reveal-up stagger-2">
           
           {/* Left Column (8/12 grid cols) - Bio & CTAs */}
           <div className="col-span-8 flex flex-col gap-4 text-left">
@@ -216,7 +217,7 @@ export default function Hero() {
         </div>
 
         {/* Studio Descriptions Footer (Stacked under a divider line on mobile/tablet) */}
-        <div className="grid grid-cols-12 gap-y-4 border-t border-white/5 pt-6 mt-4">
+        <div className="grid grid-cols-12 gap-y-4 border-t border-white/5 pt-6 mt-4 reveal-up stagger-3">
           <div className="col-span-12 md:col-span-6 flex flex-col items-start text-left gap-2">
             <span className="text-[10px] font-mono tracking-widest text-[#555555] uppercase font-semibold">
               &mdash; THE STUDIO
