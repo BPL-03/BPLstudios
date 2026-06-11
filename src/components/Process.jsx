@@ -34,7 +34,7 @@ export default function Process() {
                 <circle cx="12" cy="12" r="9" />
                 <circle cx="12" cy="12" r="4" />
               </svg>
-              <span className="font-syne font-medium text-[22px] text-[#DEF81D] tracking-tight">Discover</span>
+              <h3 className="font-syne font-medium text-[22px] text-[#DEF81D] tracking-tight">Discover</h3>
             </div>
           </div>
           {/* Bottom: Description */}
@@ -50,7 +50,7 @@ export default function Process() {
             <div className="flex justify-between items-center lg:items-end lg:h-[140px] w-full">
               <div className="flex items-center gap-2">
                 <span className="text-[22px] text-white">✦</span>
-                <span className="font-syne font-medium text-[22px] text-white tracking-tight">Design</span>
+                <h3 className="font-syne font-medium text-[22px] text-white tracking-tight">Design</h3>
               </div>
               <span className="font-sans font-bold text-[105px] leading-none text-[#1C1C1C] lg:group-hover:text-[#DEF81D] transition-colors duration-300 translate-y-0 lg:translate-y-[12px]">2</span>
             </div>
@@ -76,7 +76,7 @@ export default function Process() {
                   <path d="M12 2L2 12l10 10 10-10L12 2z" />
                   <circle cx="12" cy="12" r="2" fill="currentColor" />
                 </svg>
-                <span className="font-syne font-medium text-[22px] text-white tracking-tight">Refine</span>
+                <h3 className="font-syne font-medium text-[22px] text-white tracking-tight">Refine</h3>
               </div>
               <span className="font-sans font-bold text-[105px] leading-none text-[#1C1C1C] lg:group-hover:text-[#DEF81D] transition-colors duration-300 translate-y-0 lg:translate-y-[12px]">3</span>
             </div>
@@ -99,7 +99,7 @@ export default function Process() {
               <svg className="hidden lg:block w-[22px] h-[22px] text-black lg:text-[#DEF81D] lg:group-hover:text-black lg:group-hover:scale-110 lg:group-hover:rotate-6 transition-all duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
               </svg>
-              <span className="font-syne font-medium text-[22px] text-black lg:text-[#DEF81D] lg:group-hover:text-black tracking-tight transition-colors duration-300">Deliver</span>
+              <h3 className="font-syne font-medium text-[22px] text-black lg:text-[#DEF81D] lg:group-hover:text-black tracking-tight transition-colors duration-300">Deliver</h3>
             </div>
             <span className="font-sans font-bold text-[105px] leading-none text-black lg:text-[#DEF81D] lg:group-hover:text-black transition-colors duration-300 translate-y-0 lg:translate-y-[12px]">4</span>
           </div>

@@ -124,11 +124,11 @@ export default function Values() {
               <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-start lg:items-end text-left lg:text-right origin-left lg:origin-right transition-all duration-500 ease-out ${
                 activeIdx === 0 ? 'scale-[1.05]' : 'scale-100'
               }`}>
-                <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
+                <h3 className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
                   activeIdx === 0 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
                 }`}>
                   Innovative<br className="hidden lg:inline" /> Creativity
-                </span>
+                </h3>
               </div>
               {/* Description */}
               <div className={`lg:col-start-5 lg:col-span-8 origin-left transition-all duration-500 ease-out ${
@@ -158,11 +158,11 @@ export default function Values() {
               <div className={`lg:col-start-2 lg:col-span-2 flex flex-col items-end text-right origin-right transition-all duration-500 ease-out ${
                 activeIdx === 1 ? 'scale-[1.05]' : 'scale-100'
               }`}>
-                <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
+                <h3 className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
                   activeIdx === 1 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
                 }`}>
                   design that<br className="hidden lg:inline" /> crosses borders
-                </span>
+                </h3>
               </div>
               {/* Description */}
               <div className={`lg:col-start-4 lg:col-span-9 origin-left transition-all duration-500 ease-out ${
@@ -192,11 +192,11 @@ export default function Values() {
               <div className={`lg:col-start-3 lg:col-span-2 flex flex-col items-start lg:items-end text-left lg:text-right origin-left lg:origin-right transition-all duration-500 ease-out ${
                 activeIdx === 2 ? 'scale-[1.05]' : 'scale-100'
               }`}>
-                <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
+                <h3 className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
                   activeIdx === 2 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
                 }`}>
                   Transparent<br className="hidden lg:inline" /> Communication
-                </span>
+                </h3>
               </div>
               {/* Description */}
               <div className={`lg:col-start-5 lg:col-span-8 origin-left transition-all duration-500 ease-out ${
@@ -226,11 +226,11 @@ export default function Values() {
               <div className={`lg:col-start-4 lg:col-span-2 flex flex-col items-end text-right origin-right transition-all duration-500 ease-out ${
                 activeIdx === 3 ? 'scale-[1.05]' : 'scale-100'
               }`}>
-                <span className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
+                <h3 className={`font-syne font-medium text-[16px] sm:text-[22.5px] transition-colors duration-500 ease-out tracking-tight leading-[1.2] ${
                   activeIdx === 3 ? 'text-[#DEF81D]' : 'text-[#C3C3C3]/[0.38]'
                 }`}>
                   Passion<br className="hidden lg:inline" /> for Impact
-                </span>
+                </h3>
               </div>
               {/* Description */}
               <div className={`lg:col-start-6 lg:col-span-7 origin-left transition-all duration-500 ease-out ${

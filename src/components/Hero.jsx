@@ -23,7 +23,10 @@ export default function Hero() {
         {/* The Panther Logo Image */}
         <img 
           src="/assets/panther_logo.png" 
-          alt="BPL Panther Logo" 
+          alt="BPL Studios panther logo mark" 
+          width="360"
+          height="360"
+          loading="eager"
           className="w-[360px] h-[360px] object-contain select-none opacity-85 shadow-[0_0_80px_rgba(255,255,255,0.1)]"
         />
 
@@ -38,9 +41,9 @@ export default function Hero() {
           {/* Left: 7 Columns - Headline */}
           <div className="col-span-7 flex flex-col items-start text-left">
             <h1 className="text-[54px] xl:text-[60px] leading-[1.08] font-sans font-light text-text-primary tracking-tight max-w-xl reveal-text">
-              <SplitText text="The Way Your" /> <br />
-              <SplitText text="Business Looks" /> <br />
-              <SplitText text="Changes Everything." />
+              <SplitText text="Brand Identity &" /> <br />
+              <SplitText text="Digital Design Studio —" /> <br />
+              <SplitText text="Agadir, Morocco" />
             </h1>
           </div>
 
@@ -143,9 +146,9 @@ export default function Hero() {
         {/* Top Section: Left-aligned Headline */}
         <div className="flex flex-col items-start text-left">
           <h1 className="text-[34px] md:text-[46px] leading-[1.08] font-sans font-light text-text-primary tracking-tight max-w-xl reveal-text">
-            <SplitText text="The Way Your" /> <br />
-            <SplitText text="Business Looks" /> <br />
-            <SplitText text="Changes Everything." />
+            <SplitText text="Brand Identity &" /> <br />
+            <SplitText text="Digital Design Studio —" /> <br />
+            <SplitText text="Agadir, Morocco" />
           </h1>
         </div>
 
@@ -157,7 +160,10 @@ export default function Hero() {
           {/* The Panther Logo Image */}
           <img 
             src="/assets/panther_logo.png" 
-            alt="BPL Panther Logo" 
+            alt="BPL Studios panther logo mark" 
+            width="240"
+            height="240"
+            loading="eager"
             className="w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] object-contain opacity-85 shadow-[0_0_50px_rgba(255,255,255,0.08)]"
           />
         </div>

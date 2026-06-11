@@ -1,10 +1,28 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
+import ProjectDetail from './pages/ProjectDetail';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
-export default function App() {
+function ScrollToTopAndScan() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Scroll page to top on page navigation
+    window.scrollTo(0, 0);
+
+    // Scan for animations
+    if (window.scanScrollReveals) {
+      window.scanScrollReveals();
+    }
+  }, [pathname]);
+
+  return null;
+}
+
+function MainApp() {
   useEffect(() => {
     // ─── Initialize Lenis Smooth Scroll ───
     const lenis = new Lenis({
@@ -64,9 +82,21 @@ export default function App() {
 
   return (
     <>
-      <Home />
+      <ScrollToTopAndScan />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/work/:projectId" element={<ProjectDetail />} />
+      </Routes>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <MainApp />
       <Analytics />
       <SpeedInsights />
-    </>
+    </Router>
   );
 }

@@ -616,7 +616,13 @@ export default function Services() {
                   {service.fullImage ? (
                     <img 
                       src={service.fullImage} 
-                      alt={service.name} 
+                      alt={
+                        service.id === 'uxui' ? 'UX/UI Design service — digital product interface design by BPL Studios' :
+                        service.id === 'graphic' ? 'Graphic Design service — visual communication design by BPL Studios' :
+                        service.id === 'art' ? 'Art Direction service by BPL Studios' :
+                        service.id === 'development' ? 'Web Development service by BPL Studios' :
+                        service.name
+                      } 
                       loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover select-none z-10 transition-transform duration-1000 group-hover:scale-[1.03]"
                     />

@@ -104,6 +104,9 @@ export default function CTA() {
     <section id="contact" className="bg-[#000000] py-[120px] sm:py-[180px] border-b border-[#383838] overflow-hidden select-none">
       <div className="w-full px-[4.5%] md:px-[94px] max-w-[1713px] mx-auto flex flex-col">
 
+        {/* Visually hidden or small screen-reader-only/styled section header */}
+        <h2 className="sr-only">Have a Project in Mind?</h2>
+
         {/* Rows Container */}
         <div className="flex flex-col w-full">
           {TEXT_ROWS.map((text, idx) => {
@@ -120,10 +123,10 @@ export default function CTA() {
                 {!isLastRow ? (
                   /* Left Side: Text Line + Image (Desktop Only) */
                   <div className="flex items-center gap-8 lg:gap-12 flex-grow w-full">
-                    <h2 className={`font-sans font-light text-[86px] sm:text-[135px] lg:text-[192px] xl:text-[218px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out shrink-0 ${isActive ? 'text-[#DEF81D]' : 'text-[#333333] lg:text-[#1A1A1A]'
+                    <p className={`font-sans font-light text-[86px] sm:text-[135px] lg:text-[192px] xl:text-[218px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out shrink-0 ${isActive ? 'text-[#DEF81D]' : 'text-[#333333] lg:text-[#1A1A1A]'
                       }`}>
                       {text}
-                    </h2>
+                    </p>
 
                     {/* Hover Image (Desktop Only) */}
                     <div className="hidden lg:block relative h-[130px] xl:h-[162px] flex-grow">
@@ -142,10 +145,10 @@ export default function CTA() {
                   <>
                     {/* Last Row Text */}
                     <div className="flex items-center w-full lg:w-auto">
-                      <h2 className={`font-sans font-light text-[86px] sm:text-[135px] lg:text-[192px] xl:text-[218px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out ${isActive ? 'text-[#DEF81D]' : 'text-[#333333] lg:text-[#1A1A1A]'
+                      <p className={`font-sans font-light text-[86px] sm:text-[135px] lg:text-[192px] xl:text-[218px] leading-[0.85] tracking-tighter cursor-pointer transition-colors duration-500 ease-in-out ${isActive ? 'text-[#DEF81D]' : 'text-[#333333] lg:text-[#1A1A1A]'
                         }`}>
                         {text}
-                      </h2>
+                      </p>
                     </div>
 
                     {/* Let's Talk Button aligned with "together." */}

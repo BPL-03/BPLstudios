@@ -20,7 +20,10 @@ export default function About() {
             </div>
             {/* Title heading */}
             <h2 className="font-sans font-light text-[58px] sm:text-[90px] leading-[0.92] text-[#D8D8D8] tracking-tight">
-              Ahmed Arjdal
+              Ahmed Arjdal <br className="hidden sm:inline" />
+              <span className="text-[24px] sm:text-[36px] font-light text-[#7a7870] block mt-2 sm:mt-4">
+                Designer &amp; Creative Director
+              </span>
             </h2>
           </div>
 
@@ -95,7 +98,9 @@ export default function About() {
                 <div className="relative w-full h-auto lg:h-[539px] rounded-[4px] border border-[#383838] overflow-hidden bg-[#18181b] select-none">
                   <img 
                     src="/assets/portrait_ahmed.jpg" 
-                    alt="Ahmed Arjdal Portrait" 
+                    alt="Ahmed Arjdal, Designer and Creative Director at BPL Studios, Agadir Morocco" 
+                    width="459"
+                    height="539"
                     loading="lazy"
                     className="w-full h-full object-cover pointer-events-none transition-transform duration-700 hover:scale-[1.03]"
                   />

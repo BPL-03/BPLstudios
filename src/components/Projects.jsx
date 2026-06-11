@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const PROJECTS_DATA = [
   {
     id: 'majourneys',
     name: 'MAJOURNEYS',
     bgImage: '/assets/project_majourneys.jpg',
+    altText: 'MAJOURNEYS brand identity — travel brand visual system designed by BPL Studios',
     tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
     theme: {
       accent: '#DEF81D',
@@ -48,6 +50,7 @@ const PROJECTS_DATA = [
     id: 'salama',
     name: 'SALAMA',
     bgImage: '/assets/project_spim.jpg',
+    altText: 'SALAMA brand identity design by BPL Studios',
     tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
     theme: {
       accent: '#00FFB2',
@@ -92,6 +95,7 @@ const PROJECTS_DATA = [
     id: 'lexieum',
     name: 'LEXIEUM',
     bgImage: '/assets/project_farisi.jpg',
+    altText: 'LEXIEUM visual identity project by BPL Studios',
     tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
     theme: {
       accent: '#D4AF37',
@@ -136,6 +140,7 @@ const PROJECTS_DATA = [
     id: 'abrirbat',
     name: 'ABRIRBAT',
     bgImage: '/assets/project_grain_oil.jpg',
+    altText: 'ABRIRBAT brand identity designed by BPL Studios',
     tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
     theme: {
       accent: '#FF4D00',
@@ -180,6 +185,7 @@ const PROJECTS_DATA = [
     id: 'streamn',
     name: 'STREAM N.',
     bgImage: '/assets/project_codesign.jpg',
+    altText: 'STREAM N. visual identity by BPL Studios',
     tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
     theme: {
       accent: '#BF00FF',
@@ -224,6 +230,7 @@ const PROJECTS_DATA = [
     id: 'polored',
     name: 'POLO RED',
     bgImage: '/assets/project_brandplus.jpg',
+    altText: 'POLO RED brand design by BPL Studios',
     tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
     theme: {
       accent: '#FF003C',
@@ -238,6 +245,7 @@ const PROJECTS_DATA = [
       card2: {
         bgImage: '/assets/project_brandplus.jpg',
         type: 'image',
+        altText: 'POLO RED brand design by BPL Studios'
       },
       card3: {
         bg: '#140508',
@@ -390,9 +398,9 @@ export default function Projects() {
         {/* Selected Work Label with left line */}
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-[1px] bg-[#D8D8D8]" />
-          <span className="font-dm-sans text-[12px] font-medium tracking-[2px] text-[#D8D8D8] uppercase">
+          <h2 className="font-dm-sans text-[12px] font-medium tracking-[2px] text-[#D8D8D8] uppercase">
             Selected Work
-          </span>
+          </h2>
         </div>
 
         {/* Section Heading & Columns Layout */}
@@ -656,18 +664,22 @@ export default function Projects() {
             <div className="flex flex-col items-start gap-y-2">
               {PROJECTS_DATA.map((proj, idx) => {
                 const isActive = idx === activeIdx;
+                // Map local ID to the exact requested URL slug structure
+                const slug = proj.id === 'axon' ? 'axon-group-brand-identity' :
+                             proj.id === 'majourneys' ? 'majourneys-brand-identity' :
+                             proj.id === 'salama' ? 'salama-brand-design' :
+                             proj.id === 'lexieum' ? 'lexieum-visual-identity' :
+                             proj.id === 'abrirbat' ? 'abrirbat-branding' :
+                             proj.id === 'streamn' ? 'stream-n-identity' :
+                             proj.id === 'polored' ? 'polo-red-brand' :
+                             proj.id;
                 return (
-                  <button
+                  <Link
                     key={proj.id}
-                    onClick={() => {
-                      if (hoverTimeoutRef.current) {
-                        clearTimeout(hoverTimeoutRef.current);
-                      }
-                      setActiveIdx(idx);
-                    }}
+                    to={`/work/${slug}`}
                     onMouseEnter={() => handleMouseEnter(idx)}
                     onMouseLeave={handleMouseLeave}
-                    className="focus:outline-none transition-all duration-300"
+                    className="focus:outline-none transition-all duration-300 text-left"
                   >
                     <span 
                       className={`font-anek-devanagari font-light text-[36px] sm:text-[44px] xl:text-[51px] leading-[0.85] transition-all duration-300 block ${
@@ -678,7 +690,7 @@ export default function Projects() {
                     >
                       {proj.name}
                     </span>
-                  </button>
+                  </Link>
                 );
               })}
             </div>
@@ -755,7 +767,9 @@ export default function Projects() {
                     {/* Project Image */}
                     <img 
                       src={proj.bgImage} 
-                      alt={proj.name}
+                      alt={proj.altText || proj.name}
+                      width="600"
+                      height="800"
                       loading="lazy"
                       className="w-full h-full object-cover pointer-events-none"
                     />

@@ -40,8 +40,10 @@ export default function Footer() {
             <div className="w-[180px] lg:w-[220px] aspect-[908/1024] rounded-[4px] overflow-hidden select-none">
               <img 
                 src="/assets/panther_logo_exact.png" 
-                alt="BPL Studios Panther Logo"
+                alt="BPL Studios logo — Made by BPL"
                 loading="lazy"
+                width="180"
+                height="203"
                 className="w-full h-full object-contain pointer-events-none"
               />
             </div>
@@ -55,11 +57,11 @@ export default function Footer() {
           {/* Center Column: CTA Text */}
           <div className="lg:col-span-5 flex flex-col justify-between h-full min-h-[220px] lg:pb-1">
             <div className="flex flex-col">
-              <h3 className="font-sans font-light text-[32px] sm:text-[38px] lg:text-[44px] xl:text-[50px] leading-[1.15] text-[#b5b4ad] tracking-tight">
+              <h2 className="font-sans font-light text-[32px] sm:text-[38px] lg:text-[44px] xl:text-[50px] leading-[1.15] text-[#b5b4ad] tracking-tight">
                 We are ready<br />
                 to discuss your<br />
                 project
-              </h3>
+              </h2>
             </div>
           </div>
 

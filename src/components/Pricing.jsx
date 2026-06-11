@@ -137,9 +137,9 @@ export default function Pricing() {
           <div className="w-full lg:max-w-[433px] mx-auto min-h-[478px] p-5 sm:pt-[29px] sm:pb-[38px] sm:px-[24px] flex flex-col justify-between lg:border-none relative">
             <div>
               {/* Tier Label */}
-              <span className="font-dm-sans font-medium text-[13px] tracking-[2.5px] uppercase text-[#D8D8D8]/60 leading-none">
+              <h3 className="font-dm-sans font-medium text-[13px] tracking-[2.5px] uppercase text-[#D8D8D8]/60 leading-none">
                 Starter
-              </span>
+              </h3>
 
               {/* Price — dominant element */}
               <div className="flex items-baseline gap-2 mt-4 mb-2">
@@ -177,9 +177,9 @@ export default function Pricing() {
           <div className="w-full lg:max-w-[433px] mx-auto min-h-[478px] p-5 sm:pt-[29px] sm:pb-[38px] sm:px-[24px] flex flex-col justify-between lg:border-none relative">
             <div>
               {/* Tier Label */}
-              <span className="font-dm-sans font-medium text-[13px] tracking-[2.5px] uppercase text-[#D8D8D8]/60 leading-none">
+              <h3 className="font-dm-sans font-medium text-[13px] tracking-[2.5px] uppercase text-[#D8D8D8]/60 leading-none">
                 Core
-              </span>
+              </h3>
 
               {/* Price — dominant element */}
               <div className="flex items-baseline gap-2 mt-4 mb-2">
@@ -219,9 +219,9 @@ export default function Pricing() {
             <div>
               {/* Tier Label */}
               <div className="flex justify-end">
-                <span className="font-dm-sans font-medium text-[13px] tracking-[2.5px] uppercase text-[#D8D8D8]/60 leading-none">
+                <h3 className="font-dm-sans font-medium text-[13px] tracking-[2.5px] uppercase text-[#D8D8D8]/60 leading-none">
                   Signature
-                </span>
+                </h3>
               </div>
 
               {/* Price — dominant element */}
