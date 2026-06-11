@@ -1,4 +1,5 @@
 import React from 'react';
+import SplitText from './SplitText';
 
 export default function Values() {
   const [activeIdx, setActiveIdx] = React.useState(0);
@@ -81,20 +82,20 @@ export default function Values() {
           {/* Left: Title & Label */}
           <div className="lg:col-span-7 flex flex-col items-start gap-[7px]">
             {/* Label Group */}
-            <div className="flex items-center gap-[16px]">
+            <div className="flex items-center gap-[16px] reveal-up">
               <div className="w-[25px] h-[1px] bg-[#D8D8D8]" />
               <span className="font-dm-sans text-[10px] font-medium tracking-[1.86px] text-[#D8D8D8] uppercase leading-[17px]">
                 HOW I WORK
               </span>
             </div>
             {/* Title */}
-            <h2 className="font-sans font-light text-[50px] sm:text-[94.42px] leading-[0.95] text-[#D8D8D8] tracking-tight">
-              What really matters
+            <h2 className="font-sans font-light text-[50px] sm:text-[94.42px] leading-[0.95] text-[#D8D8D8] tracking-tight reveal-text stagger-1">
+              <SplitText text="What really matters" />
             </h2>
           </div>
 
           {/* Right: Tagline Description */}
-          <div className="lg:col-start-9 lg:col-span-4 self-start mt-4 lg:-mt-[64px] flex justify-end w-full lg:w-auto">
+          <div className="lg:col-start-9 lg:col-span-4 self-start mt-4 lg:-mt-[64px] flex justify-end w-full lg:w-auto reveal-up stagger-2">
             {/* Desktop Tagline */}
             <div className="hidden lg:flex font-syne font-medium text-[17px] sm:text-[18px] leading-[1.4] text-[#C1CBCC]/40 w-fit flex flex-col items-end">
               <div className="text-left w-full">Merging Imagination</div>
@@ -116,7 +117,7 @@ export default function Values() {
           <div 
             ref={(el) => (rowRefs.current[0] = el)}
             onMouseEnter={() => handleMouseEnter(0)}
-            className="w-full group cursor-pointer"
+            className="w-full group cursor-pointer reveal-up"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
@@ -150,7 +151,7 @@ export default function Values() {
           <div 
             ref={(el) => (rowRefs.current[1] = el)}
             onMouseEnter={() => handleMouseEnter(1)}
-            className="w-full group cursor-pointer"
+            className="w-full group cursor-pointer reveal-up stagger-1"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
@@ -184,7 +185,7 @@ export default function Values() {
           <div 
             ref={(el) => (rowRefs.current[2] = el)}
             onMouseEnter={() => handleMouseEnter(2)}
-            className="w-full group cursor-pointer"
+            className="w-full group cursor-pointer reveal-up stagger-2"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
@@ -218,7 +219,7 @@ export default function Values() {
           <div 
             ref={(el) => (rowRefs.current[3] = el)}
             onMouseEnter={() => handleMouseEnter(3)}
-            className="w-full group cursor-pointer"
+            className="w-full group cursor-pointer reveal-up stagger-3"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-3 lg:gap-x-8 py-[35px] sm:py-[35px] items-start">
               {/* Label */}
