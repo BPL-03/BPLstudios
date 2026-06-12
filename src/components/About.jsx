@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SplitText from './SplitText';
 
 export default function About() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [scrollTop, setScrollTop] = useState(0);
-  const [scrollHeight, setScrollHeight] = useState(0);
-  const [clientHeight, setClientHeight] = useState(0);
+  const scrollRef = useRef(null);
+  const trackerRef = useRef(null);
+  const rafRef = useRef(null);
+  const currentY = useRef(194.73);
+  const targetY = useRef(194.73);
 
-  const handleScroll = (e) => {
-    setScrollTop(e.target.scrollTop);
-    setScrollHeight(e.target.scrollHeight);
-    setClientHeight(e.target.clientHeight);
-  };
+  const startTop = 194.73;
 
   useEffect(() => {
     if (isDrawerOpen) {
@@ -25,15 +23,46 @@ export default function About() {
   }, [isDrawerOpen]);
 
   useEffect(() => {
-    if (!isDrawerOpen) {
-      setScrollTop(0);
-    }
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = el;
+      const pct = scrollHeight - clientHeight > 0 ? scrollTop / (scrollHeight - clientHeight) : 0;
+      const endTop = scrollHeight - 77.43 - 120;
+      targetY.current = startTop + (endTop - startTop) * pct;
+    };
+
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
   }, [isDrawerOpen]);
 
-  const pct = scrollHeight - clientHeight > 0 ? scrollTop / (scrollHeight - clientHeight) : 0;
-  const startTop = 194.73;
-  const endTop = scrollHeight > 0 ? scrollHeight - 77.43 - 56 : startTop;
-  const trackerTop = startTop + (endTop - startTop) * pct;
+  useEffect(() => {
+    const tick = (timestamp) => {
+      const delta = Math.min((timestamp - (rafRef.lastTime || timestamp)) / 16.67, 3);
+      rafRef.lastTime = timestamp;
+
+      const t = 1 - Math.pow(0.85, delta); // frame-rate independent lerp
+      currentY.current = currentY.current + (targetY.current - currentY.current) * t;
+
+      if (trackerRef.current) {
+        trackerRef.current.style.transform = `translateY(${currentY.current}px)`;
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  // Reset on drawer close
+  useEffect(() => {
+    if (!isDrawerOpen) {
+      currentY.current = startTop;
+      targetY.current = startTop;
+    }
+  }, [isDrawerOpen]);
 
   return (
     <section 
@@ -74,7 +103,7 @@ export default function About() {
                 <div className="flex flex-col gap-4 items-end">
                   {/* Instagram */}
                   <a 
-                    href="https://instagram.com/" 
+                    href="https://www.instagram.com/bpl.studios/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#888888] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:bg-white/5 active:scale-95 transition-all focus:outline-none"
@@ -87,7 +116,7 @@ export default function About() {
                   
                   {/* LinkedIn */}
                   <a 
-                    href="https://linkedin.com/" 
+                    href="https://www.linkedin.com/in/bpl003" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#888888] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:bg-white/5 active:scale-95 transition-all focus:outline-none"
@@ -100,7 +129,7 @@ export default function About() {
 
                   {/* Behance */}
                   <a 
-                    href="https://behance.net/" 
+                    href="https://www.behance.net/amad003" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#888888] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:bg-white/5 active:scale-95 transition-all focus:outline-none"
@@ -114,7 +143,7 @@ export default function About() {
 
                   {/* WhatsApp */}
                   <a 
-                    href="https://wa.me/" 
+                    href="https://wa.me/212772247633" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#888888] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:bg-white/5 active:scale-95 transition-all focus:outline-none"
@@ -246,20 +275,21 @@ export default function About() {
 
         {/* Content container */}
         <div 
-          className="relative z-10 flex flex-col h-full overflow-y-auto no-scrollbar pt-[66.06px] pb-[56px] select-text"
-          onScroll={handleScroll}
+          ref={scrollRef}
+          className="relative z-10 flex flex-col h-full overflow-y-auto no-scrollbar pt-[66.06px] select-text"
         >
           {/* Inner relative container to measure scroll height and contain vertical lines */}
           <div className="relative flex flex-col min-h-full pl-[75.78px] pr-[44px]">
             
             <div 
+              ref={trackerRef}
               className="absolute left-[28px] w-[3px] bg-white pointer-events-none shadow-[0px_3.87px_3.87px_rgba(0,0,0,0.25)]"
               style={{ 
                 borderLeftWidth: '2.9px', 
                 borderLeftColor: '#FFFFFF',
-                top: `${trackerTop}px`,
+                top: 0,
                 height: '77.43px',
-                transition: 'top 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
+                willChange: 'transform'
               }}
             />
 
@@ -544,10 +574,10 @@ export default function About() {
           </div>
 
           {/* Spacer */}
-          <div className="h-[90px] shrink-0" />
+          <div className="h-[60px] shrink-0" />
 
           {/* Bottom CTA */}
-          <div className={`flex justify-center w-full mt-auto reveal-up stagger-5 ${isDrawerOpen ? 'in-view' : ''}`}>
+          <div className={`flex justify-start w-full reveal-up stagger-2 ${isDrawerOpen ? 'in-view' : ''}`}>
             <a
               href="#contact"
               onClick={(e) => {
@@ -569,6 +599,8 @@ export default function About() {
               Let’s Talk <span>→</span>
             </a>
           </div>
+          {/* Spacing after the button to allow scrolling past it */}
+          <div className="h-[120px] shrink-0" />
 
           </div>
         </div>

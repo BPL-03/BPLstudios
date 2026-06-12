@@ -99,7 +99,7 @@ export default function Footer() {
 
               {/* Behance */}
               <a
-                href="https://www.behance.net/bplstudios"
+                href="https://www.behance.net/amad003"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-[72px] h-[38px] rounded-full bg-[#141414] border border-[#2a2a29] hover:border-accent/40 hover:bg-[#1a1a19] transition-all duration-300 group"

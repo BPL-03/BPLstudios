@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SplitText from './SplitText';
 
 export default function ContactDrawer() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrollTop, setScrollTop] = useState(0);
-  const [scrollHeight, setScrollHeight] = useState(0);
-  const [clientHeight, setClientHeight] = useState(0);
+  const scrollRef = useRef(null);
+  const trackerRef = useRef(null);
+  const rafRef = useRef(null);
+  const currentY = useRef(124);
+  const targetY = useRef(124);
+
+  const startTop = 124;
 
   // Form states
   const [name, setName] = useState('');
@@ -34,20 +38,49 @@ export default function ContactDrawer() {
   }, [isOpen]);
 
   useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = el;
+      const pct = scrollHeight - clientHeight > 0 ? scrollTop / (scrollHeight - clientHeight) : 0;
+      const endTop = scrollHeight - 42.5 - 120;
+      targetY.current = startTop + (endTop - startTop) * pct;
+    };
+
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, [isOpen]);
+
+  useEffect(() => {
+    const tick = (timestamp) => {
+      const delta = Math.min((timestamp - (rafRef.lastTime || timestamp)) / 16.67, 3);
+      rafRef.lastTime = timestamp;
+
+      const t = 1 - Math.pow(0.85, delta); // frame-rate independent lerp
+      currentY.current = currentY.current + (targetY.current - currentY.current) * t;
+
+      if (trackerRef.current) {
+        trackerRef.current.style.transform = `translateY(${currentY.current}px)`;
+      }
+
+      rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  // Reset on drawer close
+  useEffect(() => {
     if (!isOpen) {
-      setScrollTop(0);
+      currentY.current = startTop;
+      targetY.current = startTop;
     }
   }, [isOpen]);
 
-  const handleScroll = (e) => {
-    setScrollTop(e.target.scrollTop);
-    setScrollHeight(e.target.scrollHeight);
-    setClientHeight(e.target.clientHeight);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate submission
     alert(`Thank you ${name}! Your request has been sent.`);
     setIsOpen(false);
   };
@@ -60,13 +93,8 @@ Website: ${website}
 Budget: ${budget}
 Challenge: ${challenge}`;
     const encoded = encodeURIComponent(message);
-    window.open(`https://wa.me/212600000000?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/212772247633?text=${encoded}`, '_blank');
   };
-
-  const pct = scrollHeight - clientHeight > 0 ? scrollTop / (scrollHeight - clientHeight) : 0;
-  const startTop = 124;
-  const endTop = scrollHeight > 0 ? scrollHeight - 42.5 - 56 : startTop;
-  const trackerTop = startTop + (endTop - startTop) * pct;
 
   return (
     <>
@@ -110,21 +138,22 @@ Challenge: ${challenge}`;
 
         {/* Scrollable container */}
         <div 
-          className="relative z-10 flex flex-col h-full overflow-y-auto no-scrollbar pt-[124px] pb-[56px] select-text"
-          onScroll={handleScroll}
+          ref={scrollRef}
+          className="relative z-10 flex flex-col h-full overflow-y-auto no-scrollbar pt-[124px] select-text"
         >
           {/* Inner content wrapper */}
           <div className="relative flex flex-col min-h-full pl-[55.09px] pr-[44px]">
 
             {/* Active highlight tracker line */}
             <div 
+              ref={trackerRef}
               className="absolute left-[28px] w-[3px] bg-white pointer-events-none shadow-[0px_3.87px_3.87px_rgba(0,0,0,0.25)]"
               style={{ 
                 borderLeftWidth: '2.9px', 
                 borderLeftColor: '#FFFFFF',
-                top: `${trackerTop}px`,
+                top: 0,
                 height: '42.5px',
-                transition: 'top 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
+                willChange: 'transform'
               }}
             />
 
@@ -204,7 +233,7 @@ Challenge: ${challenge}`;
                       <label className="font-anek-devanagari text-[14px] font-medium text-white">Phone number</label>
                       <input 
                         type="tel" 
-                        placeholder="+2126XXXXXXXX"
+                        placeholder="+2127XXXXXXXX"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         className="w-full h-[41.2px] bg-white border border-white/24 rounded-[3.9px] px-4 font-anek-devanagari text-[14px] text-black/58 placeholder-black/58 focus:outline-none"
@@ -289,7 +318,7 @@ Challenge: ${challenge}`;
               </div>
 
               {/* Bottom Buttons */}
-              <div className={`flex flex-col sm:flex-row gap-4 justify-end mt-4 reveal-up stagger-5 ${isOpen ? 'in-view' : ''}`}>
+              <div className={`flex flex-col sm:flex-row gap-4 justify-start mt-4 pl-[24px] reveal-up stagger-2 ${isOpen ? 'in-view' : ''}`}>
                 <button
                   type="button"
                   onClick={handleWhatsappSubmit}
@@ -306,6 +335,8 @@ Challenge: ${challenge}`;
               </div>
 
             </form>
+            {/* Spacing after the buttons to allow scrolling past them */}
+            <div className="h-[120px] shrink-0" />
           </div>
         </div>
       </div>
