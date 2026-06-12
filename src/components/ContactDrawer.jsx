@@ -79,20 +79,62 @@ export default function ContactDrawer() {
     }
   }, [isOpen]);
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`New Project Request - ${company || name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\n` +
-      `Email: ${email}\n` +
-      `Phone: ${phone || 'Not provided'}\n` +
-      `Brand/Company: ${company || 'Not provided'}\n` +
-      `Website: ${website || 'Not provided'}\n` +
-      `Investment Range: ${budget}\n\n` +
-      `Challenge:\n${challenge || 'Not provided'}`
-    );
-    window.location.href = `mailto:contact@bplstudios.com?subject=${subject}&body=${body}`;
-    setIsOpen(false);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          company,
+          website,
+          budget,
+          challenge
+        })
+      });
+
+      if (response.ok) {
+        alert(`Thank you ${name}! Your request has been sent successfully.`);
+        // Reset form
+        setName('');
+        setEmail('');
+        setPhone('');
+        setCompany('');
+        setWebsite('');
+        setBudget('500$ - 800$');
+        setChallenge('');
+        setIsOpen(false);
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Server error');
+      }
+    } catch (err) {
+      console.warn('Form submission via API failed, falling back to mailto:', err);
+      // Fallback to mailto link
+      const subject = encodeURIComponent(`New Project Request - ${company || name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${phone || 'Not provided'}\n` +
+        `Brand/Company: ${company || 'Not provided'}\n` +
+        `Website: ${website || 'Not provided'}\n` +
+        `Investment Range: ${budget}\n\n` +
+        `Challenge:\n${challenge || 'Not provided'}`
+      );
+      window.location.href = `mailto:contact@bplstudios.com?subject=${subject}&body=${body}`;
+      setIsOpen(false);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleWhatsappSubmit = () => {
@@ -338,9 +380,10 @@ Challenge: ${challenge}`;
                 </button>
                 <button
                   type="submit"
-                  className="bg-[#DEF81D] hover:bg-[#cbf00f] text-black px-6 h-[52.37px] rounded-[4px] font-dm-sans font-medium text-[16px] tracking-[0.57px] flex items-center justify-center gap-2 cursor-pointer transition-all shrink-0"
+                  disabled={isSubmitting}
+                  className="bg-[#DEF81D] hover:bg-[#cbf00f] disabled:opacity-50 text-black px-6 h-[52.37px] rounded-[4px] font-dm-sans font-medium text-[16px] tracking-[0.57px] flex items-center justify-center gap-2 cursor-pointer transition-all shrink-0"
                 >
-                  Send Request <span>→</span>
+                  {isSubmitting ? 'Sending...' : 'Send Request'} <span>→</span>
                 </button>
               </div>
 
