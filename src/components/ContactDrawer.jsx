@@ -81,7 +81,17 @@ export default function ContactDrawer() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Thank you ${name}! Your request has been sent.`);
+    const subject = encodeURIComponent(`New Project Request - ${company || name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\n` +
+      `Email: ${email}\n` +
+      `Phone: ${phone || 'Not provided'}\n` +
+      `Brand/Company: ${company || 'Not provided'}\n` +
+      `Website: ${website || 'Not provided'}\n` +
+      `Investment Range: ${budget}\n\n` +
+      `Challenge:\n${challenge || 'Not provided'}`
+    );
+    window.location.href = `mailto:contact@bplstudios.com?subject=${subject}&body=${body}`;
     setIsOpen(false);
   };
 
