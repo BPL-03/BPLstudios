@@ -5,7 +5,7 @@ const PROJECTS_DATA = [
   {
     id: 'majourneys',
     name: 'MAJOURNEYS',
-    bgImage: '/assets/majourneys/project-dt-1.jpeg-2.png',
+    bgImage: '/assets/majourneys_opt/460b22213656639.6752417e6a5ab.jpg',
     altText: 'MAJOURNEYS brand identity — travel brand visual system designed by BPL Studios',
     tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
     theme: {
@@ -15,16 +15,18 @@ const PROJECTS_DATA = [
     bento: {
       card1: {
         bg: '#E9E9E9',
-        type: 'tshirt',
+        type: 'image',
+        bgImage: '/assets/majourneys_opt/tshirt_photo.jpg',
         accentColor: '#C58B37',
       },
       card2: {
-        bgImage: '/assets/majourneys/project-dt-1.jpeg-2.png',
+        bgImage: '/assets/majourneys_opt/460b22213656639.6752417e6a5ab.jpg',
         type: 'image',
       },
       card3: {
         bg: '#040036',
-        type: 'monogram',
+        type: 'image',
+        bgImage: '/assets/majourneys_opt/card_crest_vert.jpg',
         monogramText: 'MJ',
         textColor: '#E6B975',
       },
@@ -32,6 +34,7 @@ const PROJECTS_DATA = [
         bg: 'linear-gradient(135deg, #040033 0%, #08004f 100%)',
         type: 'banner',
         text: 'Journey with us',
+        bottleSrc: '/assets/majourneys_opt/bottle_cutout.jpg',
         bottleImage: true,
       },
       card5: {
@@ -425,8 +428,18 @@ export default function Projects() {
           <div className="col-span-12 lg:col-span-9 flex flex-col gap-8">
             
             {/* Bento Showcase Box */}
-            <div 
-              className="relative w-full h-[320px] sm:h-[480px] lg:h-[560px] xl:h-[608px] rounded-[4px] overflow-hidden border border-[#383838] flex items-center justify-center p-4 sm:p-8 group"
+            <Link 
+              to={`/work/${
+                activeProj.id === 'axon' ? 'axon-group-brand-identity' :
+                activeProj.id === 'majourneys' ? 'majourneys-brand-identity' :
+                activeProj.id === 'salama' ? 'salama-brand-design' :
+                activeProj.id === 'lexieum' ? 'lexieum-visual-identity' :
+                activeProj.id === 'abrirbat' ? 'abrirbat-branding' :
+                activeProj.id === 'streamn' ? 'stream-n-identity' :
+                activeProj.id === 'polored' ? 'polo-red-brand' :
+                activeProj.id
+              }`}
+              className="relative w-full h-[320px] sm:h-[480px] lg:h-[560px] xl:h-[608px] rounded-[4px] overflow-hidden border border-[#383838] flex items-center justify-center p-4 sm:p-8 group cursor-pointer block"
             >
               {/* Animated Zoom Wrapper */}
               <div className="absolute inset-0 transition-transform duration-1000 ease-out group-hover:scale-105 z-0 pointer-events-none">
@@ -464,7 +477,12 @@ export default function Projects() {
                         width: '34%'
                       }}
                     >
-                      {activeProj.bento.card1.type === 'tshirt' ? (
+                      {activeProj.bento.card1.bgImage ? (
+                        <div 
+                          className="w-full h-full bg-cover bg-center"
+                          style={{ backgroundImage: `url("${activeProj.bento.card1.bgImage}")` }}
+                        />
+                      ) : activeProj.bento.card1.type === 'tshirt' ? (
                         <div className="flex flex-col items-center justify-center text-center w-full h-full p-2">
                           {/* Stylized premium tshirt illustration */}
                           <div className="relative w-16 h-16 sm:w-24 sm:h-24 flex items-center justify-center">
@@ -540,7 +558,15 @@ export default function Projects() {
                       
                       {/* Interactive graphic elements to mimic Figma screenshots */}
                       <div className="flex items-center justify-center shrink-0 pr-1 sm:pr-2">
-                        {activeProj.bento.card4.bottleImage ? (
+                        {activeProj.bento.card4.bottleSrc ? (
+                          <div className="w-10 h-14 sm:w-14 sm:h-18 relative flex items-center justify-center overflow-hidden rounded-[4px]">
+                            <img 
+                              src={activeProj.bento.card4.bottleSrc} 
+                              alt="Majourneys Bottle" 
+                              className="w-full h-full object-contain drop-shadow-xl" 
+                            />
+                          </div>
+                        ) : activeProj.bento.card4.bottleImage ? (
                           <div className="w-7 h-10 sm:w-10 sm:h-14 relative flex items-center justify-center">
                             {/* Cylinder bottle shape */}
                             <div className="w-4 h-9 sm:w-6 sm:h-13 bg-[#C58B37] rounded-md relative flex flex-col items-center justify-between py-1 border border-white/10 shadow-md">
@@ -618,35 +644,44 @@ export default function Projects() {
                   className="rounded-xl flex flex-col items-center justify-center p-6 relative overflow-hidden md:w-[34%] h-full transition-all duration-300 hover:scale-[1.01] border border-white/5"
                   style={{ backgroundColor: activeProj.bento.card3.bg }}
                 >
-                  {/* Grid overlay */}
-                  <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#fff_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
-
-                  {/* Monogram crest */}
-                  <div className="flex flex-col items-center text-center relative z-10">
+                  {activeProj.bento.card3.bgImage ? (
                     <div 
-                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border flex items-center justify-center mb-6"
-                      style={{ borderColor: `${activeProj.bento.card3.textColor}35` }}
-                    >
-                      <span 
-                        className="font-aclonica text-[22px] sm:text-[26px]"
-                        style={{ color: activeProj.bento.card3.textColor }}
-                      >
-                        {activeProj.bento.card3.monogramText}
-                      </span>
-                    </div>
-                    
-                    <span 
-                      className="font-sans font-light tracking-[0.25em] text-[9px] sm:text-[11px] uppercase mt-2"
-                      style={{ color: activeProj.bento.card3.textColor }}
-                    >
-                      {activeProj.name}
-                    </span>
-                  </div>
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url("${activeProj.bento.card3.bgImage}")` }}
+                    />
+                  ) : (
+                    <>
+                      {/* Grid overlay */}
+                      <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#fff_1.5px,transparent_1.5px)] [background-size:16px_16px] pointer-events-none" />
+
+                      {/* Monogram crest */}
+                      <div className="flex flex-col items-center text-center relative z-10">
+                        <div 
+                          className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border flex items-center justify-center mb-6"
+                          style={{ borderColor: `${activeProj.bento.card3.textColor}35` }}
+                        >
+                          <span 
+                            className="font-aclonica text-[22px] sm:text-[26px]"
+                            style={{ color: activeProj.bento.card3.textColor }}
+                          >
+                            {activeProj.bento.card3.monogramText}
+                          </span>
+                        </div>
+                        
+                        <span 
+                          className="font-sans font-light tracking-[0.25em] text-[9px] sm:text-[11px] uppercase mt-2"
+                          style={{ color: activeProj.bento.card3.textColor }}
+                        >
+                          {activeProj.name}
+                        </span>
+                      </div>
+                    </>
+                  )}
                 </div>
 
               </div>
 
-            </div>
+            </Link>
             
             {/* Description displayed under bento box aligned to right edge */}
             <div className="flex justify-end">
