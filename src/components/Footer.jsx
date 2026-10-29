@@ -100,7 +100,7 @@ export default function Footer() {
 
               {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/company/bpl-studios"
+                href="https://www.linkedin.com/in/bpl003"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-[44px] h-[44px] rounded-full bg-[#141414] border border-[#2a2a29] hover:border-accent/40 hover:bg-[#1a1a19] transition-all duration-300 group"
