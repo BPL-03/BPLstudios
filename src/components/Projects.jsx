@@ -21,8 +21,8 @@ const PROJECTS_DATA = [
         accentColor: '#C58B37',
       },
       card2: {
-        bgImage: '/assets/majourneys_opt/460b22213656639.6752417e6a5ab.jpg',
-        bgPosition: '30% center',
+        bgImage: '/assets/majourneys_opt/card_camels_clean.png',
+        bgPosition: 'center center',
         type: 'image',
       },
       card3: {
@@ -33,19 +33,20 @@ const PROJECTS_DATA = [
         textColor: '#E6B975',
       },
       card4: {
-        bg: 'linear-gradient(135deg, #040033 0%, #08004f 100%)',
-        type: 'banner',
+        bg: '#040033',
+        type: 'image',
+        bgImage: '/assets/majourneys_opt/card_journey_banner.png',
         text: 'Journey with us',
-        bottleSrc: '/assets/majourneys_opt/bottle_cutout.jpg',
-        bottleImage: true,
       },
       card5: {
-        type: 'colors',
+        type: 'image',
+        bgImage: '/assets/majourneys_opt/card_colors_exact.png',
         colors: ['#040033', '#C58B37', '#E6B975', '#FFEED4', '#FBFBFB'],
       },
       card6: {
         bg: '#0a0a09',
-        type: 'typo',
+        type: 'image',
+        bgImage: '/assets/majourneys_opt/card_aa_silk.png',
         text: 'Aa',
         fontClass: 'font-aclonica',
       }
@@ -535,10 +536,7 @@ export default function Projects() {
                         backgroundPosition: activeProj.bento.card2.bgPosition || 'center center',
                         width: '66%'
                       }}
-                    >
-                      {/* Subtle dark layout overlay */}
-                      <div className="absolute inset-0 bg-black/10 hover:bg-black/0 transition-colors duration-300" />
-                    </div>
+                    />
 
                   </div>
 
@@ -547,83 +545,107 @@ export default function Projects() {
                     
                     {/* Card 4: Journey with us banner */}
                     <div 
-                      className="rounded-xl p-3 sm:p-5 flex items-center justify-between relative overflow-hidden transition-all duration-300 hover:scale-[1.01]"
+                      className="rounded-xl relative overflow-hidden transition-all duration-300 hover:scale-[1.01]"
                       style={{ 
                         background: activeProj.bento.card4.bg,
                         width: '54%'
                       }}
                     >
-                      <div className="flex flex-col text-left justify-center">
-                        <span className="font-aclonica text-[12px] sm:text-[18px] xl:text-[24px] text-white/95 leading-tight">
-                          {activeProj.bento.card4.text.split(' ')[0]}
-                        </span>
-                        <span className="font-aclonica text-[12px] sm:text-[18px] xl:text-[24px] text-white/90 leading-tight">
-                          {activeProj.bento.card4.text.split(' ').slice(1).join(' ')}
-                        </span>
-                      </div>
-                      
-                      {/* Interactive graphic elements to mimic Figma screenshots */}
-                      <div className="flex items-center justify-center shrink-0 pr-1 sm:pr-2">
-                        {activeProj.bento.card4.bottleSrc ? (
-                          <div className="w-10 h-14 sm:w-14 sm:h-18 relative flex items-center justify-center overflow-hidden rounded-[4px]">
-                            <img 
-                              src={activeProj.bento.card4.bottleSrc} 
-                              alt="Majourneys Bottle" 
-                              className="w-full h-full object-contain drop-shadow-xl" 
-                            />
+                      {activeProj.bento.card4.bgImage ? (
+                        <div 
+                          className="w-full h-full bg-cover bg-center"
+                          style={{
+                            backgroundImage: `url("${activeProj.bento.card4.bgImage}")`,
+                            backgroundPosition: activeProj.bento.card4.bgPosition || 'center center'
+                          }}
+                        />
+                      ) : (
+                        <div className="w-full h-full p-3 sm:p-5 flex items-center justify-between">
+                          <div className="flex flex-col text-left justify-center">
+                            <span className="font-aclonica text-[12px] sm:text-[18px] xl:text-[24px] text-white/95 leading-tight">
+                              {activeProj.bento.card4.text?.split(' ')[0]}
+                            </span>
+                            <span className="font-aclonica text-[12px] sm:text-[18px] xl:text-[24px] text-white/90 leading-tight">
+                              {activeProj.bento.card4.text?.split(' ').slice(1).join(' ')}
+                            </span>
                           </div>
-                        ) : activeProj.bento.card4.bottleImage ? (
-                          <div className="w-7 h-10 sm:w-10 sm:h-14 relative flex items-center justify-center">
-                            {/* Cylinder bottle shape */}
-                            <div className="w-4 h-9 sm:w-6 sm:h-13 bg-[#C58B37] rounded-md relative flex flex-col items-center justify-between py-1 border border-white/10 shadow-md">
-                              <div className="w-2.5 h-1 bg-[#ffe6c0] rounded-sm absolute -top-1" />
-                              <div className="w-1.5 h-1.5 rounded-full bg-white/20 border border-white/30 flex items-center justify-center">
-                                <span className="text-[3px] text-white font-serif uppercase">MJ</span>
+                          
+                          {/* Interactive graphic elements to mimic Figma screenshots */}
+                          <div className="flex items-center justify-center shrink-0 pr-1 sm:pr-2">
+                            {activeProj.bento.card4.bottleSrc ? (
+                              <div className="w-10 h-14 sm:w-14 sm:h-18 relative flex items-center justify-center overflow-hidden rounded-[4px]">
+                                <img 
+                                  src={activeProj.bento.card4.bottleSrc} 
+                                  alt="Majourneys Bottle" 
+                                  className="w-full h-full object-contain drop-shadow-xl" 
+                                />
                               </div>
-                              <div className="w-3 h-0.5 bg-black/20" />
-                            </div>
+                            ) : activeProj.bento.card4.bottleImage ? (
+                              <div className="w-7 h-10 sm:w-10 sm:h-14 relative flex items-center justify-center">
+                                {/* Cylinder bottle shape */}
+                                <div className="w-4 h-9 sm:w-6 sm:h-13 bg-[#C58B37] rounded-md relative flex flex-col items-center justify-between py-1 border border-white/10 shadow-md">
+                                  <div className="w-2.5 h-1 bg-[#ffe6c0] rounded-sm absolute -top-1" />
+                                  <div className="w-1.5 h-1.5 rounded-full bg-white/20 border border-white/30 flex items-center justify-center">
+                                    <span className="text-[3px] text-white font-serif uppercase">MJ</span>
+                                  </div>
+                                  <div className="w-3 h-0.5 bg-black/20" />
+                                </div>
+                              </div>
+                            ) : activeProj.bento.card4.cardMockup ? (
+                              <div className="w-11 h-7 sm:w-14 sm:h-10 bg-zinc-950 border border-white/10 rounded-md relative p-1 flex flex-col justify-between shadow-lg">
+                                <div className="w-2 h-2 rounded bg-[#00FFB2]" />
+                                <div className="h-1 bg-white/20 rounded w-full" />
+                              </div>
+                            ) : activeProj.bento.card4.sealMockup ? (
+                              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#D4AF37] relative flex items-center justify-center shadow-md">
+                                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-black/10 flex items-center justify-center text-[5px] sm:text-[7px] text-[#120E08] font-bold">
+                                  LEX
+                                </div>
+                              </div>
+                            ) : activeProj.bento.card4.vinylMockup ? (
+                              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-zinc-900 border border-white/20 relative flex items-center justify-center">
+                                <div className="w-3 h-3 rounded-full bg-black border border-white/10" />
+                              </div>
+                            ) : activeProj.bento.card4.rulerMockup ? (
+                              <div className="w-10 h-6 sm:w-12 sm:h-8 bg-zinc-900 rounded border border-white/5 flex items-center justify-around px-1 font-mono text-[4px] text-white/40">
+                                <span>0m</span>
+                                <span>|</span>
+                                <span>5m</span>
+                              </div>
+                            ) : (
+                              <div className="w-7 h-7 sm:w-9 sm:h-9 rounded bg-[#FF003C] relative flex items-center justify-center shadow-md">
+                                <span className="text-[5px] sm:text-[7px] text-white font-bold tracking-widest">PR</span>
+                              </div>
+                            )}
                           </div>
-                        ) : activeProj.bento.card4.cardMockup ? (
-                          <div className="w-11 h-7 sm:w-14 sm:h-10 bg-zinc-950 border border-white/10 rounded-md relative p-1 flex flex-col justify-between shadow-lg">
-                            <div className="w-2 h-2 rounded bg-[#00FFB2]" />
-                            <div className="h-1 bg-white/20 rounded w-full" />
-                          </div>
-                        ) : activeProj.bento.card4.sealMockup ? (
-                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#D4AF37] relative flex items-center justify-center shadow-md">
-                            <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-black/10 flex items-center justify-center text-[5px] sm:text-[7px] text-[#120E08] font-bold">
-                              LEX
-                            </div>
-                          </div>
-                        ) : activeProj.bento.card4.vinylMockup ? (
-                          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-zinc-900 border border-white/20 relative flex items-center justify-center">
-                            <div className="w-3 h-3 rounded-full bg-black border border-white/10" />
-                          </div>
-                        ) : activeProj.bento.card4.rulerMockup ? (
-                          <div className="w-10 h-6 sm:w-12 sm:h-8 bg-zinc-900 rounded border border-white/5 flex items-center justify-around px-1 font-mono text-[4px] text-white/40">
-                            <span>0m</span>
-                            <span>|</span>
-                            <span>5m</span>
-                          </div>
-                        ) : (
-                          <div className="w-7 h-7 sm:w-9 sm:h-9 rounded bg-[#FF003C] relative flex items-center justify-center shadow-md">
-                            <span className="text-[5px] sm:text-[7px] text-white font-bold tracking-widest">PR</span>
-                          </div>
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </div>
 
                     {/* Card 5: Color Swatches Strip */}
                     <div 
-                      className="rounded-xl overflow-hidden flex flex-row relative transition-all duration-300 hover:scale-[1.01]"
+                      className="rounded-xl overflow-hidden relative transition-all duration-300 hover:scale-[1.01]"
                       style={{ width: '18%' }}
                     >
-                      {activeProj.bento.card5.colors.map((color, idx) => (
+                      {activeProj.bento.card5.bgImage ? (
                         <div 
-                          key={idx} 
-                          className="h-full flex-grow hover:flex-grow-[1.4] transition-all duration-300"
-                          style={{ backgroundColor: color }}
+                          className="w-full h-full bg-cover bg-center"
+                          style={{
+                            backgroundImage: `url("${activeProj.bento.card5.bgImage}")`,
+                            backgroundPosition: activeProj.bento.card5.bgPosition || 'center center'
+                          }}
                         />
-                      ))}
+                      ) : (
+                        <div className="w-full h-full flex flex-row">
+                          {activeProj.bento.card5.colors?.map((color, idx) => (
+                            <div 
+                              key={idx} 
+                              className="h-full flex-grow hover:flex-grow-[1.4] transition-all duration-300"
+                              style={{ backgroundColor: color }}
+                            />
+                          ))}
+                        </div>
+                      )}
                     </div>
 
                     {/* Card 6: Aa Typography preview */}
@@ -634,11 +656,23 @@ export default function Projects() {
                         width: '28%'
                       }}
                     >
-                      {/* Graphic grid lines behind typo */}
-                      <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:10px_10px]" />
-                      <span className={`${activeProj.bento.card6.fontClass} text-[28px] sm:text-[36px] xl:text-[44px] leading-none text-[#FCF9F9] tracking-tighter relative z-10`}>
-                        {activeProj.bento.card6.text}
-                      </span>
+                      {activeProj.bento.card6.bgImage ? (
+                        <div 
+                          className="w-full h-full bg-cover bg-center"
+                          style={{
+                            backgroundImage: `url("${activeProj.bento.card6.bgImage}")`,
+                            backgroundPosition: activeProj.bento.card6.bgPosition || 'center center'
+                          }}
+                        />
+                      ) : (
+                        <>
+                          {/* Graphic grid lines behind typo */}
+                          <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:10px_10px]" />
+                          <span className={`${activeProj.bento.card6.fontClass} text-[28px] sm:text-[36px] xl:text-[44px] leading-none text-[#FCF9F9] tracking-tighter relative z-10`}>
+                            {activeProj.bento.card6.text}
+                          </span>
+                        </>
+                      )}
                     </div>
 
                   </div>
