@@ -17,10 +17,12 @@ const PROJECTS_DATA = [
         bg: '#1a0f00',
         type: 'image',
         bgImage: '/assets/majourneys_opt/card_lifestyle.jpg',
+        bgPosition: '50% 35%',
         accentColor: '#C58B37',
       },
       card2: {
         bgImage: '/assets/majourneys_opt/460b22213656639.6752417e6a5ab.jpg',
+        bgPosition: '30% center',
         type: 'image',
       },
       card3: {
@@ -479,8 +481,11 @@ export default function Projects() {
                     >
                       {activeProj.bento.card1.bgImage ? (
                         <div 
-                          className="w-full h-full bg-cover bg-center"
-                          style={{ backgroundImage: `url("${activeProj.bento.card1.bgImage}")` }}
+                          className="w-full h-full bg-cover"
+                          style={{
+                            backgroundImage: `url("${activeProj.bento.card1.bgImage}")`,
+                            backgroundPosition: activeProj.bento.card1.bgPosition || 'center center'
+                          }}
                         />
                       ) : activeProj.bento.card1.type === 'tshirt' ? (
                         <div className="flex flex-col items-center justify-center text-center w-full h-full p-2">
@@ -524,9 +529,10 @@ export default function Projects() {
 
                     {/* Card 2: Dunes landscape / background crop */}
                     <div 
-                      className="rounded-xl bg-cover bg-center overflow-hidden relative transition-all duration-300 hover:scale-[1.01]"
+                      className="rounded-xl bg-cover overflow-hidden relative transition-all duration-300 hover:scale-[1.01]"
                       style={{ 
                         backgroundImage: `url("${activeProj.bento.card2.bgImage}")`,
+                        backgroundPosition: activeProj.bento.card2.bgPosition || 'center center',
                         width: '66%'
                       }}
                     >
