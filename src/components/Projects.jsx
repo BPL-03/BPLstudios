@@ -5,7 +5,7 @@ const PROJECTS_DATA = [
   {
     id: 'majourneys',
     name: 'MAJOURNEYS',
-    bgImage: '/assets/project_majourneys.jpg',
+    bgImage: '/assets/majourneys/project-dt-1.jpeg-2.png',
     altText: 'MAJOURNEYS brand identity — travel brand visual system designed by BPL Studios',
     tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
     theme: {
@@ -19,7 +19,7 @@ const PROJECTS_DATA = [
         accentColor: '#C58B37',
       },
       card2: {
-        bgImage: '/assets/project_majourneys.jpg',
+        bgImage: '/assets/majourneys/project-dt-1.jpeg-2.png',
         type: 'image',
       },
       card3: {
@@ -698,7 +698,9 @@ export default function Projects() {
             {/* "All Projects →" button */}
             <div className="flex justify-start">
               <a 
-                href="#all-projects" 
+                href="https://www.behance.net/amad003" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-[#DEF81D] hover:bg-[#cbf00f] text-[#030303] font-dm-sans font-medium text-[14px] tracking-[0.56px] px-8 py-3.5 rounded-[4px] inline-flex items-center gap-2 transition-all hover:scale-[1.03] active:scale-95 shadow-lg"
               >
                 All Projects <span className="text-sm font-sans font-bold">&rarr;</span>

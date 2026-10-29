@@ -4,7 +4,7 @@ import SplitText from './SplitText';
 export default function Hero() {
   return (
     <section 
-      id="hero" 
+      id="home" 
       className="relative min-h-[95vh] lg:min-h-screen flex flex-col justify-between bg-bg pt-32 pb-32 lg:pb-16 overflow-hidden"
     >
       

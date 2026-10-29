@@ -1,16 +1,135 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import ContactDrawer from '../components/ContactDrawer';
 
 const PROJECTS_DETAILS = {
+  'majourneys-brand-identity': {
+    name: "MAJOURNEYS",
+    type: "Brand Identity System & Digital Experience",
+    category: "Branding / Identity / Digital",
+    client: "Majourneys Travel & Booking Co.",
+    year: "2024",
+    role: "Brand Strategy, Visual Identity, UI/UX Design",
+    behanceUrl: "https://www.behance.net/amad003",
+    tagline: "A modern visual expression honoring Moroccan warmth, authentic heritage, and global exploration.",
+    brief: "Majourneys was born out of a desire to create a more authentic, connected, and inspiring way to travel. The project required redesigning their identity from the ground up to reflect authenticity, luxury, and the warm hospitality of Morocco.",
+    approach: "We modernized the symbol into an iconic monogram uniting 'M' and 'j' with heart geometry that evokes hospitality and travel. Combined with Sahara desert gold, deep midnight navy, refined typography (Aclonica & Poppins), and a cohesive mobile and web experience.",
+    outcome: "A full-spectrum brand system delivered across 15 comprehensive touchpoints: brand book, logomark anatomy, visual guidelines, merchandise, travel gear, and physical collateral.",
+    editorialSections: [
+      {
+        type: "full",
+        image: "/assets/majourneys_opt/f82b64213656639.67579582caaaa.jpg",
+        alt: "Majourneys New Identity Showcase"
+      },
+      {
+        type: "spread",
+        left: {
+          image: "/assets/majourneys_opt/a2c795213656639.67579582c7a8d.jpg",
+          alt: "Project Scope & Objectives"
+        },
+        right: {
+          image: "/assets/majourneys_opt/24ac5c213656639.67579582ca31d.jpg",
+          alt: "Logomark Construction Anatomy"
+        }
+      },
+      {
+        type: "spread",
+        left: {
+          image: "/assets/majourneys_opt/4887cb213656639.67579582c9395.jpg",
+          alt: "Brand Typography Hierarchy"
+        },
+        right: {
+          image: "/assets/majourneys_opt/9c41df213656639.67579582c8afc.jpg",
+          alt: "Sahara Color Palette"
+        }
+      },
+      {
+        type: "full",
+        image: "/assets/majourneys_opt/dfc726213656639.67579582c6a4c.jpg",
+        alt: "Logomark Scalability & Applications"
+      },
+      {
+        type: "spread",
+        left: {
+          image: "/assets/majourneys_opt/e3ef64213656639.67579582c81ed.jpg",
+          alt: "Artisanal Craft & Gold Sky Crest"
+        },
+        right: {
+          image: "/assets/majourneys_opt/886015213656639.67579d403f3c5.jpg",
+          alt: "Travel Gear & Lifestyle Apparel"
+        }
+      },
+      {
+        type: "full",
+        image: "/assets/majourneys_opt/460b22213656639.6752417e6a5ab.jpg",
+        alt: "Sahara Camels Landscape"
+      },
+      {
+        type: "full",
+        image: "/assets/majourneys_opt/6286a2213656639.6752417e689da.jpg",
+        alt: "Mobile Booking Experience UI"
+      },
+      {
+        type: "spread",
+        left: {
+          image: "/assets/majourneys_opt/73c029213656639.6752417e67e92.jpg",
+          alt: "Lifestyle Onboarding Screens"
+        },
+        right: {
+          image: "/assets/majourneys_opt/de8efa213656639.6752417e6846a.jpg",
+          alt: "Web Platform & Social Campaign"
+        }
+      },
+      {
+        type: "full",
+        image: "/assets/majourneys_opt/f845ab213656639.67579d403eb8b.jpg",
+        alt: "Transformation: Legacy vs Rebrand"
+      },
+      {
+        type: "spread",
+        left: {
+          image: "/assets/majourneys_opt/931954213656639.6749f3e79b520.jpg",
+          alt: "Nomad in Sahara Horizon"
+        },
+        right: {
+          image: "/assets/majourneys_opt/88fc4e213656639.67579582c72f5.jpg",
+          alt: "Gilded Mark Under Sahara Stars"
+        }
+      }
+    ],
+    nextUrl: "/work/axon-group-brand-identity",
+    nextName: "AXON Group",
+    nextType: "Brand Identity System",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "MAJOURNEYS Brand Identity",
+      "creator": {
+        "@type": "Organization",
+        "name": "BPL Studios"
+      },
+      "description": "Brand identity and UI/UX design for MAJOURNEYS travel platform by BPL Studios.",
+      "url": "https://bplstudios.com/work/majourneys-brand-identity",
+      "keywords": "brand identity, travel brand, logo design, Morocco, Agadir"
+    }
+  },
   'axon-group-brand-identity': {
     name: "AXON Group",
     type: "Brand Identity System",
     category: "Branding / Identity",
+    client: "AXON Group Ltd.",
+    year: "2024",
+    role: "Brand Architecture, Stationery & Digital Assets",
+    tagline: "Corporate precision, connectivity, and structural growth represented through minimalist visual systems.",
     brief: "AXON Group requested a cohesive and corporate brand identity including stationery, business cards, and digital assets that represent precision, connectivity, and structural growth.",
     approach: "BPL Studios designed a minimalist visual identity relying on high-contrast grids, custom typographic arrangements, and a distinctive emblem that scales seamlessly from small print layouts to giant office signages.",
-    outcome: "Delivered a complete brand identity system, stationery sets, business cards, notebooks, and design templates.",
+    outcome: "Delivered a complete brand identity system, stationery sets, business cards, notebooks, and digital design guidelines.",
     images: ["/assets/project_brandplus.jpg", "/assets/project_codesign.jpg"],
-    nextUrl: "/work/majourneys-brand-identity",
+    nextUrl: "/work/salama-brand-design",
+    nextName: "SALAMA",
+    nextType: "Brand Design",
     schema: {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
@@ -24,37 +143,21 @@ const PROJECTS_DETAILS = {
       "keywords": "brand identity, logo design, Morocco, MENA"
     }
   },
-  'majourneys-brand-identity': {
-    name: "MAJOURNEYS",
-    type: "Brand Identity System",
-    category: "Branding / Identity",
-    brief: "MAJOURNEYS needed a visual system that encapsulates the adventurous yet luxury spirit of travel across diverse and premium geographic landscapes.",
-    approach: "We crafted an identity incorporating organic textures, earthy gold-sand tones, and bold serif typographic layouts reflecting timeless exploration.",
-    outcome: "A comprehensive brand identity guidelines handbook, monogram systems, and digital product interface layouts.",
-    images: ["/assets/project_majourneys.jpg"],
-    nextUrl: "/work/salama-brand-design",
-    schema: {
-      "@context": "https://schema.org",
-      "@type": "CreativeWork",
-      "name": "MAJOURNEYS Brand Identity",
-      "creator": {
-        "@type": "Organization",
-        "name": "BPL Studios"
-      },
-      "description": "Brand identity system for MAJOURNEYS travel brand designed by BPL Studios.",
-      "url": "https://bplstudios.com/work/majourneys-brand-identity",
-      "keywords": "brand identity, travel brand, logo design, Morocco"
-    }
-  },
   'salama-brand-design': {
     name: "SALAMA",
-    type: "Brand Design",
-    category: "Branding / Identity",
+    type: "Brand Design & Digital Product",
+    category: "Branding / Identity / Product",
+    client: "Salama Technologies",
+    year: "2024",
+    role: "Interface Design & Brand Guidelines",
+    tagline: "Conveying safety, confidence, and modern simplicity for digital payment and security services.",
     brief: "SALAMA required an interface and identity system that conveys safety, confidence, and modern simplicity for their digital services.",
     approach: "Designed a clean interface wireframe and logomark, using a vibrant mint green accent color and dark corporate slate to project security and forward-looking engineering.",
-    outcome: "Interface design system, brand identity asset package, and website templates.",
+    outcome: "Interface design system, brand identity asset package, and responsive web platform templates.",
     images: ["/assets/project_spim.jpg"],
     nextUrl: "/work/lexieum-visual-identity",
+    nextName: "LEXIEUM",
+    nextType: "Visual Identity Project",
     schema: {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
@@ -72,11 +175,17 @@ const PROJECTS_DETAILS = {
     name: "LEXIEUM",
     type: "Visual Identity Project",
     category: "Branding / Identity",
+    client: "Lexieum Law & Consultancies",
+    year: "2024",
+    role: "Visual Identity & Seal Design",
+    tagline: "Quiet confidence, prestigious law practice, and absolute institutional trustworthiness.",
     brief: "LEXIEUM wanted a visual identity reflecting prestigious law and consultation services with quiet confidence and absolute trustworthiness.",
     approach: "Developed a traditional layout structure using gold highlights, black forest elements, and classic serif typographic marks indicating authority and expertise.",
     outcome: "Seal mockup designs, stationery templates, and consultation assets.",
     images: ["/assets/project_farisi.jpg"],
     nextUrl: "/work/abrirbat-branding",
+    nextName: "ABRIRBAT",
+    nextType: "Brand Identity",
     schema: {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
@@ -93,12 +202,18 @@ const PROJECTS_DETAILS = {
   'abrirbat-branding': {
     name: "ABRIRBAT",
     type: "Brand Identity",
-    category: "Branding / Identity",
+    category: "Branding / Architecture",
+    client: "Abrirbat Industrial Co.",
+    year: "2024",
+    role: "Branding & Material Architecture",
+    tagline: "Industrial yet refined identity expressing structural geometry and modern materials.",
     brief: "ABRIRBAT requested an industrial yet refined identity expressing structural geometry, architecture, and premium building materials.",
     approach: "Used stone grey palettes, bold neon orange highlights, and high-density typography to capture structural and modern architectural values.",
     outcome: "Delivered product mockups, merchandise assets, and a scalable design toolkit.",
     images: ["/assets/project_grain_oil.jpg"],
     nextUrl: "/work/stream-n-identity",
+    nextName: "STREAM N.",
+    nextType: "Visual Identity",
     schema: {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
@@ -114,13 +229,19 @@ const PROJECTS_DETAILS = {
   },
   'stream-n-identity': {
     name: "STREAM N.",
-    type: "Visual Identity",
-    category: "Branding / Identity",
+    type: "Visual Identity & Audio App",
+    category: "Branding / Identity / Audio",
+    client: "Stream N. Media",
+    year: "2024",
+    role: "Identity & Digital Design Guidelines",
+    tagline: "An audio-centric visual system that feels alive, digital, and dynamic for music creators.",
     brief: "STREAM N. required an audio-centric visual system that feels alive, digital, and dynamic for music and digital creators.",
     approach: "Designed around custom vinyl animations, cosmic purple highlights, and custom dark mode interface structures that resonate with creators.",
     outcome: "Complete digital guidelines, audio product interface assets, and custom icon sets.",
     images: ["/assets/project_codesign.jpg"],
     nextUrl: "/work/polo-red-brand",
+    nextName: "POLO RED",
+    nextType: "Brand Design",
     schema: {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
@@ -136,13 +257,19 @@ const PROJECTS_DETAILS = {
   },
   'polo-red-brand': {
     name: "POLO RED",
-    type: "Brand Design",
-    category: "Branding / Identity",
+    type: "Brand Design & Editorial System",
+    category: "Branding / Editorial / Fashion",
+    client: "Polo Red Fashion House",
+    year: "2024",
+    role: "Editorial Layout & Lookbook",
+    tagline: "High-end editorial aesthetic reflecting luxury fashion, print publishing, and cultural depth.",
     brief: "POLO RED needed an editorial, high-end design reflecting premium fashion, editorial publishing, and luxury marketing.",
     approach: "Incorporated deep crimson accents, vintage layout schemes, and classic editorial typography representing high fashion and deep cultural roots.",
     outcome: "Editorial design system, publication layouts, and merchandise branding assets.",
     images: ["/assets/project_brandplus.jpg"],
-    nextUrl: "/work/axon-group-brand-identity",
+    nextUrl: "/work/majourneys-brand-identity",
+    nextName: "MAJOURNEYS",
+    nextType: "Brand Identity System",
     schema: {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
@@ -162,24 +289,16 @@ export default function ProjectDetail() {
   const { projectId } = useParams();
   const proj = PROJECTS_DETAILS[projectId];
 
-  if (!proj) {
-    return (
-      <div className="bg-[#030303] text-white min-h-screen flex flex-col items-center justify-center p-8">
-        <h1 className="text-3xl font-light mb-4">Project Not Found</h1>
-        <Link to="/" className="text-[#DEF81D] hover:underline">&larr; Back to Home</Link>
-      </div>
-    );
-  }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (!proj) return;
 
-  // Inject metadata into document head dynamically for client-side rendering
-  React.useEffect(() => {
-    document.title = `${proj.name} ${proj.type} — BPL Studios`;
+    document.title = `${proj.name} — ${proj.type} | BPL Studios`;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
-      metaDesc.setAttribute('content', `${proj.type} for ${proj.name} — ${proj.brief} Designed by BPL Studios, Agadir.`);
+      metaDesc.setAttribute('content', `${proj.type} for ${proj.name} — ${proj.brief} Designed by BPL Studios.`);
     }
 
-    // Schema injection
     const scriptId = 'project-json-ld';
     let script = document.getElementById(scriptId);
     if (!script) {
@@ -190,71 +309,223 @@ export default function ProjectDetail() {
     }
     script.text = JSON.stringify(proj.schema);
 
+    // Trigger homepage scroll-reveal scanner
+    const t1 = setTimeout(() => {
+      if (window.scanScrollReveals) {
+        window.scanScrollReveals();
+      }
+    }, 60);
+
+    const t2 = setTimeout(() => {
+      if (window.scanScrollReveals) {
+        window.scanScrollReveals();
+      }
+    }, 350);
+
     return () => {
-      // Restore default schema/title if desired or leave as is since we transition pages
+      clearTimeout(t1);
+      clearTimeout(t2);
     };
-  }, [proj]);
+  }, [projectId]);
+
+  const openContact = () => {
+    window.dispatchEvent(new CustomEvent('open-contact-drawer'));
+  };
+
+  if (!proj) {
+    return (
+      <div className="bg-[#030303] text-white min-h-screen flex flex-col justify-between">
+        <Navbar />
+        <div className="flex flex-col items-center justify-center p-8 text-center pt-40">
+          <span className="font-inter text-[11px] tracking-[0.2em] text-[#7a7870] uppercase mb-4">404</span>
+          <h1 className="font-sans font-light text-[36px] sm:text-[48px] text-white mb-6">Project Not Found</h1>
+          <Link 
+            to="/#work" 
+            className="text-black bg-[#DEF81D] hover:bg-[#cbf00f] font-dm-sans font-medium text-[13px] px-6 py-3 rounded-[4px] transition-transform hover:scale-105"
+          >
+            &larr; Return to Featured Work
+          </Link>
+        </div>
+        <Footer />
+        <ContactDrawer />
+      </div>
+    );
+  }
 
   return (
-    <div className="bg-[#030303] text-[#D8D8D8] min-h-screen py-16 sm:py-24 px-[5%] md:px-[104px]">
-      <div className="max-w-[1480px] mx-auto flex flex-col gap-12">
-        {/* Navigation Back */}
-        <Link to="/" className="text-[#7a7870] hover:text-[#DEF81D] transition-colors inline-flex items-center gap-2 self-start font-dm-sans text-[12px] uppercase tracking-wider">
-          &larr; Back to Home
-        </Link>
+    <div className="bg-[#030303] text-[#e8e6de] min-h-screen selection:bg-[#DEF81D] selection:text-black">
+      {/* Global Navbar */}
+      <Navbar />
 
-        {/* Title Block */}
-        <div className="flex flex-col gap-3 mt-4">
-          <span className="bg-white/10 text-white font-dm-sans text-[11px] font-medium tracking-wider px-3.5 py-1.5 rounded-full w-fit uppercase">
-            {proj.category}
-          </span>
-          <h1 className="font-sans font-light text-[42px] sm:text-[68px] leading-tight text-white tracking-tight">
-            {proj.name} &mdash; {proj.type}
-          </h1>
-        </div>
+      {/* Main Editorial Content */}
+      <main className="pt-32 sm:pt-40 lg:pt-48 pb-24">
+        <div className="portfolio-container">
+          
+          {/* Back Navigation */}
+          <div className="mb-12 reveal-up">
+            <Link 
+              to="/#work" 
+              className="inline-flex items-center gap-2.5 font-inter text-[11px] uppercase tracking-[0.2em] text-[#7a7870] hover:text-white transition-colors group select-none"
+            >
+              <span className="group-hover:-translate-x-1.5 transition-transform inline-block">&larr;</span>
+              <span>Back to Work</span>
+            </Link>
+          </div>
 
-        {/* Core Info Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 border-t border-[#383838] pt-10 mt-4">
-          <div>
-            <h2 className="font-sans text-[12px] font-medium tracking-widest text-[#7a7870] uppercase mb-3">The Challenge</h2>
-            <p className="font-syne text-[15px] sm:text-[16px] leading-relaxed text-[#C5C5C5]">{proj.brief}</p>
-          </div>
-          <div>
-            <h2 className="font-sans text-[12px] font-medium tracking-widest text-[#7a7870] uppercase mb-3">Our Approach</h2>
-            <p className="font-syne text-[15px] sm:text-[16px] leading-relaxed text-[#C5C5C5]">{proj.approach}</p>
-          </div>
-          <div>
-            <h2 className="font-sans text-[12px] font-medium tracking-widest text-[#7a7870] uppercase mb-3">Outcome</h2>
-            <p className="font-syne text-[15px] sm:text-[16px] leading-relaxed text-[#C5C5C5]">{proj.outcome}</p>
-          </div>
-        </div>
+          {/* Project Title & Category */}
+          <header className="mb-12 lg:mb-16 reveal-up stagger-1">
+            <span className="font-inter text-[11px] tracking-[0.25em] text-[#DEF81D] uppercase font-bold block mb-4">
+              {proj.category}
+            </span>
+            <h1 className="font-sans font-light text-[48px] sm:text-[76px] lg:text-[100px] leading-[0.94] text-white tracking-tight">
+              {proj.name}
+            </h1>
+            <p className="font-inter text-[13px] sm:text-[15px] tracking-[0.16em] uppercase text-[#7a7870] font-medium mt-6">
+              {proj.type}
+            </p>
+          </header>
 
-        {/* Images Grid */}
-        <div className="flex flex-col gap-8 mt-12">
-          {proj.images.map((imgUrl, index) => (
-            <div key={index} className="rounded-[4px] border border-[#383838] overflow-hidden bg-zinc-900 aspect-[16/9]">
-              <img 
-                src={imgUrl} 
-                alt={`${proj.name} designed by BPL Studios`}
-                loading="lazy"
-                width="1440"
-                height="810"
-                className="w-full h-full object-cover"
-              />
+          {/* Editorial Metadata Strip (Clean Hairline Borders, No Cards) */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-white/10 mb-16 lg:mb-24 select-none reveal-up stagger-2">
+            <div>
+              <span className="font-inter text-[10px] tracking-[0.2em] text-[#7a7870] uppercase block mb-1.5">Client</span>
+              <span className="font-sans text-[15px] sm:text-[16px] text-white font-light">{proj.client}</span>
             </div>
-          ))}
-        </div>
+            <div>
+              <span className="font-inter text-[10px] tracking-[0.2em] text-[#7a7870] uppercase block mb-1.5">Services</span>
+              <span className="font-sans text-[15px] sm:text-[16px] text-white font-light">{proj.role || proj.type}</span>
+            </div>
+            <div>
+              <span className="font-inter text-[10px] tracking-[0.2em] text-[#7a7870] uppercase block mb-1.5">Year</span>
+              <span className="font-sans text-[15px] sm:text-[16px] text-white font-light">{proj.year}</span>
+            </div>
+            <div>
+              <span className="font-inter text-[10px] tracking-[0.2em] text-[#7a7870] uppercase block mb-1.5">Studio</span>
+              <span className="font-sans text-[15px] sm:text-[16px] text-[#DEF81D] font-light">BPL Studios</span>
+            </div>
+          </div>
 
-        {/* Footer Navigation */}
-        <div className="flex flex-col sm:flex-row justify-between items-center border-t border-[#383838] pt-12 mt-12 gap-8">
-          <Link to={proj.nextUrl} className="font-sans font-light text-[24px] text-white hover:text-[#DEF81D] transition-colors">
-            Next project &rarr;
-          </Link>
-          <a href="mailto:hello@bplstudios.com" className="bg-[#DEF81D] hover:bg-[#cbf00f] text-black font-dm-sans font-medium text-[14px] tracking-wide px-8 py-3.5 rounded-[4px] shadow-lg transition-transform hover:scale-[1.03] active:scale-95">
-            Want something like this? Let's talk &rarr;
-          </a>
+          {/* Editorial Narrative Split (Typography First) */}
+          <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 mb-20 lg:mb-32 reveal-up stagger-3">
+            <div className="lg:col-span-5">
+              <h2 className="font-sans font-light text-[26px] sm:text-[34px] lg:text-[38px] leading-[1.12] text-white tracking-tight">
+                {proj.tagline || proj.brief}
+              </h2>
+            </div>
+            <div className="lg:col-span-7 flex flex-col gap-6 text-[#9a9890] font-syne text-[15px] sm:text-[16px] leading-[1.75]">
+              <p>{proj.brief}</p>
+              <p>{proj.approach}</p>
+              <p>{proj.outcome}</p>
+            </div>
+          </section>
+
+          {/* ═══════════════════════════════════════════════════ */}
+          {/* EDITORIAL IMAGE EXHIBITION (NO CARDS, PURE MINIMAL) */}
+          {/* ═══════════════════════════════════════════════════ */}
+          {proj.editorialSections ? (
+            <div className="flex flex-col gap-12 sm:gap-16 lg:gap-24">
+              {proj.editorialSections.map((section, idx) => {
+                if (section.type === 'full') {
+                  return (
+                    <div 
+                      key={idx} 
+                      className="w-full overflow-hidden select-none reveal-up"
+                    >
+                      <img 
+                        src={section.image} 
+                        alt={section.alt || `${proj.name} visual ${idx + 1}`}
+                        loading={idx === 0 ? "eager" : "lazy"}
+                        decoding="async"
+                        className="w-full h-auto block"
+                      />
+                    </div>
+                  );
+                }
+
+                if (section.type === 'spread') {
+                  return (
+                    <div 
+                      key={idx} 
+                      className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start select-none"
+                    >
+                      <div className="w-full overflow-hidden reveal-up">
+                        <img 
+                          src={section.left.image} 
+                          alt={section.left.alt || `${proj.name} visual`}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-auto block"
+                        />
+                      </div>
+                      <div className="w-full overflow-hidden reveal-up stagger-1">
+                        <img 
+                          src={section.right.image} 
+                          alt={section.right.alt || `${proj.name} visual`}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-auto block"
+                        />
+                      </div>
+                    </div>
+                  );
+                }
+
+                return null;
+              })}
+            </div>
+          ) : (
+            /* Fallback Clean Minimalist Exhibition for Standard Projects */
+            <div className="flex flex-col gap-12 sm:gap-16 lg:gap-24 select-none">
+              {proj.images?.map((imgUrl, idx) => (
+                <div key={idx} className="w-full overflow-hidden reveal-up">
+                  <img 
+                    src={imgUrl} 
+                    alt={`${proj.name} showcase ${idx + 1}`}
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    className="w-full h-auto block"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* ═══════════════════════════════════════════════════ */}
+          {/* EDITORIAL NEXT PROJECT FOOTER (CLEAN & MINIMAL)     */}
+          {/* ═══════════════════════════════════════════════════ */}
+          <nav className="mt-24 lg:mt-36 pt-12 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 select-none reveal-up">
+            <div className="flex flex-col">
+              <span className="font-inter text-[10px] tracking-[0.2em] text-[#7a7870] uppercase mb-2">
+                Next Project
+              </span>
+              <Link 
+                to={proj.nextUrl}
+                className="font-sans font-light text-[32px] sm:text-[44px] text-white hover:text-[#DEF81D] transition-colors tracking-tight inline-flex items-center gap-3 group"
+              >
+                <span>{proj.nextName || "Next Project"}</span>
+                <span className="group-hover:translate-x-2 transition-transform">&rarr;</span>
+              </Link>
+              <span className="font-inter text-[11px] text-[#7a7870] mt-1 tracking-[0.15em] uppercase">
+                {proj.nextType}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-6">
+              <button 
+                onClick={openContact}
+                className="font-inter text-[12px] tracking-[0.18em] uppercase text-white hover:text-[#DEF81D] border-b border-white/20 hover:border-[#DEF81D] pb-1 transition-all"
+              >
+                Start a Project &rarr;
+              </button>
+            </div>
+          </nav>
+
         </div>
-      </div>
+      </main>
+
+      {/* Global Footer & Contact Drawer */}
+      <Footer />
+      <ContactDrawer />
     </div>
   );
 }

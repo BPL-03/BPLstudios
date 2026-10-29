@@ -25,3 +25,6 @@ dist-ssr
 
 .vercel
 .env*
+
+# Uncompressed 8K Raw Source Boards (optimized versions are in public/assets/majourneys_opt)
+public/assets/majourneys_new/

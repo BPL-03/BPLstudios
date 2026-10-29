@@ -83,10 +83,7 @@ export default function About() {
             </div>
             {/* Title heading */}
             <h2 className="font-sans font-light text-[58px] sm:text-[90px] leading-[0.92] text-[#D8D8D8] tracking-tight">
-              Ahmed Arjdal <br className="hidden sm:inline" />
-              <span className="text-[24px] sm:text-[36px] font-light text-[#7a7870] block mt-2 sm:mt-4">
-                Designer &amp; Creative Director
-              </span>
+              Ahmed Arjdal
             </h2>
           </div>
 
