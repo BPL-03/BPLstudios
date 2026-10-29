@@ -103,7 +103,7 @@ export default function About() {
                     href="https://www.instagram.com/bpl.studios/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#888888] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:bg-white/5 active:scale-95 transition-all focus:outline-none"
+                    className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#E4405F]/60 hover:bg-[#E4405F]/10 hover:shadow-[0_0_16px_rgba(228,64,95,0.25)] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:text-[#E4405F] hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none group"
                     aria-label="Instagram Profile"
                   >
                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -116,7 +116,7 @@ export default function About() {
                     href="https://www.linkedin.com/in/bpl003" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#888888] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:bg-white/5 active:scale-95 transition-all focus:outline-none"
+                    className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 hover:shadow-[0_0_16px_rgba(10,102,194,0.25)] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:text-[#0A66C2] hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none group"
                     aria-label="LinkedIn Profile"
                   >
                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -129,7 +129,7 @@ export default function About() {
                     href="https://www.behance.net/amad003" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#888888] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:bg-white/5 active:scale-95 transition-all focus:outline-none"
+                    className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#0057FF]/60 hover:bg-[#0057FF]/10 hover:shadow-[0_0_16px_rgba(0,87,255,0.25)] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:text-[#0057FF] hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none group"
                     aria-label="Behance Portfolio"
                   >
                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -143,7 +143,7 @@ export default function About() {
                     href="https://wa.me/212772247633" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#888888] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:bg-white/5 active:scale-95 transition-all focus:outline-none"
+                    className="w-[52px] h-[48px] border border-[#4a4a4a] hover:border-[#25D366]/60 hover:bg-[#25D366]/10 hover:shadow-[0_0_16px_rgba(37,211,102,0.25)] rounded-[4px] flex items-center justify-center text-[#D8D8D8] hover:text-[#25D366] hover:scale-105 active:scale-95 transition-all duration-300 focus:outline-none group"
                     aria-label="WhatsApp Chat"
                   >
                     <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
