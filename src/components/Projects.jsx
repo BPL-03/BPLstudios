@@ -14,9 +14,9 @@ const PROJECTS_DATA = [
     },
     bento: {
       card1: {
-        bg: '#E9E9E9',
+        bg: '#1a0f00',
         type: 'image',
-        bgImage: '/assets/majourneys_opt/tshirt_photo.jpg',
+        bgImage: '/assets/majourneys_opt/card_lifestyle.jpg',
         accentColor: '#C58B37',
       },
       card2: {
@@ -24,9 +24,9 @@ const PROJECTS_DATA = [
         type: 'image',
       },
       card3: {
-        bg: '#040036',
+        bg: '#0e0820',
         type: 'image',
-        bgImage: '/assets/majourneys_opt/card_crest_vert.jpg',
+        bgImage: '/assets/majourneys_opt/card_logo_dark.jpg',
         monogramText: 'MJ',
         textColor: '#E6B975',
       },
