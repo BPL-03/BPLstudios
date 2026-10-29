@@ -16,8 +16,8 @@ const PROJECTS_DATA = [
       card1: {
         bg: '#1a0f00',
         type: 'image',
-        bgImage: '/assets/majourneys_opt/card_lifestyle.jpg',
-        bgPosition: '50% 35%',
+        bgImage: '/assets/majourneys_opt/card_man_v2.jpg',
+        bgPosition: 'center top',
         accentColor: '#C58B37',
       },
       card2: {
