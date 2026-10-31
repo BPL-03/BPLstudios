@@ -106,12 +106,12 @@ export default function Navbar() {
 
       {/* ─── Mobile Menu Overlay (Rendered OUTSIDE header to prevent backdrop-filter bugs) ─── */}
       <div 
-        className={`fixed inset-0 w-full h-[100dvh] bg-[#0a0a09] z-50 flex flex-col justify-between px-8 pt-24 pb-12 transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 w-full h-[100dvh] bg-[#0a0a09] z-50 flex flex-col justify-between transition-all duration-300 md:hidden ${
           isOpen ? 'opacity-100 pointer-events-auto visible' : 'opacity-0 pointer-events-none invisible'
         }`}
       >
-        {/* Top Header Row inside Mobile Menu */}
-        <div className="flex items-center justify-between w-full">
+        {/* Top Header Row inside Mobile Menu: exact header height & alignment with Close Button */}
+        <div className="portfolio-container h-[70px] flex items-center justify-between w-full border-b border-white/5">
           <a href="/#home" onClick={() => setIsOpen(false)} className="block hover:opacity-80 transition-opacity">
             <img 
               src="/assets/logo_bpl.png" 
@@ -119,10 +119,21 @@ export default function Navbar() {
               className="h-8 w-auto object-contain"
             />
           </a>
+
+          {/* Explicit Close Button on Top Right */}
+          <button 
+            onClick={() => setIsOpen(false)}
+            className="w-10 h-10 -mr-2 flex items-center justify-center text-white/80 hover:text-white hover:rotate-90 transition-all duration-300 focus:outline-none cursor-pointer"
+            aria-label="Close Navigation"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
         {/* Center Navigation Links */}
-        <nav className="flex flex-col items-center justify-center gap-8 font-inter text-[22px] tracking-[0.2em] font-medium text-white my-auto select-none">
+        <nav className="portfolio-container flex flex-col items-center justify-center gap-8 font-inter text-[22px] tracking-[0.2em] font-medium text-white my-auto select-none py-8">
           <a 
             href="/#home" 
             onClick={() => setIsOpen(false)} 
@@ -153,14 +164,16 @@ export default function Navbar() {
         </nav>
 
         {/* Mobile Menu Metadata Footer */}
-        <div className="w-full flex justify-between items-center font-inter text-[11px] tracking-[0.15em] leading-[1.2] text-text-muted font-bold select-none border-t border-white/10 pt-6">
-          <div className="flex flex-col items-start text-left">
-            <span>© BPLAN</span>
-            <span>STUDIOS</span>
-          </div>
-          <div className="flex flex-col items-end text-right">
-            <span>PERSONAL</span>
-            <span>BRAND</span>
+        <div className="portfolio-container pb-10">
+          <div className="w-full flex justify-between items-center font-inter text-[11px] tracking-[0.15em] leading-[1.2] text-text-muted font-bold select-none border-t border-white/10 pt-6">
+            <div className="flex flex-col items-start text-left">
+              <span>© BPLAN</span>
+              <span>STUDIOS</span>
+            </div>
+            <div className="flex flex-col items-end text-right">
+              <span>PERSONAL</span>
+              <span>BRAND</span>
+            </div>
           </div>
         </div>
 
