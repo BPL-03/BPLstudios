@@ -1,10 +1,111 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const PROJECTS_DATA = [
   {
+    id: 'zeen',
+    name: 'ZEEN',
+    slug: 'zeen-moroccan-jewelry',
+    bgImage: '/assets/zeen/2b9c49255775509.6ad4f7dd59753.png',
+    altText: 'ZEEN Moroccan fine jewelry visual identity by BPL Studios',
+    tagline: 'Heritage Moroccan gold craftsmanship meets modern fine jewelry elegance.',
+    theme: {
+      accent: '#E2B755',
+      bgDark: '#0D1117',
+    },
+    bento: {
+      card1: {
+        bg: '#0d0d0d',
+        type: 'image',
+        bgImage: '/assets/zeen/af8532255775509.6ad4f7dd58562.png',
+        bgPosition: 'center center',
+        accentColor: '#E2B755',
+      },
+      card2: {
+        bgImage: '/assets/zeen/aa3038255775509.6adb298dab9b0.png',
+        bgPosition: 'center 30%',
+        type: 'image',
+      },
+      card3: {
+        bg: '#0a0a0a',
+        type: 'image',
+        bgImage: '/assets/zeen/ffe2c3255775509.6adb298da9e71.png',
+        monogramText: 'Z',
+        textColor: '#E2B755',
+      },
+      card4: {
+        bg: '#12100d',
+        type: 'image',
+        bgImage: '/assets/zeen/7e8234255775509.6ad4f7dd58cb5.png',
+        text: 'Fine Jewelry',
+      },
+      card5: {
+        type: 'colors',
+        colors: ['#0D1117', '#E2B755', '#C59A3F', '#F4E8C1', '#FFFFFF'],
+      },
+      card6: {
+        bg: '#080808',
+        type: 'image',
+        bgImage: '/assets/zeen/3bcc19255775509.6adfc46fe1c32.png',
+        text: 'Zn',
+        fontClass: 'font-serif',
+      }
+    }
+  },
+  {
+    id: 'ralphlauren',
+    name: 'RALPH LAUREN',
+    slug: 'ralph-lauren-product-editorial',
+    bgImage: '/assets/ralph_lauren/rl_hero.jpg',
+    altText: 'Ralph Lauren product description and luxury fragrance editorial by BPL Studios',
+    tagline: 'Timeless American luxury, fragrance architecture, and high-impact editorial storytelling.',
+    theme: {
+      accent: '#E60028',
+      bgDark: '#120406',
+    },
+    bento: {
+      card1: {
+        bg: '#140508',
+        type: 'image',
+        bgImage: '/assets/ralph_lauren/rl_bottle.jpg',
+        bgPosition: 'center center',
+        accentColor: '#E60028',
+      },
+      card2: {
+        bgImage: '/assets/ralph_lauren/rl_concept.jpg',
+        bgPosition: 'center center',
+        type: 'image',
+      },
+      card3: {
+        bg: '#120406',
+        type: 'image',
+        bgImage: '/assets/ralph_lauren/rl_editorial.jpg',
+        monogramText: 'RL',
+        textColor: '#E60028',
+      },
+      card4: {
+        bg: '#000000',
+        type: 'image',
+        bgImage: '/assets/ralph_lauren/rl_merchandising.jpg',
+        text: 'Polo Heritage',
+      },
+      card5: {
+        type: 'colors',
+        colors: ['#120406', '#E60028', '#8B0018', '#F5D3D8', '#FFFFFF'],
+      },
+      card6: {
+        bg: '#080304',
+        type: 'image',
+        bgImage: '/assets/ralph_lauren/rl_outro.jpg',
+        text: 'RL',
+        fontClass: 'font-serif',
+      }
+    }
+  },
+  {
     id: 'majourneys',
     name: 'MAJOURNEYS',
+    slug: 'majourneys-brand-identity',
     bgImage: '/assets/majourneys_opt/460b22213656639.6752417e6a5ab.jpg',
     altText: 'MAJOURNEYS brand identity — travel brand visual system designed by BPL Studios',
     tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
@@ -53,46 +154,51 @@ const PROJECTS_DATA = [
     }
   },
   {
-    id: 'salama',
-    name: 'SALAMA',
-    bgImage: '/assets/project_spim.jpg',
-    altText: 'SALAMA brand identity design by BPL Studios',
-    tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
+    id: 'abribat',
+    name: 'ABRIBAT',
+    slug: 'abribat-visual-identity',
+    bgImage: '/assets/abribat/4dba4b242729449.697a19f563f1f.png',
+    altText: 'Abribat visual identity and architectural branding by BPL Studios',
+    tagline: 'Industrial precision and structural strength forged into a modern architectural identity.',
     theme: {
-      accent: '#00FFB2',
-      bgDark: '#061712',
+      accent: '#230FD2',
+      bgDark: '#08061F',
     },
     bento: {
       card1: {
-        bg: '#F4F7F6',
-        type: 'app-wireframe',
-        accentColor: '#00FFB2',
+        bg: '#0e0b2e',
+        type: 'image',
+        bgImage: '/assets/abribat/ba7204242729449.697a19f563888.png',
+        bgPosition: 'center center',
+        accentColor: '#230FD2',
       },
       card2: {
-        bgImage: '/assets/project_spim.jpg',
+        bgImage: '/assets/abribat/e079be242729449.697a19f56acbb.png',
+        bgPosition: 'center center',
         type: 'image',
       },
       card3: {
-        bg: '#061712',
-        type: 'monogram',
-        monogramText: 'S',
-        textColor: '#00FFB2',
+        bg: '#08061F',
+        type: 'image',
+        bgImage: '/assets/abribat/23bee2242729449.697a19f55e6e0.png',
+        monogramText: 'AB',
+        textColor: '#4B3BFF',
       },
       card4: {
-        bg: 'linear-gradient(135deg, #061712 0%, #0d2b22 100%)',
-        type: 'banner',
-        text: 'Salama Pay',
-        bottleImage: false,
-        cardMockup: true,
+        bg: '#1504bc',
+        type: 'image',
+        bgImage: '/assets/abribat/7ba505242729449.697a19f55fe51.png',
+        text: 'Structural Grid',
       },
       card5: {
         type: 'colors',
-        colors: ['#061712', '#00FFB2', '#00B37D', '#B3FFE9', '#FFFFFF'],
+        colors: ['#08061F', '#230FD2', '#4B3BFF', '#D6D5D6', '#FFFFFF'],
       },
       card6: {
-        bg: '#111',
-        type: 'typo',
-        text: 'S',
+        bg: '#050414',
+        type: 'image',
+        bgImage: '/assets/abribat/68f854242729449.697a19f56bc4c.png',
+        text: 'Ab',
         fontClass: 'font-sans',
       }
     }
@@ -100,180 +206,149 @@ const PROJECTS_DATA = [
   {
     id: 'lexieum',
     name: 'LEXIEUM',
-    bgImage: '/assets/project_farisi.jpg',
-    altText: 'LEXIEUM visual identity project by BPL Studios',
-    tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
+    slug: 'lexieum-visual-identity',
+    bgImage: '/assets/lexieum/22d2ac249439319.6a0e4af2f3a3d.png',
+    altText: 'Lexieum legal and corporate advisory visual identity by BPL Studios',
+    tagline: 'Prestigious institutional authority and refined sophistication for international law.',
     theme: {
-      accent: '#D4AF37',
-      bgDark: '#120E08',
+      accent: '#C49A45',
+      bgDark: '#14070A',
     },
     bento: {
       card1: {
-        bg: '#FFFBF5',
-        type: 'tshirt',
-        accentColor: '#D4AF37',
+        bg: '#1c0c10',
+        type: 'image',
+        bgImage: '/assets/lexieum/d3f717249439319.6a125a892861e.png',
+        bgPosition: 'center center',
+        accentColor: '#C49A45',
       },
       card2: {
-        bgImage: '/assets/project_farisi.jpg',
+        bgImage: '/assets/lexieum/79deb8249439319.6a0e4af2f0696.png',
+        bgPosition: 'center center',
         type: 'image',
       },
       card3: {
-        bg: '#120E08',
-        type: 'monogram',
+        bg: '#0a0808',
+        type: 'image',
+        bgImage: '/assets/lexieum/c97faf249439319.6a0e4af2f305e.png',
         monogramText: 'L',
-        textColor: '#D4AF37',
+        textColor: '#C49A45',
       },
       card4: {
-        bg: 'linear-gradient(135deg, #120E08 0%, #1f190f 100%)',
-        type: 'banner',
-        text: 'Prestige Law',
-        bottleImage: false,
-        sealMockup: true,
+        bg: '#18080b',
+        type: 'image',
+        bgImage: '/assets/lexieum/502f04249439319.6a125a8928b59.png',
+        text: 'Lex Advisory',
       },
       card5: {
         type: 'colors',
-        colors: ['#120E08', '#D4AF37', '#AA7C11', '#F5E6C8', '#FFFBF5'],
+        colors: ['#14070A', '#78262C', '#C49A45', '#EAD5A5', '#FFFDF9'],
       },
       card6: {
-        bg: '#151515',
-        type: 'typo',
+        bg: '#0b0406',
+        type: 'image',
+        bgImage: '/assets/lexieum/518090249439319.6a0e4af2f361f.png',
         text: 'Lx',
         fontClass: 'font-serif',
       }
     }
   },
   {
-    id: 'abrirbat',
-    name: 'ABRIRBAT',
-    bgImage: '/assets/project_grain_oil.jpg',
-    altText: 'ABRIRBAT brand identity designed by BPL Studios',
-    tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
+    id: 'salama',
+    name: 'SALAMA',
+    slug: 'salama-visual-identity',
+    bgImage: '/assets/salama/613ada249738989.6a0e45e5d6da3.png',
+    altText: 'SALAMA fintech and digital security visual identity by BPL Studios',
+    tagline: 'Conveying safety, confidence, and modern simplicity for digital payment & security interfaces.',
     theme: {
-      accent: '#FF4D00',
-      bgDark: '#1C1512',
+      accent: '#00E599',
+      bgDark: '#061712',
     },
     bento: {
       card1: {
-        bg: '#EBE6E3',
-        type: 'tshirt',
-        accentColor: '#FF4D00',
+        bg: '#0a2119',
+        type: 'image',
+        bgImage: '/assets/salama/aa1ec0249738989.6a1256da267dd.png',
+        bgPosition: 'center center',
+        accentColor: '#00E599',
       },
       card2: {
-        bgImage: '/assets/project_grain_oil.jpg',
+        bgImage: '/assets/salama/7da166249738989.6a1272f890fca.png',
+        bgPosition: 'center center',
         type: 'image',
       },
       card3: {
-        bg: '#1C1512',
-        type: 'monogram',
-        monogramText: 'AB',
-        textColor: '#FF4D00',
+        bg: '#061712',
+        type: 'image',
+        bgImage: '/assets/salama/039963249738989.6a1272f88edcb.png',
+        monogramText: 'S',
+        textColor: '#00E599',
       },
       card4: {
-        bg: 'linear-gradient(135deg, #1c1512 0%, #322520 100%)',
-        type: 'banner',
-        text: 'Raw Stone',
-        bottleImage: false,
-        rulerMockup: true,
+        bg: '#0d2b22',
+        type: 'image',
+        bgImage: '/assets/salama/d2dec0249738989.6a1272f891bec.png',
+        text: 'Salama Pay',
       },
       card5: {
         type: 'colors',
-        colors: ['#1C1512', '#FF4D00', '#C43B00', '#F2D0C2', '#EBE6E3'],
+        colors: ['#061712', '#00E599', '#009E69', '#B3FFE3', '#FFFFFF'],
       },
       card6: {
-        bg: '#111',
-        type: 'typo',
-        text: 'Ab',
+        bg: '#040d0a',
+        type: 'image',
+        bgImage: '/assets/salama/b01840249738989.6a1256da27dcf.png',
+        text: 'S',
         fontClass: 'font-sans',
       }
     }
   },
   {
-    id: 'streamn',
-    name: 'STREAM N.',
-    bgImage: '/assets/project_codesign.jpg',
-    altText: 'STREAM N. visual identity by BPL Studios',
-    tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
+    id: 'ayla',
+    name: 'AYLA',
+    slug: 'ayla-shopping-store',
+    bgImage: '/assets/ayla/a55515256329439.6ab9a09faae31.png',
+    altText: 'AYLA lifestyle store and boutique shopping visual identity by BPL Studios',
+    tagline: 'Effortless elegance and contemporary curation for modern lifestyle retail and e-commerce.',
     theme: {
-      accent: '#BF00FF',
-      bgDark: '#0D0514',
+      accent: '#E27CA5',
+      bgDark: '#1A1424',
     },
     bento: {
       card1: {
-        bg: '#1F122B',
-        type: 'app-wireframe',
-        accentColor: '#BF00FF',
+        bg: '#261c36',
+        type: 'image',
+        bgImage: '/assets/ayla/1ac8b6256329439.6ab9a3e960ac5.png',
+        bgPosition: 'center center',
+        accentColor: '#E27CA5',
       },
       card2: {
-        bgImage: '/assets/project_codesign.jpg',
+        bgImage: '/assets/ayla/5ef6ab256329439.6ab9a09fab232.png',
+        bgPosition: 'center center',
         type: 'image',
       },
       card3: {
-        bg: '#0D0514',
-        type: 'monogram',
-        monogramText: 'N',
-        textColor: '#BF00FF',
-      },
-      card4: {
-        bg: 'linear-gradient(135deg, #0d0514 0%, #1b0a2b 100%)',
-        type: 'banner',
-        text: 'Audio Sphere',
-        bottleImage: false,
-        vinylMockup: true,
-      },
-      card5: {
-        type: 'colors',
-        colors: ['#0D0514', '#BF00FF', '#7F00B3', '#EBD4FF', '#F9F5FC'],
-      },
-      card6: {
-        bg: '#000',
-        type: 'typo',
-        text: 'N.',
-        fontClass: 'font-mono',
-      }
-    }
-  },
-  {
-    id: 'polored',
-    name: 'POLO RED',
-    bgImage: '/assets/project_brandplus.jpg',
-    altText: 'POLO RED brand design by BPL Studios',
-    tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
-    theme: {
-      accent: '#FF003C',
-      bgDark: '#140508',
-    },
-    bento: {
-      card1: {
-        bg: '#E5D6DA',
-        type: 'tshirt',
-        accentColor: '#FF003C',
-      },
-      card2: {
-        bgImage: '/assets/project_brandplus.jpg',
+        bg: '#1A1424',
         type: 'image',
-        altText: 'POLO RED brand design by BPL Studios'
-      },
-      card3: {
-        bg: '#140508',
-        type: 'monogram',
-        monogramText: 'P',
-        textColor: '#FF003C',
+        bgImage: '/assets/ayla/5619ba256329439.6ab9a09faba2d.png',
+        monogramText: 'A',
+        textColor: '#E27CA5',
       },
       card4: {
-        bg: 'linear-gradient(135deg, #140508 0%, #2b0b12 100%)',
-        type: 'banner',
-        text: 'Red Editorial',
-        bottleImage: false,
-        tagMockup: true,
+        bg: '#2b1f3d',
+        type: 'image',
+        bgImage: '/assets/ayla/a55515256329439.6ab9a09faae31.png',
+        text: 'Ayla Store',
       },
       card5: {
         type: 'colors',
-        colors: ['#140508', '#FF003C', '#B3002A', '#F7D4DC', '#FCF5F6'],
+        colors: ['#1A1424', '#E27CA5', '#B55480', '#F5DCE7', '#FFFFFF'],
       },
       card6: {
-        bg: '#111',
-        type: 'typo',
-        text: 'Pr',
+        bg: '#120c1a',
+        type: 'image',
+        bgImage: '/assets/ayla/4123fe256329439.6ab9a3e96031b.png',
+        text: 'Ay',
         fontClass: 'font-serif',
       }
     }
@@ -281,6 +356,7 @@ const PROJECTS_DATA = [
 ];
 
 export default function Projects() {
+  const navigate = useNavigate();
   const [activeIdx, setActiveIdx] = useState(0);
   const activeProj = PROJECTS_DATA[activeIdx];
   const hoverTimeoutRef = useRef(null);
@@ -289,6 +365,30 @@ export default function Projects() {
   const targetScrollLeft = useRef(null);
   const scrollTimeout = useRef(null);
   const isProgrammaticScroll = useRef(false);
+
+  const touchStartPos = useRef({ x: 0, y: 0, time: 0 });
+
+  const handleTouchStart = (e) => {
+    if (e.touches && e.touches.length === 1) {
+      touchStartPos.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+        time: Date.now()
+      };
+    }
+  };
+
+  const handleTouchEnd = (e, slug) => {
+    if (e.changedTouches && e.changedTouches.length === 1) {
+      const dx = Math.abs(e.changedTouches[0].clientX - touchStartPos.current.x);
+      const dy = Math.abs(e.changedTouches[0].clientY - touchStartPos.current.y);
+      const dt = Date.now() - touchStartPos.current.time;
+      // If movement is under 12px and tap duration is quick, it is an intentional tap/click
+      if (dx < 12 && dy < 12 && dt < 400) {
+        navigate(`/work/${slug}`);
+      }
+    }
+  };
 
   const clonedProjects = [
     PROJECTS_DATA[PROJECTS_DATA.length - 1],
@@ -432,16 +532,7 @@ export default function Projects() {
             
             {/* Bento Showcase Box */}
             <Link 
-              to={`/work/${
-                activeProj.id === 'axon' ? 'axon-group-brand-identity' :
-                activeProj.id === 'majourneys' ? 'majourneys-brand-identity' :
-                activeProj.id === 'salama' ? 'salama-brand-design' :
-                activeProj.id === 'lexieum' ? 'lexieum-visual-identity' :
-                activeProj.id === 'abrirbat' ? 'abrirbat-branding' :
-                activeProj.id === 'streamn' ? 'stream-n-identity' :
-                activeProj.id === 'polored' ? 'polo-red-brand' :
-                activeProj.id
-              }`}
+              to={`/work/${activeProj.slug || activeProj.id}`}
               className="relative w-full h-[320px] sm:h-[480px] lg:h-[560px] xl:h-[608px] rounded-[4px] overflow-hidden border border-[#383838] flex items-center justify-center p-4 sm:p-8 group cursor-pointer block"
             >
               {/* Animated Zoom Wrapper */}
@@ -739,15 +830,8 @@ export default function Projects() {
             <div className="flex flex-col items-start gap-y-2">
               {PROJECTS_DATA.map((proj, idx) => {
                 const isActive = idx === activeIdx;
-                // Map local ID to the exact requested URL slug structure
-                const slug = proj.id === 'axon' ? 'axon-group-brand-identity' :
-                             proj.id === 'majourneys' ? 'majourneys-brand-identity' :
-                             proj.id === 'salama' ? 'salama-brand-design' :
-                             proj.id === 'lexieum' ? 'lexieum-visual-identity' :
-                             proj.id === 'abrirbat' ? 'abrirbat-branding' :
-                             proj.id === 'streamn' ? 'stream-n-identity' :
-                             proj.id === 'polored' ? 'polo-red-brand' :
-                             proj.id;
+                // Map local ID to URL slug
+                const slug = proj.slug || proj.id;
                 return (
                   <Link
                     key={proj.id}
@@ -809,21 +893,23 @@ export default function Projects() {
             {/* Swipable Card Frame */}
             <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] rounded-[4px] border border-[#383838] overflow-hidden">
               
-              {/* Static Overlay: Project Titles List (Top-Left) */}
+              {/* Static Overlay: Project Titles List (Top-Left) - Clickable on Mobile */}
               <div className="absolute top-6 left-6 z-20 flex flex-col items-start gap-y-1">
                 {PROJECTS_DATA.map((proj, idx) => {
                   const isActive = idx === activeIdx;
+                  const slug = proj.slug || proj.id;
                   return (
-                    <span 
+                    <Link 
                       key={proj.id}
-                      className={`font-anek-devanagari text-[24px] xs:text-[27px] sm:text-[31px] font-light leading-[1.1] uppercase transition-all duration-300 block ${
+                      to={`/work/${slug}`}
+                      className={`font-anek-devanagari text-[24px] xs:text-[27px] sm:text-[31px] font-light leading-[1.1] uppercase transition-all duration-300 block focus:outline-none cursor-pointer ${
                         isActive 
                           ? 'text-white' 
-                          : 'text-[#888888] opacity-35'
+                          : 'text-[#888888] opacity-35 hover:opacity-100 hover:text-white'
                       }`}
                     >
                       {proj.name}
-                    </span>
+                    </Link>
                   );
                 })}
               </div>
@@ -836,27 +922,42 @@ export default function Projects() {
                   isProgrammatic ? '' : 'snap-x snap-mandatory'
                 }`}
               >
-                {clonedProjects.map((proj, idx) => (
-                  <div 
-                    key={`${proj.id}-clone-${idx}`}
-                    className="w-full h-full shrink-0 snap-center relative bg-zinc-900"
-                  >
-                    {/* Project Image */}
-                    <img 
-                      src={proj.bgImage} 
-                      alt={proj.altText || proj.name}
-                      width="600"
-                      height="800"
-                      loading="lazy"
-                      className="w-full h-full object-cover pointer-events-none"
-                    />
-                  </div>
-                ))}
+                {clonedProjects.map((proj, idx) => {
+                  const slug = proj.slug || proj.id;
+                  return (
+                    <Link 
+                      key={`${proj.id}-clone-${idx}`}
+                      to={`/work/${slug}`}
+                      onTouchStart={handleTouchStart}
+                      onTouchEnd={(e) => handleTouchEnd(e, slug)}
+                      className="w-full h-full shrink-0 snap-center relative bg-zinc-900 block cursor-pointer group"
+                    >
+                      {/* Project Image */}
+                      <img 
+                        src={proj.bgImage} 
+                        alt={proj.altText || proj.name}
+                        width="600"
+                        height="800"
+                        loading="lazy"
+                        className="w-full h-full object-cover pointer-events-none group-active:scale-[0.99] transition-transform duration-200"
+                      />
+                    </Link>
+                  );
+                })}
               </div>
 
               {/* Static Gradient overlays for contrast (top readability shadow & bottom vignette) */}
               <div className="absolute top-0 left-0 right-0 h-[45%] bg-gradient-to-b from-black/75 via-black/25 to-transparent pointer-events-none z-10" />
               <div className="absolute bottom-0 left-0 right-0 h-[25%] bg-gradient-to-t from-black/60 to-transparent pointer-events-none z-10" />
+
+              {/* Floating "View Project" Pill on Mobile (Bottom-Right) */}
+              <Link
+                to={`/work/${activeProj.slug || activeProj.id}`}
+                className="absolute bottom-4 right-4 z-20 bg-black/70 backdrop-blur-md border border-white/20 text-white font-dm-sans text-xs px-3.5 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-[#DEF81D] hover:text-black hover:border-[#DEF81D] transition-all active:scale-95 shadow-lg"
+              >
+                <span>View Project</span>
+                <span className="text-[#DEF81D] font-bold">&rarr;</span>
+              </Link>
 
             </div>
 
@@ -877,11 +978,14 @@ export default function Projects() {
           </div>
 
           {/* Tagline Description under card */}
-          <div className="text-left mt-2">
-            <p className="font-syne font-medium text-[14px] sm:text-[16px] leading-[1.4] text-[#C5C5C5] opacity-70">
+          <Link 
+            to={`/work/${activeProj.slug || activeProj.id}`}
+            className="text-left mt-2 block group focus:outline-none"
+          >
+            <p className="font-syne font-medium text-[14px] sm:text-[16px] leading-[1.4] text-[#C5C5C5] opacity-70 group-hover:opacity-100 group-hover:text-white transition-opacity">
               {activeProj.tagline}
             </p>
-          </div>
+          </Link>
 
           {/* Bottom Control Bar: Left Box Button, Dots pagination, Right Box Button */}
           <div className="flex items-center justify-between mt-2 select-none w-full">
@@ -930,6 +1034,18 @@ export default function Projects() {
               </svg>
             </button>
 
+          </div>
+
+          {/* Mobile "All Projects" Button */}
+          <div className="flex justify-center mt-3">
+            <a 
+              href="https://www.behance.net/amad003" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full text-center bg-[#DEF81D] hover:bg-[#cbf00f] text-[#030303] font-dm-sans font-medium text-[14px] tracking-[0.56px] py-3.5 rounded-[4px] inline-flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg"
+            >
+              All Projects <span className="text-sm font-sans font-bold">&rarr;</span>
+            </a>
           </div>
 
         </div>
