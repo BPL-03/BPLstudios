@@ -3,6 +3,71 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const PROJECTS_DATA = [
   {
+    id: 'majourneys',
+    name: 'MAJOURNEYS',
+    slug: 'majourneys-brand-identity',
+    bgImage: '/assets/majourneys_opt/460b22213656639.6752417e6a5ab.jpg',
+    altText: 'MAJOURNEYS brand identity — travel brand visual system designed by BPL Studios',
+    tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
+    theme: {
+      accent: '#DEF81D',
+      bgDark: '#040033',
+    },
+    bento: {
+      leftWidth: 'md:w-[68%]',
+      rightWidth: 'md:w-[32%]',
+      topRowHeight: 'h-[72%]',
+      bottomRowHeight: 'h-[28%]',
+      card1: {
+        bg: '#1a0f00',
+        type: 'image',
+        bgImage: '/assets/majourneys_opt/card_man_v2.jpg',
+        bgPosition: 'center top',
+        bgSize: 'cover',
+        width: '35%',
+        accentColor: '#C58B37',
+      },
+      card2: {
+        bgImage: '/assets/majourneys_opt/card_camels_clean.png',
+        bgPosition: 'center center',
+        bgSize: 'cover',
+        width: '65%',
+        type: 'image',
+      },
+      card3: {
+        bg: '#0e0820',
+        type: 'image',
+        bgImage: '/assets/majourneys_opt/card_logo_dark.jpg',
+        bgPosition: 'center center',
+        bgSize: 'cover',
+        monogramText: 'MJ',
+        textColor: '#E6B975',
+      },
+      card4: {
+        bg: 'transparent',
+        type: 'image',
+        bgImage: '/assets/majourneys_opt/card_journey_banner.png',
+        width: '55%',
+        text: 'Journey with us',
+      },
+      card5: {
+        bg: 'transparent',
+        type: 'image',
+        bgImage: '/assets/majourneys_opt/card_colors_exact.png',
+        width: '18.5%',
+        colors: ['#040033', '#C58B37', '#E6B975', '#FFEED4', '#FBFBFB'],
+      },
+      card6: {
+        bg: 'transparent',
+        type: 'image',
+        bgImage: '/assets/majourneys_opt/card_aa_silk.png',
+        width: '26.5%',
+        text: 'Aa',
+        fontClass: 'font-aclonica',
+      }
+    }
+  },
+  {
     id: 'zeen',
     name: 'ZEEN',
     slug: 'zeen-moroccan-jewelry',
@@ -99,57 +164,6 @@ const PROJECTS_DATA = [
         bgImage: '/assets/ralph_lauren/rl_outro.jpg',
         text: 'RL',
         fontClass: 'font-serif',
-      }
-    }
-  },
-  {
-    id: 'majourneys',
-    name: 'MAJOURNEYS',
-    slug: 'majourneys-brand-identity',
-    bgImage: '/assets/majourneys_opt/460b22213656639.6752417e6a5ab.jpg',
-    altText: 'MAJOURNEYS brand identity — travel brand visual system designed by BPL Studios',
-    tagline: 'From brand identity to product interfaces everything your business needs to look and work at its best.',
-    theme: {
-      accent: '#DEF81D',
-      bgDark: '#040033',
-    },
-    bento: {
-      card1: {
-        bg: '#1a0f00',
-        type: 'image',
-        bgImage: '/assets/majourneys_opt/card_man_v2.jpg',
-        bgPosition: 'center top',
-        accentColor: '#C58B37',
-      },
-      card2: {
-        bgImage: '/assets/majourneys_opt/card_camels_clean.png',
-        bgPosition: 'center center',
-        type: 'image',
-      },
-      card3: {
-        bg: '#0e0820',
-        type: 'image',
-        bgImage: '/assets/majourneys_opt/card_logo_dark.jpg',
-        monogramText: 'MJ',
-        textColor: '#E6B975',
-      },
-      card4: {
-        bg: '#040033',
-        type: 'image',
-        bgImage: '/assets/majourneys_opt/card_journey_banner.png',
-        text: 'Journey with us',
-      },
-      card5: {
-        type: 'image',
-        bgImage: '/assets/majourneys_opt/card_colors_exact.png',
-        colors: ['#040033', '#C58B37', '#E6B975', '#FFEED4', '#FBFBFB'],
-      },
-      card6: {
-        bg: '#0a0a09',
-        type: 'image',
-        bgImage: '/assets/majourneys_opt/card_aa_silk.png',
-        text: 'Aa',
-        fontClass: 'font-aclonica',
       }
     }
   },
@@ -558,25 +572,27 @@ export default function Projects() {
               >
                 
                 {/* Bento Left Part (2 Rows of cards - col-span-8 equivalent) */}
-                <div className="flex-grow flex flex-col justify-between gap-4 sm:gap-5 md:w-[66%]">
+                <div className={`flex-grow flex flex-col justify-between gap-4 sm:gap-5 ${activeProj.bento.leftWidth || 'md:w-[66%]'}`}>
                   
                   {/* Top Row: Tshirt & Image */}
-                  <div className="flex flex-row gap-4 sm:gap-5 h-[62%]">
+                  <div className={`flex flex-row gap-4 sm:gap-5 ${activeProj.bento.topRowHeight || 'h-[62%]'}`}>
                     
                     {/* Card 1: Premium Product Mockup (Tshirt/Device) */}
                     <div 
                       className="rounded-xl flex flex-col items-center justify-center relative overflow-hidden transition-all duration-300 hover:scale-[1.01]"
                       style={{ 
                         backgroundColor: activeProj.bento.card1.bg,
-                        width: '34%'
+                        width: activeProj.bento.card1.width || '34%'
                       }}
                     >
                       {activeProj.bento.card1.bgImage ? (
                         <div 
-                          className="w-full h-full bg-cover"
+                          className="w-full h-full"
                           style={{
                             backgroundImage: `url("${activeProj.bento.card1.bgImage}")`,
-                            backgroundPosition: activeProj.bento.card1.bgPosition || 'center center'
+                            backgroundPosition: activeProj.bento.card1.bgPosition || 'center center',
+                            backgroundSize: activeProj.bento.card1.bgSize || 'cover',
+                            backgroundRepeat: 'no-repeat'
                           }}
                         />
                       ) : activeProj.bento.card1.type === 'tshirt' ? (
@@ -621,34 +637,34 @@ export default function Projects() {
 
                     {/* Card 2: Dunes landscape / background crop */}
                     <div 
-                      className="rounded-xl bg-cover overflow-hidden relative transition-all duration-300 hover:scale-[1.01]"
+                      className="rounded-xl overflow-hidden relative transition-all duration-300 hover:scale-[1.01]"
                       style={{ 
                         backgroundImage: `url("${activeProj.bento.card2.bgImage}")`,
                         backgroundPosition: activeProj.bento.card2.bgPosition || 'center center',
-                        width: '66%'
+                        backgroundSize: activeProj.bento.card2.bgSize || 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        width: activeProj.bento.card2.width || '66%'
                       }}
                     />
 
                   </div>
 
                   {/* Bottom Row: Banner, Colors & Typo */}
-                  <div className="flex flex-row gap-4 sm:gap-5 h-[38%]">
+                  <div className={`flex flex-row gap-4 sm:gap-5 ${activeProj.bento.bottomRowHeight || 'h-[38%]'}`}>
                     
                     {/* Card 4: Journey with us banner */}
                     <div 
                       className="rounded-xl relative overflow-hidden transition-all duration-300 hover:scale-[1.01]"
                       style={{ 
-                        background: activeProj.bento.card4.bg,
-                        width: '54%'
+                        background: activeProj.bento.card4.bgImage ? 'transparent' : activeProj.bento.card4.bg,
+                        width: activeProj.bento.card4.width || '54%'
                       }}
                     >
                       {activeProj.bento.card4.bgImage ? (
-                        <div 
-                          className="w-full h-full bg-cover bg-center"
-                          style={{
-                            backgroundImage: `url("${activeProj.bento.card4.bgImage}")`,
-                            backgroundPosition: activeProj.bento.card4.bgPosition || 'center center'
-                          }}
+                        <img 
+                          src={activeProj.bento.card4.bgImage} 
+                          alt={activeProj.bento.card4.text || 'Banner'}
+                          className="w-full h-full object-fill rounded-xl select-none pointer-events-none"
                         />
                       ) : (
                         <div className="w-full h-full p-3 sm:p-5 flex items-center justify-between">
@@ -716,15 +732,16 @@ export default function Projects() {
                     {/* Card 5: Color Swatches Strip */}
                     <div 
                       className="rounded-xl overflow-hidden relative transition-all duration-300 hover:scale-[1.01]"
-                      style={{ width: '18%' }}
+                      style={{ 
+                        backgroundColor: activeProj.bento.card5.bgImage ? 'transparent' : (activeProj.bento.card5.bg || 'transparent'),
+                        width: activeProj.bento.card5.width || '18%' 
+                      }}
                     >
                       {activeProj.bento.card5.bgImage ? (
-                        <div 
-                          className="w-full h-full bg-cover bg-center"
-                          style={{
-                            backgroundImage: `url("${activeProj.bento.card5.bgImage}")`,
-                            backgroundPosition: activeProj.bento.card5.bgPosition || 'center center'
-                          }}
+                        <img 
+                          src={activeProj.bento.card5.bgImage} 
+                          alt="Colors"
+                          className="w-full h-full object-fill rounded-xl select-none pointer-events-none"
                         />
                       ) : (
                         <div className="w-full h-full flex flex-row">
@@ -743,17 +760,15 @@ export default function Projects() {
                     <div 
                       className="rounded-xl flex flex-col items-center justify-center relative overflow-hidden transition-all duration-300 hover:scale-[1.01]"
                       style={{ 
-                        backgroundColor: activeProj.bento.card6.bg,
-                        width: '28%'
+                        backgroundColor: activeProj.bento.card6.bgImage ? 'transparent' : activeProj.bento.card6.bg,
+                        width: activeProj.bento.card6.width || '28%'
                       }}
                     >
                       {activeProj.bento.card6.bgImage ? (
-                        <div 
-                          className="w-full h-full bg-cover bg-center"
-                          style={{
-                            backgroundImage: `url("${activeProj.bento.card6.bgImage}")`,
-                            backgroundPosition: activeProj.bento.card6.bgPosition || 'center center'
-                          }}
+                        <img 
+                          src={activeProj.bento.card6.bgImage} 
+                          alt={activeProj.bento.card6.text || 'Typography'}
+                          className="w-full h-full object-fill rounded-xl select-none pointer-events-none"
                         />
                       ) : (
                         <>
@@ -772,13 +787,18 @@ export default function Projects() {
 
                 {/* Bento Right Part (Card 3: Large Crest Monogram - col-span-4 equivalent) */}
                 <div 
-                  className="rounded-xl flex flex-col items-center justify-center p-6 relative overflow-hidden md:w-[34%] h-full transition-all duration-300 hover:scale-[1.01] border border-white/5"
+                  className={`rounded-xl flex flex-col items-center justify-center p-6 relative overflow-hidden h-full transition-all duration-300 hover:scale-[1.01] border border-white/5 ${activeProj.bento.rightWidth || 'md:w-[34%]'}`}
                   style={{ backgroundColor: activeProj.bento.card3.bg }}
                 >
                   {activeProj.bento.card3.bgImage ? (
                     <div 
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url("${activeProj.bento.card3.bgImage}")` }}
+                      className="absolute inset-0"
+                      style={{ 
+                        backgroundImage: `url("${activeProj.bento.card3.bgImage}")`,
+                        backgroundPosition: activeProj.bento.card3.bgPosition || 'center center',
+                        backgroundSize: activeProj.bento.card3.bgSize || 'cover',
+                        backgroundRepeat: 'no-repeat'
+                      }}
                     />
                   ) : (
                     <>
